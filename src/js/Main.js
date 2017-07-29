@@ -32,7 +32,23 @@ export default class Main extends React.Component {
                             </Navbar.Brand>
                         </Navbar.Header>
                         <Nav>
-                            
+                            <NavDropdown eventKey={1} title="Tietokannat">
+                                <MenuItem eventKey={1.1}>
+                                    <Link to="/songdatabases">
+                                        Laulutietokannat
+                                    </Link>
+                                </MenuItem>
+                                <MenuItem eventKey={1.2}>
+                                    <Link to="/ewdatabases">
+                                        Ewtietokannat
+                                    </Link>
+                                </MenuItem>
+                            </NavDropdown>
+                            <NavItem eventKey={2}>
+                                <Link to="/songs">
+                                    Laulut
+                                </Link>
+                            </NavItem>
                         </Nav>
                         <Nav pullRight>
                             <NavItem eventKey={1} href="/login">Kirjaudu</NavItem>

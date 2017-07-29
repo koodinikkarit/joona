@@ -1,0 +1,7 @@
+
+mutation createVariation($name: String) {
+	createVariation(name: $name) {
+		id
+		name
+	}
+}

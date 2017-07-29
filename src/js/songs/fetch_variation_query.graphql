@@ -1,0 +1,8 @@
+
+query variation($variationId: ID!) {
+	variation(variationId: $variationId) {
+		id
+		name
+		text
+	}
+}

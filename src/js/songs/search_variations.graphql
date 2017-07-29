@@ -1,0 +1,9 @@
+
+query searchVariations {
+	searchVariations {
+		variations {
+			id
+			name
+		}
+	}
+}

@@ -1,0 +1,8 @@
+
+mutation editVariation($params: EditVariationInput) {
+	editVariation(params: $params) {
+		id 
+		name
+		text
+	}
+}

@@ -5,7 +5,7 @@ export default class PageFrame extends React.Component {
         return (
             <html>
                 <head>
-                    <title></title>
+                    <title>Joona</title>
                     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" />
                 </head>
