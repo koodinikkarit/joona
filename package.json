@@ -6,7 +6,7 @@
 		"dev": "babel-node ./src/dev.js"
 	},
 	"dependencies": {
-		"apollo-client": "^1.0.3",
+		"apollo-client": "^1.9.0-1",
 		"babel-cli": "6.11.4",
 		"babel-core": "^6.13.2",
 		"babel-loader": "^6.2.5",
@@ -28,7 +28,9 @@
 		"react-router-dom": "^4.1.1",
 		"request": "2.81.0",
 		"style-loader": "0.18.2",
-		"webpack": "^2.6.1"
+		"webpack": "^2.6.1",
+		"immutability-helper": "2.3.0",
+		"draft-js": "0.10.1"
 	},
 	"devDependencies": {
 		"babel-watch": "2.0.5",
