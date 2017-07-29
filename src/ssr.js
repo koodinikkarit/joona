@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOMServer from "react-dom/server";
+import request from "request";
 import PageFrame from "./js/PageFrame";
 
 export default function ssr(app) {

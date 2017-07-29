@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import webpack from "webpack";
 import WebpackMiddleware from "webpack-dev-middleware";
+import bodyParser from 'body-parser';
 
 import ssr from "./ssr";
 
@@ -34,6 +35,11 @@ var module = {
                     }
                 }
             ]
+		},
+		{
+            test: /\.(graphql|gql)$/,
+            exclude: /node_modules/,
+            loader: 'graphql-tag/loader'
         }
 	]
 };
@@ -44,6 +50,11 @@ var output = {
 };
 
 output.path = "/public/";
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use('/static', express.static('public'));
+
 app.use(WebpackMiddleware(webpack({
 	devtool: 'eval',
 	entry: entry,
