@@ -3,10 +3,13 @@
 	"version": "0.0.0",
 	"scripts": {
 		"start": "",
+		"build-dev": "webpack --config webpack.client.config.js && webpack --config webpack.server.config.js",
+		"build-production": "webpack -p --config webpack.client.config.js && webpack --config webpack.server.config.js",
 		"dev": "babel-node ./src/dev.js"
 	},
 	"dependencies": {
 		"apollo-client": "^1.9.0-1",
+		"read-yaml": "1.1.0",
 		"babel-cli": "6.11.4",
 		"babel-core": "^6.13.2",
 		"babel-loader": "^6.2.5",
@@ -24,7 +27,6 @@
 		"react-bootstrap": "^0.30.8",
 		"react-dom": "^15.4.2",
 		"react-router": "4.1.1",
-		"react-router-config": "^1.0.0-beta.3",
 		"react-router-dom": "^4.1.1",
 		"request": "2.81.0",
 		"style-loader": "0.18.2",
