@@ -16,7 +16,7 @@ import {
 	AppendBottomMedium,
 	AppendBottomBig,
 	AppendRight
-} from "../styles/layout.css";
+} from "../styles/Layout.css";
 
 import {
 	textInput
