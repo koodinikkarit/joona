@@ -3,5 +3,9 @@ query songDatabase($songDatabaseId: ID!) {
 	songDatabase(songDatabaseId: $songDatabaseId) {
 		id
 		name
+		variations {
+			id
+			name
+		}
 	}
 }

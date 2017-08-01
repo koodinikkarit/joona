@@ -15,8 +15,13 @@ import {
 	BoxInnerMedium,
 	AppendBottomMedium,
 	AppendBottomBig,
+	AppendBottomSmall,
 	AppendRight
 } from "../styles/Layout.css";
+
+import {
+	List
+} from "../styles/List.css";
 
 import {
 	textInput
@@ -25,6 +30,7 @@ import {
 import FETCH_SONG_DATABASE from "./fetch_song_database_query.graphql";
 import EDIT_SONG_DATABASE from "./edit_song_database_mutation.graphql";
 import REMOVE_SONG_DATABASE from "./remove_song_database.graphql";
+import REMOVE_VARIATION_FROM_SONG_DATABASE from "./remove_variation_from_song_database.graphql";
 
 export class EditSongDatabase extends React.Component {
 	constructor(props) {
@@ -47,23 +53,51 @@ export class EditSongDatabase extends React.Component {
 			return (
 				<div className={RectBox + " " + BoxInnerMedium + " " + AppendBottomBig}>
 					<div className={AppendBottomMedium}>
-						<label>
-							Nimi
-						</label>
-						<div>
-							<input type="text" className={textInput} placeholder="Nimi"
-								value={this.state.name}
-								onChange={e => {
-									this.setState({
-										name: e.target.value
-									});
-								}} />
+						<div className={AppendBottomMedium}>
+							<label>
+								Nimi
+							</label>
+							<div>
+								<input type="text" className={textInput} placeholder="Nimi"
+									value={this.state.name}
+									onChange={e => {
+										this.setState({
+											name: e.target.value
+										});
+									}} />
+							</div>
+						</div>
+						<div className={AppendBottomBig}>
+							<label>
+								Laulut
+							</label>
+							<ul className={List}>
+								{this.props.songDatabase.variations.map(p => (
+									<li className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
+										<div className={AppendRight}>
+											{p.name}
+										</div>
+										<Button bsStyle="danger"
+											onClick={e => {
+												this.props.removeVariationFromSongDatabase(this.props.songDatabase.id, p.id)
+											}}>
+											Poista laulu
+										</Button>
+									</li>
+								))}
+							</ul>
+							{this.props.addNewSongsEnabled &&
+							<Link to={`/editsongdatabase/${this.props.songDatabase.id}/addsong`}>
+								<Button bsStyle="success">
+									Lisää laulu
+								</Button>
+							</Link>}
 						</div>
 					</div>
 					<Link to="/songdatabases">
 						<Button className={AppendRight}>
 							Peruuta
-					</Button>
+						</Button>
 					</Link>
 					<Button bsStyle="danger" className={AppendRight}
 						onClick={e => {
@@ -139,6 +173,27 @@ export default compose(
 		}) => ({
 			loading,
 			songDatabase
+		})
+	}),
+	graphql(REMOVE_VARIATION_FROM_SONG_DATABASE, {
+		props: ({ mutate }) => ({
+			removeVariationFromSongDatabase: (songDatabaseId, variationId) => mutate({
+				variables: {
+					songDatabaseId,
+					variationId
+				},
+				updateQueries: {
+					songDatabase: (prev, { mutationResult }) => {
+						return {
+							...prev,
+							songDatabase: {
+								...prev.songDatabase,
+								variations: prev.songDatabase.variations.filter(p => p.id !== variationId)
+							}
+						}
+					}
+				}
+			})
 		})
 	})
 )(EditSongDatabase);

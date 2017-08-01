@@ -1,0 +1,4 @@
+
+mutation removeVariationFromSongDatabase($songDatabaseId: ID!, $variationId: ID!) {
+	removeVariationFromSongDatabase(songDatabaseId: $songDatabaseId, variationId: $variationId)
+}

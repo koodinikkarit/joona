@@ -18,29 +18,44 @@ import {
 	textInput
 } from "../styles/Form.css";
 
+import {
+	List
+} from "../styles/List.css";
+
 export class SongSearch extends React.Component {
 	render() {
-		console.log("variations", this.props.variations);
 		return (
 			<div>
+				{this.props.addSongButtonEnabled &&
 				<div className={classes.AppendBottomMedium}>
 					<Link to="/createsong">
 						<Button>
 							Luo uusi laulu
 						</Button>
 					</Link>
-				</div>
+				</div>}
 				<div className={classes.RectBox + " " + classes.BoxInnerMedium}>
 					<div className={classes.AppendBottomBig}>
 						<input type="text" className={textInput} placeholder="Hakusana" />
 					</div>
+					<ul className={List}>
 					{!this.props.loading && this.props.variations.map(p => (
-						<Link to={"/editsong/"+ p.id}>
-							<div className={classes.RectBox + " " + classes.BoxInnerMedium + " " + classes.AppendBottomSmall}>
+						<li className={classes.RectBox + " " + classes.BoxInnerMedium + " " + classes.AppendBottomSmall}
+							onClick={() => {
+								if (this.props.songItemClick) {
+									this.props.songItemClick(p.id)
+								}
+							}}>
+							{this.props.getSongItemLink ?
+							<Link to={this.props.getSongItemLink(p.id)}>
 								{p.name}
-							</div>
-						</Link>
+							</Link> : 
+							<a style={{ cursor: "pointer" }}>
+								{p.name}
+							</a>}
+						</li>
 					))}
+					</ul>
 				</div>
 			</div>
 		)

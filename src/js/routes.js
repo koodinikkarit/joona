@@ -28,7 +28,12 @@ export default (
 			}) => (
 				<Row>
 					<Col md={12}>
-						<SongSearch history={history} />
+						<SongSearch 
+							history={history} 
+							addSongButtonEnabled={true}
+							getSongItemLink={(id) => {
+								return "/editsong/" + id
+							}} />
 					</Col>
 				</Row>
 			)} />
@@ -40,7 +45,11 @@ export default (
 						<CreateSong history={history} />
 					</Col>
 					<Col md={6}>
-						<SongSearch history={history} />
+						<SongSearch 
+							history={history}
+							getSongItemLink={(id) => {
+								return "/editsong/" + id
+							}} />
 					</Col>
 				</Row>
 			)} />
@@ -53,7 +62,12 @@ export default (
 						<EditSong history={history} variationId={match.params.id} />
 					</Col>
 					<Col md={6}>
-						<SongSearch history={history} />
+						<SongSearch 
+							history={history} 
+							addSongButtonEnabled={true}
+							getSongItemLink={(id) => {
+								return "/editsong/" + id
+							}} />
 					</Col>
 				</Row>
 			)} />
@@ -64,7 +78,8 @@ export default (
 				}) => (
 					<Row>
 						<Col md={12}>
-							<SongDatabasesSearch />
+							<SongDatabasesSearch 
+								createNewSongDatabaseEnabled={true}/>
 						</Col>
 					</Row>
 				)}/>

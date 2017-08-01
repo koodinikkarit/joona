@@ -1,0 +1,9 @@
+
+mutation addVariationToSongDatabase($songDatabaseId: ID!, $variationId: ID!) {
+	songDatabaseVariation: addVariationToSongDatabase(songDatabaseId: $songDatabaseId, variationId: $variationId) {
+		variation {
+			id 
+			name
+		}
+	}
+}

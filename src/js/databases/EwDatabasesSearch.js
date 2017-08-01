@@ -28,7 +28,6 @@ import {
 
 export class EwDatabasesSearch extends React.Component {
 	render() {
-		console.log("rener ewDatabases");
 		return (
 			<div>
 				<div className={AppendBottomMedium}>

@@ -74,8 +74,6 @@ export default compose(
 				},
 				updateQueries: {
 					searchVariations: (prev, { mutationResult }) => {
-						console.log("prev", prev);
-						console.log("mutationResult", mutationResult);
 						return Object.assign({}, prev, {
 							variationsConnection: {
 								...prev.variationsConnection,

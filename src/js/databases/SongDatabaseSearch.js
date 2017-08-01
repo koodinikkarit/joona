@@ -33,13 +33,14 @@ export class SongDatabaseSearch extends React.Component {
 		if (!this.props.loading) {
 			return (
 				<div>
+					{this.props.createNewSongDatabaseEnabled &&
 					<div className={AppendBottomMedium}>
 						<Link to="/createsongdatabase">
 							<Button>
 								Luo uusi laulutietokanta
 						</Button>
 						</Link>
-					</div>
+					</div>}
 					<div className={RectBox + " " + BoxInnerMedium}>
 						<div className={AppendBottomBig}>
 							<input type="text" className={textInput} placeholder="Hakusana" />
