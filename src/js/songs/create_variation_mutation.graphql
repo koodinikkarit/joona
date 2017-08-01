@@ -1,6 +1,6 @@
 
 mutation createVariation($name: String) {
-	createVariation(name: $name) {
+	variation: createVariation(name: $name) {
 		id
 		name
 	}

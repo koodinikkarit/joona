@@ -1,0 +1,4 @@
+
+mutation removeVariation($variationId: ID) {
+	removeVariation(variationId: $variationId)
+}

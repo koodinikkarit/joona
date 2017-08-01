@@ -52,6 +52,8 @@ export class CreateSong extends React.Component {
 					onClick={e => {
 						this.props.createVariation({
 							name: this.state.name
+						}).then(data => {
+							this.props.history.push("/songs");
 						});
 					}}>
 					Luo laulu
@@ -69,6 +71,21 @@ export default compose(
 			}) => mutate({
 				variables: {
 					name
+				},
+				updateQueries: {
+					searchVariations: (prev, { mutationResult }) => {
+						console.log("prev", prev);
+						console.log("mutationResult", mutationResult);
+						return Object.assign({}, prev, {
+							variationsConnection: {
+								...prev.variationsConnection,
+								variations: [
+									...prev.variationsConnection.variations,
+									mutationResult.data.variation
+								]
+							}
+						});
+					}
 				}
 			})
 		})

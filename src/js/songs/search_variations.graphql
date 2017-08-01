@@ -1,6 +1,6 @@
 
 query searchVariations {
-	searchVariations {
+	variationsConnection: searchVariations {
 		variations {
 			id
 			name

@@ -26,34 +26,52 @@ import {
 	List
 } from "../styles/List.css";
 
+import SEARCH_SONG_DATABASES from "./search_song_databases.graphql";
+
 export class SongDatabaseSearch extends React.Component {
 	render() {
-		return (
-			<div>
-				<div className={AppendBottomMedium}>
-					<Link to="/createsongdatabase">
-						<Button>
-							Luo uusi laulutietokanta
+		if (!this.props.loading) {
+			return (
+				<div>
+					<div className={AppendBottomMedium}>
+						<Link to="/createsongdatabase">
+							<Button>
+								Luo uusi laulutietokanta
 						</Button>
-					</Link>
-				</div>
-				<div className={RectBox + " " + BoxInnerMedium}>
-					<div className={AppendBottomBig}>
-						<input type="text" className={textInput} placeholder="Hakusana" />
+						</Link>
 					</div>
-					<ul className={List}>
-						<li className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
-							<Link to={"/editsongdatabase/" + 4}>
-								Kanta1
-							</Link>
-						</li>
-					</ul>
+					<div className={RectBox + " " + BoxInnerMedium}>
+						<div className={AppendBottomBig}>
+							<input type="text" className={textInput} placeholder="Hakusana" />
+						</div>
+						<ul className={List}>
+							{this.props.songDatabases.map(p => (
+								<li className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
+									<Link to={"/editsongdatabase/" + p.id}>
+										{p.name || "Tyhjä"}
+									</Link>
+								</li>
+							))}							
+						</ul>
+					</div>
 				</div>
-			</div>
-		)
+			);
+		} else {
+			return <div />
+		}
 	}
 }
 
 export default compose(
-
+	graphql(SEARCH_SONG_DATABASES, {
+		props: ({
+			data: {
+				loading,
+				songDatabasesConnection
+			}
+		}) => ({
+			loading,
+			songDatabases: !loading ? songDatabasesConnection.songDatabases : []
+		})
+	})
 )(SongDatabaseSearch);

@@ -16,7 +16,9 @@ export class EditSongDatabasePage extends React.Component {
 		return (
 			<Row>
 				<Col md={6}>
-					<EditSongDatabase />
+					<EditSongDatabase 
+						songDatabaseId={this.props.match.params.songDatabaseId}
+						history={this.props.history} />
 				</Col>
 				<Col md={6}>
 					<SongDatabaseSearch />

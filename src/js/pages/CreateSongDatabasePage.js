@@ -16,10 +16,10 @@ export class CreateSongDatabasePage extends React.Component {
 		return (
 			<Row>
 				<Col md={6}>
-					<CreateSongDatabase />
+					<CreateSongDatabase history={this.props.history} />
 				</Col>
 				<Col md={6}>
-					<SongDatabaseSearch />
+					<SongDatabaseSearch history={this.props.history} />
 				</Col>
 			</Row>			
 		)

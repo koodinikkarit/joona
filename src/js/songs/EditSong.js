@@ -30,6 +30,7 @@ import {
 
 import FETCH_VARIATION_QUERY from "./fetch_variation_query.graphql";
 import EDIT_VARIATION_MUTATION from "./edit_variation_mutation.graphql";
+import REMOVE_VARIATION_MUTATION from "./remove_variation_mutation.graphql";
 
 export class EditSong extends React.Component {
 	constructor(props) {
@@ -87,6 +88,14 @@ export class EditSong extends React.Component {
 							Peruuta
 						</Button>
 					</Link>
+					<Button bsStyle="danger" className={AppendRight}
+						onClick={e => {
+							this.props.removeVariation(this.props.variation.id).then(data => {
+								this.props.history.push("/songs");
+							});
+						}}>
+						Poista
+					</Button>
 					<Button bsStyle="success"
 						onClick={e => {
 							this.props.editVariation({
@@ -140,5 +149,24 @@ export default compose(
 				}
 			})
 		})
+	}),
+	graphql(REMOVE_VARIATION_MUTATION, {
+		props: ({ mutate }) => ({
+			removeVariation: (id) => mutate({
+				variables: {
+					variationId: id
+				},
+				updateQueries: {
+					searchVariations: (prev, { mutationResult }) => {
+						return Object.assign({}, prev, {
+							variationsConnection: {
+								...prev.variationsConnection,
+								variations: prev.variationsConnection.variations.filter(p => p.id !== id)
+							}
+						});
+					}
+				}
+			})
+		})	
 	})
 )(EditSong);

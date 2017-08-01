@@ -1,0 +1,7 @@
+
+mutation editSongDatabase($params: EditSongDatabaseInput) {
+	editSongDatabase(params: $params) {
+		id 
+		name
+	}
+}

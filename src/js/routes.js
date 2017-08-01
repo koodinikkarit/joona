@@ -17,6 +17,9 @@ import SongDatabasesSearch from "./databases/SongDatabaseSearch";
 import CreateSongDatabasePage from "./pages/CreateSongDatabasePage";
 import EditSongDatabasePage from "./pages/EditSongDatabasePage";
 
+import EwDatabasesSearchPage from "./pages/EwDatabasesSearchPage";
+import CreateEwDatabasePage from "./pages/CreateEwDatabasePage"
+
 export default (
 	<div>
 		<Grid>
@@ -68,6 +71,8 @@ export default (
 			
 			<Route path="/createsongdatabase" component={CreateSongDatabasePage} />
 			<Route path="/editsongdatabase/:songDatabaseId" component={EditSongDatabasePage} />
+			<Route path="/ewdatabases" component={EwDatabasesSearchPage} />
+			<Route path="/createewdatabase" component={CreateEwDatabasePage} />
 		</Grid>
 	</div>
 )

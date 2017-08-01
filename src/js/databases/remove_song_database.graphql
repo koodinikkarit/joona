@@ -1,0 +1,4 @@
+
+mutation removeSongDatabase($songDatabaseId: ID) {
+	removeSongDatabase(songDatabaseId: $songDatabaseId)
+}

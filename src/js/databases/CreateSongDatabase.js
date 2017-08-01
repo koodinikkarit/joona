@@ -22,6 +22,8 @@ import {
 	textInput
 } from "../styles/Form.css";
 
+import CREATE_SONG_DATABASE_MUTATION from "./create_song_database_mutation.graphql";
+
 export class CreateSongDatabase extends React.Component {
 	constructor(props) {
 		super(props);
@@ -54,9 +56,11 @@ export class CreateSongDatabase extends React.Component {
 				</Link>
 				<Button bsStyle="success"
 					onClick={e => {
-						// this.props.createVariation({
-						// 	name: this.state.name
-						// });
+						this.props.createSongDatabase({
+							name: this.state.name
+						}).then(data => {
+							this.props.history.push("/songdatabases");
+						})
 					}}>
 					Luo laulutietokanta
 				</Button>
@@ -66,5 +70,30 @@ export class CreateSongDatabase extends React.Component {
 }
 
 export default compose(
-
+	graphql(CREATE_SONG_DATABASE_MUTATION, {
+		props: ({ mutate }) => ({
+			createSongDatabase: ({
+				name
+			}) => mutate({
+				variables: {
+					params: {
+						name
+					}
+				},
+				updateQueries: {
+					searchSongDatabases: (prev, { mutationResult }) => {
+						return Object.assign({}, prev, {
+							songDatabasesConnection: {
+								...prev.songDatabasesConnection,
+								songDatabases: [
+									...prev.songDatabasesConnection.songDatabases,
+									mutationResult.data.songDatabase
+								]
+							}
+						});
+					}
+				}
+			})
+		})
+	})
 )(CreateSongDatabase);

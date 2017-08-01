@@ -1,0 +1,10 @@
+
+
+query searchSongDatabases {
+	songDatabasesConnection: searchSongDatabases {
+		songDatabases {
+			id
+			name
+		}
+	}
+}

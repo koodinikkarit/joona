@@ -52,11 +52,11 @@ export default compose(
 		props: ({
 			data: {
 				loading,
-				searchVariations
+				variationsConnection
 			}
 		}) => ({
 			loading,
-			variations: !loading ? searchVariations.variations : []
+			variations: !loading ? variationsConnection.variations : []
 		})
 	})
 )(SongSearch);
