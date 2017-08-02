@@ -2,4 +2,5 @@
 .VariationTextArea {
 	width: 100%;
 	resize: vertical;
+	height: 600px;
 }
