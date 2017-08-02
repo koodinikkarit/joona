@@ -18,7 +18,8 @@ import CreateSongDatabasePage from "./pages/CreateSongDatabasePage";
 import EditSongDatabasePage from "./pages/EditSongDatabasePage";
 
 import EwDatabasesSearchPage from "./pages/EwDatabasesSearchPage";
-import CreateEwDatabasePage from "./pages/CreateEwDatabasePage"
+import CreateEwDatabasePage from "./pages/CreateEwDatabasePage";
+import EditEwDatabasePage from "./pages/EditEwDatabasePage";
 
 export default (
 	<div>
@@ -88,6 +89,7 @@ export default (
 			<Route path="/editsongdatabase/:songDatabaseId" component={EditSongDatabasePage} />
 			<Route path="/ewdatabases" component={EwDatabasesSearchPage} />
 			<Route path="/createewdatabase" component={CreateEwDatabasePage} />
+			<Route path="/editewDatabase/:ewDatabaseId" component={EditEwDatabasePage} />
 		</Grid>
 	</div>
 )

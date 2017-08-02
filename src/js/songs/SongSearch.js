@@ -38,7 +38,11 @@ export class SongSearch extends React.Component {
 					<div className={classes.AppendBottomBig}>
 						<input type="text" className={textInput} placeholder="Hakusana" />
 					</div>
-					<ul className={List}>
+					<ul className={List}
+						style={{
+							overflow: "auto",
+							maxHeight: "600px"
+						}}>
 					{!this.props.loading && this.props.variations.map(p => (
 						<li className={classes.RectBox + " " + classes.BoxInnerMedium + " " + classes.AppendBottomSmall}
 							onClick={() => {

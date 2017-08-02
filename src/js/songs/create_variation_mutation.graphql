@@ -1,7 +1,8 @@
 
-mutation createVariation($name: String) {
-	variation: createVariation(name: $name) {
+mutation createVariation($params: CreateVariationInput) {
+	variation: createVariation(params: $params) {
 		id
 		name
+		text
 	}
 }

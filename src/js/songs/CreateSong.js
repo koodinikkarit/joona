@@ -8,11 +8,21 @@ import {
   Link
 } from 'react-router-dom'
 
-import classes from "../styles/Layout.css";
-
 import {
 	textInput
 } from "../styles/Form.css";
+
+import {
+	VariationTextArea
+} from "./EditSong.css";
+
+import {
+	RectBox,
+	BoxInnerMedium,
+	AppendBottomMedium,
+	AppendBottomBig,
+	AppendRight
+} from "../styles/Layout.css";
 
 import Button from "react-bootstrap/lib/Button";
 
@@ -22,14 +32,15 @@ export class CreateSong extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			name: ""
+			name: "",
+			text: ""
 		};
 	}
 
 	render() {
 		return (
-			<div className={classes.RectBox + " " + classes.BoxInnerMedium + " " + classes.AppendBottomBig}>
-				<div className={classes.AppendBottomMedium}>
+			<div className={RectBox + " " + BoxInnerMedium + " " + AppendBottomBig}>
+				<div className={AppendBottomMedium}>
 					<label>
 						Nimi
 					</label>
@@ -43,15 +54,24 @@ export class CreateSong extends React.Component {
 							}} />
 					</div>
 				</div>
+				<div className={AppendBottomMedium}>
+					<textarea value={this.state.text} className={VariationTextArea}
+						onChange={e => {
+							this.setState({
+								text: e.target.value
+							});
+						}} />
+				</div>
 				<Link to="/songs">
-					<Button className={classes.AppendRight}>
+					<Button className={AppendRight}>
 						Peruuta
 					</Button>
 				</Link>
 				<Button bsStyle="success"
 					onClick={e => {
 						this.props.createVariation({
-							name: this.state.name
+							name: this.state.name,
+							text: this.state.text
 						}).then(data => {
 							this.props.history.push("/songs");
 						});
@@ -66,11 +86,9 @@ export class CreateSong extends React.Component {
 export default compose(
 	graphql(CREATE_VARIATION_MUTATION, {
 		props: ({ mutate }) => ({
-			createVariation: ({
-				name
-			}) => mutate({
+			createVariation: (params) => mutate({
 				variables: {
-					name
+					params
 				},
 				updateQueries: {
 					searchVariations: (prev, { mutationResult }) => {

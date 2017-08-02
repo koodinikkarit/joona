@@ -1,0 +1,10 @@
+
+query ewDatabase($ewDatabaseId: ID!) {
+	ewDatabase(ewDatabaseId: $ewDatabaseId) {
+		id 
+		name
+		songDatabase {
+			id
+		}
+	}
+}

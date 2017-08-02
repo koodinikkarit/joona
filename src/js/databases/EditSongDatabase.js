@@ -72,7 +72,11 @@ export class EditSongDatabase extends React.Component {
 							<label>
 								Laulut
 							</label>
-							<ul className={List}>
+							<ul className={List + " " + RectBox + " " + BoxInnerMedium}
+								style={{
+									maxHeight: "500px",
+									overflow: "auto"
+								}}>
 								{this.props.songDatabase.variations.map(p => (
 									<li className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
 										<div className={AppendRight}>
@@ -182,9 +186,6 @@ export default compose(
 				variables: {
 					songDatabaseId,
 					variationId
-				},
-				update: (store, { data }) => {
-					console.log("update", store, data);
 				},
 				updateQueries: {
 					songDatabase: (prev, { mutationResult }) => {

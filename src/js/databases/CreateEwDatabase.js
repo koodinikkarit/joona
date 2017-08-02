@@ -90,6 +90,19 @@ export default compose(
 			createEwDatabase: (params) => mutate({
 				variables: {
 					params
+				},
+				updateQueries: {
+					searchEwDatabases: (prev, { mutationResult }) => {
+						return Object.assign({}, prev, {
+							ewDatabasesConnection: {
+								...prev.ewDatabasesConnection,
+								ewDatabases: [
+									...prev.ewDatabasesConnection.ewDatabases,
+									mutationResult.data.ewDatabase
+								]
+							}
+						});
+					}
 				}
 			})
 		})

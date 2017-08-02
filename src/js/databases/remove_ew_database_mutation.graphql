@@ -1,0 +1,4 @@
+
+mutation removeEwDatabase($ewDatabaseId: ID) {
+	removeEwDatabase(ewDatabaseId: $ewDatabaseId)
+}
