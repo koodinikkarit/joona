@@ -46,6 +46,7 @@ export class EditSongDatabasePage extends React.Component {
 						</label>
 						<div className={AppendBottomMedium}>
 							<SongSearch
+								songDatabaseFilterId={songDatabaseId}
 								songItemClick={id => {
 									this.props.addVariationToSongDatabase(songDatabaseId, id);
 								}} />
@@ -87,16 +88,31 @@ export default compose(
 					songDatabaseId,
 					variationId
 				},
+				update: (store, { data }) => {
+					console.log("update", store, data);
+				},
 				updateQueries: {
 					songDatabase: (prev, { mutationResult }) => {
+						if (!prev.songDatabase.variations.some(p => p.id === mutationResult.data.songDatabaseVariation.variation.id)) {
+							return {
+								...prev,
+								songDatabase: {
+									...prev.songDatabase,
+									variations: [
+										...prev.songDatabase.variations,
+										mutationResult.data.songDatabaseVariation.variation
+									]
+								}
+							}
+						}
+					},
+					searchVariations: (prev, { mutationResult }) => {
+						console.log("prev", prev, mutationResult);
 						return {
 							...prev,
-							songDatabase: {
-								...prev.songDatabase,
-								variations: [
-									...prev.songDatabase.variations,
-									mutationResult.data.songDatabaseVariation.variation
-								]
+							variationsConnection: {
+								...prev.variationsConnection,
+								variations: prev.variationsConnection.variations.filter(p => p.id !== mutationResult.data.songDatabaseVariation.variation.id)
 							}
 						}
 					}

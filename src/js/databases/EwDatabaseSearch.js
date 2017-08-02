@@ -26,6 +26,8 @@ import {
 	List
 } from "../styles/List.css";
 
+import SEARCH_EW_DATABASES_QUERY from "./search_ew_databases_query.graphql";
+
 export class EwDatabasesSearch extends React.Component {
 	render() {
 		return (
@@ -38,6 +40,15 @@ export class EwDatabasesSearch extends React.Component {
 					</Link>
 				</div>
 				<div className={RectBox + " " + BoxInnerMedium}>
+					<ul className={List}>
+						{this.props.ewDatabases.map(p => (
+							<li className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
+								<Link to={"/editewdatabase/" + p.id}>
+									{p.name || "Tyhjä"}
+								</Link>
+							</li>
+						))}
+					</ul>
 				</div>
 			</div>
 		)
@@ -45,5 +56,25 @@ export class EwDatabasesSearch extends React.Component {
 }
 
 export default compose(
+	graphql(SEARCH_EW_DATABASES_QUERY, {
+		options: ({
+		}) => {
+			return {
+				variables: {
+					params: {
 
+					}
+				}
+			}
+		},
+		props: ({
+			data: {
+				loading,
+				ewDatabasesConnection
+			}
+		}) => ({
+			loading,
+			ewDatabases: !loading ? ewDatabasesConnection.ewDatabases : []
+		})
+	})
 )(EwDatabasesSearch);

@@ -1,6 +1,7 @@
 
 mutation addVariationToSongDatabase($songDatabaseId: ID!, $variationId: ID!) {
 	songDatabaseVariation: addVariationToSongDatabase(songDatabaseId: $songDatabaseId, variationId: $variationId) {
+		id
 		variation {
 			id 
 			name

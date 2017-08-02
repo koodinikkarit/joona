@@ -1,0 +1,7 @@
+
+mutation createEwDatabase($params: CreateEwDatabaseInput) {
+	createEwDatabase(params: $params) {
+		id
+		name
+	}
+}

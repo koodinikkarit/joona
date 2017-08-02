@@ -64,6 +64,17 @@ export class SongSearch extends React.Component {
 
 export default compose(
 	graphql(SEARCH_VARIATIONS, {
+		options: ({
+			songDatabaseFilterId
+		}) => {
+			return {
+				variables: {
+					params: {
+						songDatabaseFilterId
+					}
+				}
+			}
+		},
 		props: ({
 			data: {
 				loading,

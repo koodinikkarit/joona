@@ -1,6 +1,6 @@
 
-query searchVariations {
-	variationsConnection: searchVariations {
+query searchVariations($params: SearchVariationsInput) {
+	variationsConnection: searchVariations(params: $params) {
 		variations {
 			id
 			name

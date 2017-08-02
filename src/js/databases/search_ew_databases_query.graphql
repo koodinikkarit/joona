@@ -1,0 +1,9 @@
+
+query searchEwDatabases($params: SearchEwDatabasesInput) {
+	ewDatabasesConnection: searchEwDatabases(params: $params) {
+		ewDatabases {
+			id
+			name
+		}
+	}
+}

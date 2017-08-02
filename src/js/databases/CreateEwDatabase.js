@@ -22,10 +22,47 @@ import {
 	textInput
 } from "../styles/Form.css";
 
+import SongDatabasesSelect from "./SongDatabasesSelect";
+
+import CREATE_EW_DATABASE_MUTATION from "./create_ew_database_mutation.graphql";
+
 export class CreateEwDatabase extends React.Component {
+	state = {
+		name: "",
+		selectedSongDatabaseId: ""
+	}
+
 	render() {
 		return (
 			<div className={RectBox + " " + BoxInnerMedium + " " + AppendBottomBig}>
+				<div className={AppendBottomMedium}>
+					<label>
+						Nimi
+					</label>
+					<div>
+						<input type="text" className={textInput} placeholder="Nimi"
+							value={this.state.name}
+							onChange={e => {
+								this.setState({
+									name: e.target.value
+								});
+							}} />
+					</div>
+				</div>
+				<div className={AppendBottomBig}>
+					<label>
+						Laulutietokanta
+					</label>
+					<div>
+						<SongDatabasesSelect
+							value={this.state.selectedSongDatabaseId}
+							onChange={value => {
+								this.setState({
+									selectedSongDatabaseId: value
+								})
+							}} />
+					</div>
+				</div>
 				<Link to="/ewdatabases">
 					<Button className={AppendRight}>
 						Peruuta
@@ -33,9 +70,12 @@ export class CreateEwDatabase extends React.Component {
 				</Link>
 				<Button bsStyle="success"
 					onClick={e => {
-						// this.props.createVariation({
-						// 	name: this.state.name
-						// });
+						this.props.createEwDatabase({
+							name: this.state.name,
+							songDatabaseId: this.state.selectedSongDatabaseId
+						}).then(data => {
+							this.props.history.push("/ewdatabases");
+						});
 					}}>
 					Luo
 				</Button>
@@ -45,5 +85,13 @@ export class CreateEwDatabase extends React.Component {
 }
 
 export default compose(
-
+	graphql(CREATE_EW_DATABASE_MUTATION, {
+		props: ({ mutate }) => ({
+			createEwDatabase: (params) => mutate({
+				variables: {
+					params
+				}
+			})
+		})
+	})
 )(CreateEwDatabase);

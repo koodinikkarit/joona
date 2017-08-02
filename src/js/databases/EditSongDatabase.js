@@ -31,6 +31,7 @@ import FETCH_SONG_DATABASE from "./fetch_song_database_query.graphql";
 import EDIT_SONG_DATABASE from "./edit_song_database_mutation.graphql";
 import REMOVE_SONG_DATABASE from "./remove_song_database.graphql";
 import REMOVE_VARIATION_FROM_SONG_DATABASE from "./remove_variation_from_song_database.graphql";
+import FETCH_VARIATION_QUERY from "../songs/fetch_variation_query.graphql";
 
 export class EditSongDatabase extends React.Component {
 	constructor(props) {
@@ -88,8 +89,8 @@ export class EditSongDatabase extends React.Component {
 							</ul>
 							{this.props.addNewSongsEnabled &&
 							<Link to={`/editsongdatabase/${this.props.songDatabase.id}/addsong`}>
-								<Button bsStyle="success">
-									Lisää laulu
+								<Button>
+									Lisää laulut
 								</Button>
 							</Link>}
 						</div>
@@ -182,6 +183,9 @@ export default compose(
 					songDatabaseId,
 					variationId
 				},
+				update: (store, { data }) => {
+					console.log("update", store, data);
+				},
 				updateQueries: {
 					songDatabase: (prev, { mutationResult }) => {
 						return {
@@ -191,6 +195,16 @@ export default compose(
 								variations: prev.songDatabase.variations.filter(p => p.id !== variationId)
 							}
 						}
+					},
+					searchVariations: (prev, { mutationResult }) => {
+						console.log("prev", prev, mutationResult);
+						// return {
+						// 	...prev,
+						// 	variationsConnection: {
+						// 		...prev.variationsConnection,
+						// 		variations: prev.variationsConnection.variations.filter(p => p.id !== mutationResult.data.songDatabaseVariation.variation.id)
+						// 	}
+						// }
 					}
 				}
 			})
