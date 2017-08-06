@@ -1,6 +1,6 @@
 {
 	"name": "Joona",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"scripts": {
 		"start": "npm run build-production && cd dist && node ./joona.js",
 		"build-dev": "webpack --config webpack.client.config.js && webpack --config webpack.server.config.js",
