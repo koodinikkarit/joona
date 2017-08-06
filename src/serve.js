@@ -3,8 +3,16 @@ import ReactDOMServer from "react-dom/server";
 import request from "request";
 import PageFrame from "./js/PageFrame";
 import read from "read-yaml";
+import fs from "fs";
 
-const config = read.sync("config.yml");
+var config = {
+	port: 22222
+};
+
+if (fs.existsSync("config.yml")) {
+	config = read.sync("config.yml");
+}
+
 
 export default (app) => {
 	app.get("/login", (req, res) => {
