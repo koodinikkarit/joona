@@ -2,7 +2,7 @@
 	"name": "Joona",
 	"version": "0.0.0",
 	"scripts": {
-		"start": "",
+		"start": "npm run build-production && cd dist && node ./joona.js",
 		"build-dev": "webpack --config webpack.client.config.js && webpack --config webpack.server.config.js",
 		"build-production": "webpack -p --config webpack.client.config.js && webpack --config webpack.server.config.js",
 		"dev": "babel-node ./src/dev.js"
