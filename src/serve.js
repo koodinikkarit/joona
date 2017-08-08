@@ -2,16 +2,6 @@ import React from 'react';
 import ReactDOMServer from "react-dom/server";
 import request from "request";
 import PageFrame from "./js/PageFrame";
-import read from "read-yaml";
-import fs from "fs";
-
-var config = {
-	port: 22222
-};
-
-if (fs.existsSync("config.yml")) {
-	config = read.sync("config.yml");
-}
 
 
 export default (app) => {
@@ -25,9 +15,9 @@ export default (app) => {
         res.redirect(302, "http://localhost:11111");
     });
 
-	if (config.petriIp && config.petriPort) {
+	if (process.env.JOONA_PETRI_IP && process.env.JOONA_PETRI_PORT) {
 		app.use("/api", (req, res) => {
-			request.post(`http://${config.petriIp}:${config.petriPort}/`, { form: req.body }, (err, data) => {
+			request.post(`http://${process.env.JOONA_PETRI_IP}:${process.env.JOONA_PETRI_PORT}/`, { form: req.body }, (err, data) => {
 				if (!data) {
 					console.log("500 service unvaivable");
 					res.writeHead(500);
@@ -48,7 +38,7 @@ export default (app) => {
         res.end();
 	});
 	
-	app.listen(config.port, () => {
+	app.listen(process.env.JOONA_PORT || 22222, () => {
     	console.log("serveri on käynnissä");
 	});
 }
