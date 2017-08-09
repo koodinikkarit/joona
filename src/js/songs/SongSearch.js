@@ -55,6 +55,8 @@ export class SongSearch extends React.Component {
 							}} />
 					</div>
 					<SongSearchResults
+						songItemClick={this.props.songItemClick}
+						getSongItemLink={this.props.getSongItemLink}
 						searchWord={this.state.searchWord}
 						songDatabaseId={this.props.songDatabaseId}
 						songDatabaseFilterId={this.props.songDatabaseFilterId} />
