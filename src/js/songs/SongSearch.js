@@ -10,56 +10,54 @@ import {
 
 import Button from "react-bootstrap/lib/Button";
 
-import classes from "../styles/Layout.css";
-
-import SEARCH_VARIATIONS from "./search_variations.graphql";
-
 import {
 	textInput
 } from "../styles/Form.css";
 
+import SongSearchResults from "./SongSearchResults";
+import DelayTextInput from "../common/DelayTextInput";
+
 import {
-	List
-} from "../styles/List.css";
+	RectBox,
+	BoxInnerMedium,
+	AppendBottomSmall,
+	AppendBottomBig,
+	AppendBottomMedium
+} from "../styles/Layout.css";
 
 export class SongSearch extends React.Component {
+	state = {
+		searchWord: ""
+	};
+	
 	render() {
 		return (
 			<div>
 				{this.props.addSongButtonEnabled &&
-				<div className={classes.AppendBottomMedium}>
+				<div className={AppendBottomMedium}>
 					<Link to="/createsong">
 						<Button>
 							Luo uusi laulu
 						</Button>
 					</Link>
 				</div>}
-				<div className={classes.RectBox + " " + classes.BoxInnerMedium}>
-					<div className={classes.AppendBottomBig}>
-						<input type="text" className={textInput} placeholder="Hakusana" />
+				<div className={RectBox + " " + BoxInnerMedium}>
+					<div className={AppendBottomBig}>
+						<DelayTextInput
+							placeholder="Hakusana"
+							value={this.state.searchWord}
+							delay={400}
+							onChange={value => {
+								console.log("searhcword cghanged", value);
+								this.setState({
+									searchWord: value
+								});
+							}} />
 					</div>
-					<ul className={List}
-						style={{
-							overflow: "auto",
-							maxHeight: "600px"
-						}}>
-					{!this.props.loading && this.props.variations.map(p => (
-						<li className={classes.RectBox + " " + classes.BoxInnerMedium + " " + classes.AppendBottomSmall}
-							onClick={() => {
-								if (this.props.songItemClick) {
-									this.props.songItemClick(p.id)
-								}
-							}}>
-							{this.props.getSongItemLink ?
-							<Link to={this.props.getSongItemLink(p.id)}>
-								{p.name}
-							</Link> : 
-							<a style={{ cursor: "pointer" }}>
-								{p.name}
-							</a>}
-						</li>
-					))}
-					</ul>
+					<SongSearchResults
+						searchWord={this.state.searchWord}
+						songDatabaseId={this.props.songDatabaseId}
+						songDatabaseFilterId={this.props.songDatabaseFilterId} />
 				</div>
 			</div>
 		)
@@ -67,26 +65,5 @@ export class SongSearch extends React.Component {
 }
 
 export default compose(
-	graphql(SEARCH_VARIATIONS, {
-		options: ({
-			songDatabaseFilterId
-		}) => {
-			return {
-				variables: {
-					params: {
-						songDatabaseFilterId
-					}
-				}
-			}
-		},
-		props: ({
-			data: {
-				loading,
-				variationsConnection
-			}
-		}) => ({
-			loading,
-			variations: !loading ? variationsConnection.variations : []
-		})
-	})
+
 )(SongSearch);
