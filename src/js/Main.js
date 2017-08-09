@@ -28,7 +28,7 @@ export default class Main extends React.Component {
                     <Navbar>
                         <Navbar.Header>
                             <Navbar.Brand>
-                                <Link to="/">Joona</Link>
+                                <Link to="/">Joonaa</Link>
                             </Navbar.Brand>
                         </Navbar.Header>
                         <Nav>
