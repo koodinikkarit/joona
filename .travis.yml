@@ -13,4 +13,4 @@ after_success:
   - docker push $DOCKER_ID_USER/joona
 
 notifications:
-  webhooks: $UPDATE_URL
+  webhooks: http://salainen_kontti_updater.ths.tunk.org/
