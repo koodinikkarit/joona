@@ -46,7 +46,7 @@ export default class Main extends React.Component {
                             </NavDropdown>
                             <NavItem eventKey={2}>
                                 <Link to="/songs">
-                                    Laulutt
+                                    Laulut
                                 </Link>
                             </NavItem>
                         </Nav>
