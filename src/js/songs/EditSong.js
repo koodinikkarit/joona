@@ -54,10 +54,7 @@ export class EditSong extends React.Component {
 
 
 		if (this.props.loading) {
-			return <div>
-				<SongTextEditor />
-				<textarea />
-			</div>
+			return <div />
 		} else {
 			return (
 				<div className={RectBox + " " + BoxInnerMedium + " " + AppendBottomBig}>
