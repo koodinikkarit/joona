@@ -6,8 +6,11 @@ install:
 
 script:
   - npm run build-production
+
+after_success:
   - docker login -u $DOCKER_ID_USER -p $DOCKER_USER_PASSWORD
   - docker build -t $DOCKER_ID_USER/joona .
   - docker push $DOCKER_ID_USER/joona
+
 notifications:
-  webhooks: http://salainen_kontti_updater.ths.tunk.org/
+  webhooks: $UPDATE_URL
