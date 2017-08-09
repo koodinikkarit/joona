@@ -16,6 +16,7 @@ export default (app) => {
     });
 
 	if (process.env.JOONA_PETRI_IP && process.env.JOONA_PETRI_PORT) {
+		console.log("oikea petri", process.env.JOONA_PETRI_IP, process.env.JOONA_PETRI_PORT)
 		app.use("/api", (req, res) => {
 			request.post(`http://${process.env.JOONA_PETRI_IP}:${process.env.JOONA_PETRI_PORT}/`, { form: req.body }, (err, data) => {
 				if (!data) {
