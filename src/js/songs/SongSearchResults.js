@@ -21,7 +21,6 @@ import {
 
 export class SongSearchResults extends React.Component {
 	render() {
-		console.log("searchWord", this.props.searchWord);
 		return (
 			<ul className={List}
 				style={{
@@ -56,7 +55,6 @@ export default compose(
 			songDatabaseId,
 			songDatabaseFilterId
 		}) => {
-			console.log("SEACH_VARIATIONS", searchWord);
 			return {
 				variables: {
 					params: {

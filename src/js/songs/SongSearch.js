@@ -48,7 +48,6 @@ export class SongSearch extends React.Component {
 							value={this.state.searchWord}
 							delay={400}
 							onChange={value => {
-								console.log("searhcword cghanged", value);
 								this.setState({
 									searchWord: value
 								});
