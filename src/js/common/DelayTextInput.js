@@ -3,10 +3,13 @@ import React from "react";
 import FormControl from "react-bootstrap/lib/FormControl";
 
 export default class DelayTextInput extends React.Component {
-	state = {
-		onChangeTimer: null,
-		value: ""
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			onChangeTimer: null,
+			value: this.props.value || ""
+		}
+	}
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.value != null) {

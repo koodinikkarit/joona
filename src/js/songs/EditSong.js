@@ -80,7 +80,7 @@ export class EditSong extends React.Component {
 								});
 							}} />
 					</div>
-					<Link to="/songs">
+					<Link to={this.props.getCancelLinkPath ? this.props.getCancelLinkPath() : ""}>
 						<Button className={AppendRight}>
 							Peruuta
 						</Button>
@@ -88,7 +88,9 @@ export class EditSong extends React.Component {
 					<Button bsStyle="danger" className={AppendRight}
 						onClick={e => {
 							this.props.removeVariation(this.props.variation.id).then(data => {
-								this.props.history.push("/songs");
+								if (this.props.onRemove) {
+									this.props.onRemove();
+								}
 							});
 						}}>
 						Poista
@@ -100,7 +102,9 @@ export class EditSong extends React.Component {
 								name: this.state.name,
 								text: this.state.text
 							}).then(data => {
-								this.props.history.push("/songs");
+								if (this.props.onSuccess) {
+									this.props.onSuccess();
+								}
 							});
 						}}>
 						Tallenna

@@ -29,7 +29,22 @@ export class SongSearch extends React.Component {
 	state = {
 		searchWord: ""
 	};
+
+	constructor(props) {
+		super(props);
+		if (this.props.searchWord) {
+			this.state.searchWord = this.props.searchWord;
+		}
+	}
 	
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.searchWord) {
+			this.setState({
+				searchWord: nextProps.searchWord
+			});
+		}
+	}
+
 	render() {
 		return (
 			<div>
@@ -51,6 +66,9 @@ export class SongSearch extends React.Component {
 								this.setState({
 									searchWord: value
 								});
+								if (this.props.onSearchWordChanged) {
+									this.props.onSearchWordChanged(value);
+								}
 							}} />
 					</div>
 					<SongSearchResults

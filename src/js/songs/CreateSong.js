@@ -62,7 +62,7 @@ export class CreateSong extends React.Component {
 							});
 						}} />
 				</div>
-				<Link to="/songs">
+				<Link to={this.props.getCancelLinkPath ? this.props.getCancelLinkPath() : ""}>
 					<Button className={AppendRight}>
 						Peruuta
 					</Button>
@@ -73,7 +73,9 @@ export class CreateSong extends React.Component {
 							name: this.state.name,
 							text: this.state.text
 						}).then(data => {
-							this.props.history.push("/songs");
+							if (this.props.onSuccess) {
+								this.props.onSuccess();
+							}
 						});
 					}}>
 					Luo laulu
