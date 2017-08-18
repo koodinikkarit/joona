@@ -63,7 +63,7 @@ export default compose(
 						songDatabaseFilterId
 					}
 				},
-				fetchPolicy: "network-only"
+				fetchPolicy: "cache-and-network"
 			}
 		},
 		props: ({
