@@ -61,6 +61,12 @@ export class EditEwDatabase extends React.Component {
 							}} />
 					</div>
 				</div>
+				<div className={AppendBottomMedium}>
+					<label>
+						Avain:
+					</label>
+					{!this.props.loading && this.props.ewDatabase.key}
+				</div>
 				<div className={AppendBottomBig}>
 					<label>
 						Laulutietokanta

@@ -3,6 +3,7 @@ mutation editEwDatabase($params: EditEwDatabaseInput) {
 	editEwDatabase(params: $params) {
 		id
 		name
+		key
 		songDatabase {
 			id
 		}

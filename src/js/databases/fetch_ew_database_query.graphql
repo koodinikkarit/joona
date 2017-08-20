@@ -3,6 +3,7 @@ query ewDatabase($ewDatabaseId: ID!) {
 	ewDatabase(ewDatabaseId: $ewDatabaseId) {
 		id 
 		name
+		key
 		songDatabase {
 			id
 		}
