@@ -22,6 +22,7 @@ import {
 export class SongSearchResults extends React.Component {
 	render() {
 		return (
+			<div>
 			<ul className={List}
 				style={{
 					overflow: "auto",
@@ -44,6 +45,8 @@ export class SongSearchResults extends React.Component {
 					</li>
 				))}
 			</ul>
+				Kaikki laulut {this.props.maxVariations}
+			</div>
 		)
 	}
 }
@@ -73,7 +76,8 @@ export default compose(
 			}
 		}) => ({
 			loading,
-			variations: !loading ? variationsConnection.variations : []
+			variations: !loading ? variationsConnection.variations : [],
+			maxVariations: !loading ? variationsConnection.maxVariations : ""
 		})
 	})
 )(SongSearchResults);
