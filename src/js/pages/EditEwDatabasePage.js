@@ -24,7 +24,7 @@ export class EditEwDatabasePage extends React.Component {
 					<EwDatabaseSearch />
 				</Col>
 			</Row>	
-		)
+		);
 	}
 }
 

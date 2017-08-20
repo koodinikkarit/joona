@@ -8,7 +8,7 @@ export default class DelayTextInput extends React.Component {
 		this.state = {
 			onChangeTimer: null,
 			value: this.props.value || ""
-		}
+		};
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -38,6 +38,6 @@ export default class DelayTextInput extends React.Component {
 					}, this.props.delay);
 
 				}} />
-		)
+		);
 	}
 }

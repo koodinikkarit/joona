@@ -5,8 +5,8 @@ import {
 } from "react-apollo";
 
 import {
-  Link
-} from 'react-router-dom'
+	Link
+} from "react-router-dom";
 
 import {
 	textInput
@@ -81,7 +81,7 @@ export class CreateSong extends React.Component {
 					Luo laulu
 				</Button>
 			</div>
-		)
+		);
 	}
 }
 

@@ -5,8 +5,8 @@ import {
 } from "react-apollo";
 
 import {
-  Link
-} from 'react-router-dom'
+	Link
+} from "react-router-dom";
 
 import {
 	RectBox,
@@ -61,7 +61,7 @@ export class EditSongDatabasePage extends React.Component {
 						<SongDatabaseSearch />
 					</Col>
 				</Row>
-			)
+			);
 		} else {
 			return (
 				<Row>
@@ -75,7 +75,7 @@ export class EditSongDatabasePage extends React.Component {
 						<SongDatabaseSearch />
 					</Col>
 				</Row>
-			)
+			);
 		}
 	}
 }
@@ -103,7 +103,7 @@ export default compose(
 										mutationResult.data.songDatabaseVariation.variation
 									]
 								}
-							}
+							};
 						}
 					},
 					searchVariations: (prev, { mutationResult }) => {
@@ -114,7 +114,7 @@ export default compose(
 								...prev.variationsConnection,
 								variations: prev.variationsConnection.variations.filter(p => p.id !== mutationResult.data.songDatabaseVariation.variation.id)
 							}
-						}
+						};
 					}
 				}
 			})

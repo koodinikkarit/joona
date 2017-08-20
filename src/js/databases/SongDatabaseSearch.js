@@ -5,8 +5,8 @@ import {
 } from "react-apollo";
 
 import {
-  Link
-} from 'react-router-dom'
+	Link
+} from "react-router-dom";
 
 import Button from "react-bootstrap/lib/Button";
 
@@ -38,7 +38,7 @@ export class SongDatabaseSearch extends React.Component {
 						<Link to="/createsongdatabase">
 							<Button>
 								Luo uusi laulutietokanta
-						</Button>
+							</Button>
 						</Link>
 					</div>}
 					<div className={RectBox + " " + BoxInnerMedium}>
@@ -58,7 +58,7 @@ export class SongDatabaseSearch extends React.Component {
 				</div>
 			);
 		} else {
-			return <div />
+			return <div />;
 		}
 	}
 }

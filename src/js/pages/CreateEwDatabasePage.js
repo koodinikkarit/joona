@@ -22,7 +22,7 @@ export class CreateEwDatabasePage extends React.Component {
 					<EwDatabaseSearch />
 				</Col>
 			</Row>	
-		)
+		);
 	}
 }
 

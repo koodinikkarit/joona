@@ -5,8 +5,8 @@ import {
 } from "react-apollo";
 
 import {
-  Link
-} from 'react-router-dom'
+	Link
+} from "react-router-dom";
 
 import Button from "react-bootstrap/lib/Button";
 
@@ -60,12 +60,12 @@ export class CreateSongDatabase extends React.Component {
 							name: this.state.name
 						}).then(data => {
 							this.props.history.push("/songdatabases");
-						})
+						});
 					}}>
 					Luo laulutietokanta
 				</Button>
 			</div>
-		)
+		);
 	}
 }
 

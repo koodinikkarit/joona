@@ -5,8 +5,8 @@ import {
 } from "react-apollo";
 
 import {
-  Link
-} from 'react-router-dom'
+	Link
+} from "react-router-dom";
 
 import Button from "react-bootstrap/lib/Button";
 
@@ -54,7 +54,7 @@ export class EditSong extends React.Component {
 
 
 		if (this.props.loading) {
-			return <div />
+			return <div />;
 		} else {
 			return (
 				<div className={RectBox + " " + BoxInnerMedium + " " + AppendBottomBig}>
@@ -110,7 +110,7 @@ export class EditSong extends React.Component {
 						Tallenna
 					</Button>
 				</div>
-			)
+			);
 		}
 	}
 }
@@ -122,7 +122,7 @@ export default compose(
 				variables: {
 					variationId: ownProps.variationId
 				}
-			}
+			};
 		},
 		props: ({
 			data: {

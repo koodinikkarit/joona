@@ -40,7 +40,7 @@ export class CreateSongPage extends React.Component {
 						history={this.props.history}
 						addSongButtonEnabled={true}
 						getSongItemLink={(id) => {
-							return "/editsong/" + (query.q ? "?q=" + query.q : "")
+							return "/editsong/" + (query.q ? "?q=" + query.q : "");
 						}}
 						onSearchWordChanged={this.changeSearchWord.bind(this)} />
 				</Col>

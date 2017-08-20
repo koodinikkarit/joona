@@ -33,7 +33,7 @@ export class SongDatabasesSelect extends React.Component {
 			return (
 				<select>
 				</select>
-			)
+			);
 		}
 
 	}

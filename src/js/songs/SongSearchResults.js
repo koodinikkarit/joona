@@ -4,9 +4,9 @@ import {
 	compose
 } from "react-apollo";
 
-import {
-  Link
-} from 'react-router-dom'
+// import {
+// 	Link
+// } from "react-router-dom";
 
 import SEARCH_VARIATIONS from "./search_variations.graphql";
 import {
@@ -23,31 +23,35 @@ export class SongSearchResults extends React.Component {
 	render() {
 		return (
 			<div>
-			<ul className={List}
-				style={{
-					overflow: "auto",
-					maxHeight: "600px"
-				}}>
-				{!this.props.loading && this.props.variations.map(p => (
-					<li className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}
-						onClick={() => {
-							if (this.props.songItemClick) {
-								this.props.songItemClick(p.id)
-							}
-						}}>
-						{this.props.getSongItemLink ?
-							<Link to={this.props.getSongItemLink(p.id)}>
-								{p.name}
-							</Link> :
-							<a style={{ cursor: "pointer" }}>
-								{p.name}
-							</a>}
-					</li>
-				))}
-			</ul>
-				Kaikki laulut {this.props.maxVariations}
+				<ul className={List}
+					style={{
+						overflow: "auto",
+						maxHeight: "600px"
+					}}>
+					{!this.props.loading && this.props.variations.map(p => (
+						<li className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}
+							onClick={() => {
+								if (this.props.songItemClick) {
+									this.props.songItemClick(p.id);
+								}
+							}}>
+							{this.props.getSongItemLink ?
+								<Link to={this.props.getSongItemLink(p.id)}>
+									{p.name}
+								</Link> :
+								<a style={{ cursor: "pointer" }}>
+									{p.name}
+								</a>}
+						</li>
+					))}
+				</ul>
+				{!this.props.loading && (
+					<label>
+						Näytetään {this.props.variations.length} tulosta {this.props.maxVariations} tuloksesta
+					</label>
+				)}
 			</div>
-		)
+		);
 	}
 }
 
@@ -67,7 +71,7 @@ export default compose(
 					}
 				},
 				fetchPolicy: "cache-and-network"
-			}
+			};
 		},
 		props: ({
 			data: {

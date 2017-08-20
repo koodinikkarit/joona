@@ -29,12 +29,12 @@ export class SongSearchPage extends React.Component {
 						history={this.props.history}
 						addSongButtonEnabled={true}
 						getSongItemLink={(id) => {
-							return "/editsong/" + id + (query.q ? "?q=" + query.q : "")
+							return "/editsong/" + id + (query.q ? "?q=" + query.q : "");
 						}}
 						onSearchWordChanged={this.changeSearchWord.bind(this)} />
 				</Col>
 			</Row>
-		)
+		);
 	}
 }
 

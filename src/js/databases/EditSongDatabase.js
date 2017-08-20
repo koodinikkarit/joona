@@ -5,8 +5,8 @@ import {
 } from "react-apollo";
 
 import {
-  Link
-} from 'react-router-dom'
+	Link
+} from "react-router-dom";
 
 import Button from "react-bootstrap/lib/Button";
 
@@ -38,7 +38,7 @@ export class EditSongDatabase extends React.Component {
 		super(props);
 		this.state = {
 			name: ""
-		}
+		};
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -84,7 +84,7 @@ export class EditSongDatabase extends React.Component {
 										</div>
 										<Button bsStyle="danger"
 											onClick={e => {
-												this.props.removeVariationFromSongDatabase(this.props.songDatabase.id, p.id)
+												this.props.removeVariationFromSongDatabase(this.props.songDatabase.id, p.id);
 											}}>
 											Poista laulu
 										</Button>
@@ -122,11 +122,11 @@ export class EditSongDatabase extends React.Component {
 							});
 						}}>
 						Tallenna
-				</Button>
+					</Button>
 				</div>
-			)
+			);
 		} else {
-			return <div />
+			return <div />;
 		}
 	}
 }
@@ -168,7 +168,7 @@ export default compose(
 				variables: {
 					songDatabaseId
 				}
-			}
+			};
 		},
 		props: ({
 			data: {
@@ -195,7 +195,7 @@ export default compose(
 								...prev.songDatabase,
 								variations: prev.songDatabase.variations.filter(p => p.id !== variationId)
 							}
-						}
+						};
 					},
 					searchVariations: (prev, { mutationResult }) => {
 						console.log("prev", prev, mutationResult);

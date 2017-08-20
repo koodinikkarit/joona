@@ -1,7 +1,7 @@
 import React from "react";
 import {
 	Route
-} from 'react-router-dom'
+} from "react-router-dom";
 
 import Grid from "react-bootstrap/lib/Grid";
 import Row from "react-bootstrap/lib/Row";
@@ -46,4 +46,4 @@ export default (
 			<Route path="/editewDatabase/:ewDatabaseId" component={EditEwDatabasePage} />
 		</Grid>
 	</div>
-)
+);

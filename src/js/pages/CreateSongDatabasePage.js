@@ -9,7 +9,7 @@ import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
 
 import CreateSongDatabase from "../databases/CreateSongDatabase";
-import SongDatabaseSearch from "../databases/SongDatabaseSearch"
+import SongDatabaseSearch from "../databases/SongDatabaseSearch";
 
 export class CreateSongDatabasePage extends React.Component {
 	render() {
@@ -22,7 +22,7 @@ export class CreateSongDatabasePage extends React.Component {
 					<SongDatabaseSearch history={this.props.history} />
 				</Col>
 			</Row>			
-		)
+		);
 	}
 }
 

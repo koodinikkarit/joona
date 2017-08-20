@@ -1,21 +1,21 @@
 import React from "react";
-import { Editor, EditorState, RichUtils } from 'draft-js';
+import { Editor, EditorState, RichUtils } from "draft-js";
 
 const styles = {
 	root: {
-		fontFamily: '\'Helvetica\', sans-serif',
+		fontFamily: "'Helvetica', sans-serif",
 		padding: 20,
 		width: 600,
 	},
 	editor: {
-		border: '1px solid #ccc',
-		cursor: 'text',
+		border: "1px solid #ccc",
+		cursor: "text",
 		minHeight: 80,
 		padding: 10,
 	},
 	button: {
 		marginTop: 10,
-		textAlign: 'center',
+		textAlign: "center",
 	},
 };
 
@@ -24,22 +24,22 @@ export default class SongTextEditor extends React.Component {
 		super(props);
 		this.state = { editorState: EditorState.createEmpty() };
 		this.onChange = (editorState) => {
-			this.setState({ editorState })
+			this.setState({ editorState });
 			console.log("editorState", editorState);
-		}
+		};
 		this.logState = () => console.log(this.state.editorState.toJS());
 		this.setDomEditorRef = ref => this.domEditor = ref;
 	}
 
 	componentDidMount() {
-		this.domEditor.focus()
+		this.domEditor.focus();
 	}
 
 	bold() {
 		console.log("bold", this.state.editorState._immutable);
 		this.onChange(RichUtils.toggleInlineStyle(
 			this.state.editorState,
-			`BOLD`
+			"BOLD"
 		));
 	}
 
