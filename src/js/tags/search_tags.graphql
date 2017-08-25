@@ -1,0 +1,6 @@
+
+query searchTags() {
+	tagsConnection: searchTags() {
+		
+	}
+}

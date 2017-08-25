@@ -2,24 +2,26 @@ import React from "react";
 import {
 	compose
 } from "react-apollo";
+//import QueryString from "query-string";
 
 import Grid from "react-bootstrap/lib/Grid";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
 
-import CreateEwDatabase from "../databases/CreateEwDatabase";
-import EwDatabaseSearch from "../databases/EwDatabaseSearch";
+import TagSearch from "../tags/TagSearch";
+import CreateTag from "../tags/CreateTag";
 
-export class CreateEwDatabasePage extends React.Component {
+export class CreateTagPage extends React.Component {
 	render() {
-		return (
+		return(
 			<Grid>
 				<Row>
 					<Col md={6}>
-						<CreateEwDatabase history={this.props.history} />
+						<CreateTag />
 					</Col>
 					<Col md={6}>
-						<EwDatabaseSearch />
+						<TagSearch 
+							getItemLink={id => "/edittag/" + id} />
 					</Col>
 				</Row>
 			</Grid>
@@ -29,4 +31,4 @@ export class CreateEwDatabasePage extends React.Component {
 
 export default compose(
 
-)(CreateEwDatabasePage);
+)(CreateTagPage);

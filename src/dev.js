@@ -3,6 +3,7 @@ import path from "path";
 import webpack from "webpack";
 import WebpackMiddleware from "webpack-dev-middleware";
 import bodyParser from "body-parser";
+import session from "express-session";
 
 const moduleConfig = require(path.resolve(__dirname, "module-config"));
 
@@ -23,6 +24,19 @@ output.path = "/public/";
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(
+	session(
+		{ 
+			secret: "keyboard cat",
+			resave: false,
+			saveUninitialized: false,
+			cookie: { 
+				maxAge: 60000,
+				secure: false
+			}
+		}
+	)
+);
 app.use("/static", express.static("public"));
 
 app.use(WebpackMiddleware(webpack({

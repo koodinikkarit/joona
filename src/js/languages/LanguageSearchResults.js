@@ -17,32 +17,35 @@ import {
 	AppendBottomSmall
 } from "../styles/Layout.css";
 
-export class TagSearchResults extends React.Component {
+export class LanguageSearchResults extends React.Component {
 	render() {
 		return (
 			<div>
 				<ul className={List}>
 					<li className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
-						<Link to={this.props.getItemLink(1)}>
-							Joona
+						<Link	
+							to={this.props.getItemLink(1)}>
+							Suomi
 						</Link>
 					</li>
 					<li className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
-						<Link to={this.props.getItemLink(2)}>
-							Jsound
+						<Link
+							to={this.props.getItemLink(2)}>
+							Englanti
 						</Link>
 					</li>
 					<li className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
-						<Link to={this.props.getItemLink(3)}>
-							HL
+						<Link
+							to={this.props.getItemLink(3)}>
+							Ruotsi
 						</Link>
 					</li>
 				</ul>
 			</div>
-		);
+		)
 	}
 }
 
 export default compose(
 
-)(TagSearchResults);
+)(LanguageSearchResults);

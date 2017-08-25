@@ -1,6 +1,5 @@
 import React from "react";
 import {
-	graphql,
 	compose
 } from "react-apollo";
 import QueryString from "query-string";

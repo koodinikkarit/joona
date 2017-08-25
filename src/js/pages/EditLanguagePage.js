@@ -7,19 +7,20 @@ import Grid from "react-bootstrap/lib/Grid";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
 
-import CreateEwDatabase from "../databases/CreateEwDatabase";
-import EwDatabaseSearch from "../databases/EwDatabaseSearch";
+import EditLanguage from "../languages/EditLanguage";
+import LanguageSearch from "../languages/LanguageSearch";
 
-export class CreateEwDatabasePage extends React.Component {
+export class EditLanguagePage extends React.Component {
 	render() {
 		return (
 			<Grid>
 				<Row>
 					<Col md={6}>
-						<CreateEwDatabase history={this.props.history} />
+						<EditLanguage />
 					</Col>
 					<Col md={6}>
-						<EwDatabaseSearch />
+						<LanguageSearch
+							getItemLink={id => "/editlanguage/" + id} />
 					</Col>
 				</Row>
 			</Grid>
@@ -29,4 +30,4 @@ export class CreateEwDatabasePage extends React.Component {
 
 export default compose(
 
-)(CreateEwDatabasePage);
+)(EditLanguagePage);

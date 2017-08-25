@@ -50,18 +50,22 @@ export default class Main extends React.Component {
 								</Link>
 							</NavItem>
 							<NavItem eventKey={3}>
-								<Link to="/">
+								<Link to="/tags">
 									Tunnisteet
 								</Link>
 							</NavItem>
 							<NavItem eventKey={4}>
-								<Link to="/">
+								<Link to="/languages">
 									Kielet
 								</Link>
 							</NavItem>
 						</Nav>
 						<Nav pullRight>
-							<NavItem eventKey={1} href="/login">Kirjaudu</NavItem>
+							<NavItem eventKey={1}>
+								<Link to="/login">
+									Kirjaudu
+								</Link>
+							</NavItem>
 						</Nav>
 					</Navbar>
 					{routes}

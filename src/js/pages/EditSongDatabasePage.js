@@ -9,17 +9,12 @@ import {
 } from "react-router-dom";
 
 import {
-	RectBox,
-	BoxInnerMedium,
 	AppendBottomMedium,
-	AppendBottomBig,
-	AppendBottomSmall,
-	AppendRight
+	AppendBottomBig
 } from "../styles/Layout.css";
 
 import Button from "react-bootstrap/lib/Button";
 
-import Grid from "react-bootstrap/lib/Grid";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
 

@@ -7,26 +7,27 @@ import Grid from "react-bootstrap/lib/Grid";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
 
-import CreateEwDatabase from "../databases/CreateEwDatabase";
-import EwDatabaseSearch from "../databases/EwDatabaseSearch";
+import EditTag from "../tags/EditTag";
+import TagSearch from "../tags/TagSearch";
 
-export class CreateEwDatabasePage extends React.Component {
+export class EditTagPage extends React.Component {
 	render() {
 		return (
 			<Grid>
 				<Row>
 					<Col md={6}>
-						<CreateEwDatabase history={this.props.history} />
+						<EditTag />
 					</Col>
 					<Col md={6}>
-						<EwDatabaseSearch />
+						<TagSearch
+							getItemLink={id => "/edittag/" + id} />
 					</Col>
 				</Row>
 			</Grid>
-		);
+		)
 	}
 }
 
 export default compose(
 
-)(CreateEwDatabasePage);
+)(EditTagPage);

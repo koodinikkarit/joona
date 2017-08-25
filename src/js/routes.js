@@ -20,6 +20,16 @@ import EwDatabasesSearchPage from "./pages/EwDatabasesSearchPage";
 import CreateEwDatabasePage from "./pages/CreateEwDatabasePage";
 import EditEwDatabasePage from "./pages/EditEwDatabasePage";
 
+import TagSearchPage from "./pages/TagSearchPage";
+import CreateTagPage from "./pages/CreateTagPage";
+import EditTagPage from "./pages/EditTagPage";
+
+import LanguageSearchPage from "./pages/LanguageSearchPage";
+import CreateLanguagePage from "./pages/CreateLanguagePage";
+import EditLanguagePage from "./pages/EditLanguagePage";
+
+import LoginPage from "./pages/LoginPage";
+
 export default (
 	<div>
 		<Grid>
@@ -44,6 +54,13 @@ export default (
 			<Route path="/ewdatabases" component={EwDatabasesSearchPage} />
 			<Route path="/createewdatabase" component={CreateEwDatabasePage} />
 			<Route path="/editewDatabase/:ewDatabaseId" component={EditEwDatabasePage} />
+			<Route path="/tags" component={TagSearchPage} />
+			<Route path="/createtag" component={CreateTagPage} />
+			<Route path="/edittag" component={EditTagPage} />
+			<Route path="/languages" component={LanguageSearchPage} />
+			<Route path="/createlanguage" component={CreateLanguagePage} />
+			<Route path="/editlanguage" component={EditLanguagePage} />
+			<Route path="/login" component={LoginPage} />
 		</Grid>
 	</div>
 );

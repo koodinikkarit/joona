@@ -4,9 +4,9 @@ import {
 	compose
 } from "react-apollo";
 
-// import {
-// 	Link
-// } from "react-router-dom";
+import {
+	Link
+} from "react-router-dom";
 
 import SEARCH_VARIATIONS from "./search_variations.graphql";
 import {
