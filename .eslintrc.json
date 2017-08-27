@@ -22,8 +22,7 @@
 		"react",
 		"jest",
 		"flowtype",
-		"import",
-		"reselect"
+		"import"
     ],
     "rules": {
         "indent": [
