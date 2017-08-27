@@ -73,14 +73,14 @@ export class CreateEwDatabase extends React.Component {
 						this.props.createEwDatabase({
 							name: this.state.name,
 							songDatabaseId: this.state.selectedSongDatabaseId
-						}).then(data => {
+						}).then(() => {
 							this.props.history.push("/ewdatabases");
 						});
 					}}>
 					Luo
 				</Button>
 			</div>
-		)
+		);
 	}
 }
 

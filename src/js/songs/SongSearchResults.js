@@ -29,7 +29,7 @@ export class SongSearchResults extends React.Component {
 						maxHeight: "600px"
 					}}>
 					{!this.props.loading && this.props.variations.map(p => (
-						<li className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}
+						<li key={p.id} className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}
 							onClick={() => {
 								if (this.props.songItemClick) {
 									this.props.songItemClick(p.id);

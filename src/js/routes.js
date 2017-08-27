@@ -30,37 +30,41 @@ import EditLanguagePage from "./pages/EditLanguagePage";
 
 import LoginPage from "./pages/LoginPage";
 
-export default (
-	<div>
-		<Grid>
-			<Route path="/songs" component={SongSearchPage} />
-			<Route path="/createsong" component={CreateSongPage} />
-			<Route path="/editsong/:id" component={EditSongPage} />
+export default class Routes extends React.Component {
+	render() {
+		return (
+			<div>
+				<Grid>
+					<Route path="/songs" component={SongSearchPage} />
+					<Route path="/createsong" component={CreateSongPage} />
+					<Route path="/editsong/:id" component={EditSongPage} />
 
-			<Route path="/songdatabases" 
-				component={({
-					history
-				}) => (
-					<Row>
-						<Col md={12}>
-							<SongDatabasesSearch 
-								createNewSongDatabaseEnabled={true}/>
-						</Col>
-					</Row>
-				)}/>
-			
-			<Route path="/createsongdatabase" component={CreateSongDatabasePage} />
-			<Route path="/editsongdatabase/:songDatabaseId" component={EditSongDatabasePage} />
-			<Route path="/ewdatabases" component={EwDatabasesSearchPage} />
-			<Route path="/createewdatabase" component={CreateEwDatabasePage} />
-			<Route path="/editewDatabase/:ewDatabaseId" component={EditEwDatabasePage} />
-			<Route path="/tags" component={TagSearchPage} />
-			<Route path="/createtag" component={CreateTagPage} />
-			<Route path="/edittag" component={EditTagPage} />
-			<Route path="/languages" component={LanguageSearchPage} />
-			<Route path="/createlanguage" component={CreateLanguagePage} />
-			<Route path="/editlanguage" component={EditLanguagePage} />
-			<Route path="/login" component={LoginPage} />
-		</Grid>
-	</div>
-);
+					<Route path="/songdatabases"
+						component={({
+							history
+						}) => (
+							<Row>
+								<Col md={12}>
+									<SongDatabasesSearch
+										createNewSongDatabaseEnabled={true} />
+								</Col>
+							</Row>
+						)} />
+
+					<Route path="/createsongdatabase" component={CreateSongDatabasePage} />
+					<Route path="/editsongdatabase/:songDatabaseId" component={EditSongDatabasePage} />
+					<Route path="/ewdatabases" component={EwDatabasesSearchPage} />
+					<Route path="/createewdatabase" component={CreateEwDatabasePage} />
+					<Route path="/editewDatabase/:ewDatabaseId" component={EditEwDatabasePage} />
+					<Route path="/tags" component={TagSearchPage} />
+					<Route path="/createtag" component={CreateTagPage} />
+					<Route path="/edittag" component={EditTagPage} />
+					<Route path="/languages" component={LanguageSearchPage} />
+					<Route path="/createlanguage" component={CreateLanguagePage} />
+					<Route path="/editlanguage" component={EditLanguagePage} />
+					<Route path="/login" component={LoginPage} />
+				</Grid>
+			</div>
+		)
+	}
+}

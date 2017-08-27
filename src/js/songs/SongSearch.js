@@ -79,7 +79,7 @@ export class SongSearch extends React.Component {
 						songDatabaseFilterId={this.props.songDatabaseFilterId} />
 				</div>
 			</div>
-		)
+		);
 	}
 }
 
