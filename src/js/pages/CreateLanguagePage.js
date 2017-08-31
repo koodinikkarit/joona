@@ -16,7 +16,13 @@ export class CreateLanguagePage extends React.Component {
 			<Grid>
 				<Row>
 					<Col md={6}>
-						<CreateLanguage />
+						<CreateLanguage
+							onSuccess={() => {
+								this.props.history.push("/languages");
+							}}
+							getCancelLinkPath={() => {
+								return "/languages/";
+							}} />
 					</Col>
 					<Col md={6}>
 						<LanguageSearch

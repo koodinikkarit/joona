@@ -1,0 +1,7 @@
+
+mutation createTag($params: CreateTagInput) {
+	tag: createTag(params: $params) {
+		id
+		name
+	}
+}

@@ -17,7 +17,13 @@ export class CreateTagPage extends React.Component {
 			<Grid>
 				<Row>
 					<Col md={6}>
-						<CreateTag />
+						<CreateTag
+							onSuccess={() => {
+								this.props.history.push("/tags");
+							}}
+							getCancelLinkPath={() => {
+								return "/tags/";
+							}}/>
 					</Col>
 					<Col md={6}>
 						<TagSearch 

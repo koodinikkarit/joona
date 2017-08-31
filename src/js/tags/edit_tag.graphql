@@ -1,0 +1,7 @@
+
+mutation editTag($params: EditTagInput) {
+	tag: editTag(params: $params) {
+		id
+		name
+	}
+}

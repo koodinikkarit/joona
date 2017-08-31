@@ -1,6 +1,7 @@
 import React from "react";
 import {
-	compose
+	compose,
+	graphql
 } from "react-apollo";
 
 import {
@@ -20,6 +21,8 @@ import {
 	AppendBottomMedium,
 	AppendRight
 } from "../styles/Layout.css";
+
+import CREATE_LANGUAGE from "./create_language.graphql";
 
 export class CreateLanguage extends React.Component {
 	state = {
@@ -43,12 +46,23 @@ export class CreateLanguage extends React.Component {
 							}} />
 					</div>
 				</div>
-				<Link to="/languages">
+				<Link to={
+					this.props.getCancelLinkPath ? 
+						this.props.getCancelLinkPath() : ""}>
 					<Button className={AppendRight}>
 						Peruuta
 					</Button>
 				</Link>
-				<Button bsStyle="success">
+				<Button bsStyle="success"
+					onClick={() => {
+						this.props.createLanguage({
+							name: this.state.name
+						}).then(() => {
+							if (this.props.onSuccess) {
+								this.props.onSuccess();
+							}
+						});
+					}}>
 					Tallenna
 				</Button>
 			</div>
@@ -57,5 +71,13 @@ export class CreateLanguage extends React.Component {
 }
 
 export default compose(
-
+	graphql(CREATE_LANGUAGE, {
+		props: ({ mutate }) => ({
+			createLanguage: (params) => mutate({
+				variables: {
+					params
+				}
+			})
+		})
+	})
 )(CreateLanguage);

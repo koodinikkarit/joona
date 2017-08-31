@@ -58,10 +58,10 @@ export default class Routes extends React.Component {
 					<Route path="/editewDatabase/:ewDatabaseId" component={EditEwDatabasePage} />
 					<Route path="/tags" component={TagSearchPage} />
 					<Route path="/createtag" component={CreateTagPage} />
-					<Route path="/edittag" component={EditTagPage} />
+					<Route path="/edittag/:id" component={EditTagPage} />
 					<Route path="/languages" component={LanguageSearchPage} />
 					<Route path="/createlanguage" component={CreateLanguagePage} />
-					<Route path="/editlanguage" component={EditLanguagePage} />
+					<Route path="/editlanguage/:languageId" component={EditLanguagePage} />
 					<Route path="/login" component={LoginPage} />
 				</Grid>
 			</div>

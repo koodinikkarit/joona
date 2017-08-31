@@ -1,0 +1,6 @@
+mutation editLanguage($params: EditlanguageInput) {
+	language: editLanguage(params: $params) {
+		id
+		name
+	}
+}

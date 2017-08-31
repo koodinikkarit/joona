@@ -1,6 +1,10 @@
 
-query searchTags() {
-	tagsConnection: searchTags() {
-		
+query searchTags($params: SearchTagsInput) {
+	tagsConnection: searchTags(params: $params) {
+		tags {
+			id
+			name
+		}
+		maxTags
 	}
 }

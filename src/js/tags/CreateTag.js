@@ -1,6 +1,7 @@
 import React from "react";
 import {
-	compose
+	compose,
+	graphql
 } from "react-apollo";
 
 import {
@@ -21,10 +22,12 @@ import {
 	AppendRight
 } from "../styles/Layout.css";
 
+import CREATE_TAG from "./create_tag.graphql";
+
 export class CreateTag extends React.Component {
 	state = {
 		name: ""
-	}
+	};
 
 	render() {
 		return (
@@ -43,12 +46,23 @@ export class CreateTag extends React.Component {
 							}} />
 					</div>
 				</div>
-				<Link to="/tags">
+				<Link to={
+					this.props.getCancelLinkPath ? 
+						this.props.getCancelLinkPath() : ""}>
 					<Button className={AppendRight}>
 						Peruuta
 					</Button>
 				</Link>
-				<Button bsStyle="success">
+				<Button bsStyle="success"
+					onClick={() => {
+						this.props.createTag({
+							name: this.state.name
+						}).then(() => {
+							if (this.props.onSuccess) {
+								this.props.onSuccess();
+							}
+						});
+					}}>
 					Luo laulu
 				</Button>
 			</div>
@@ -57,5 +71,13 @@ export class CreateTag extends React.Component {
 }
 
 export default compose(
-
+	graphql(CREATE_TAG, {
+		props: ({ mutate }) => ({
+			createTag: (params) => mutate({
+				variables: {
+					params
+				}
+			})
+		})
+	})
 )(CreateTag);

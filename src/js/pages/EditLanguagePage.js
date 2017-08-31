@@ -16,7 +16,17 @@ export class EditLanguagePage extends React.Component {
 			<Grid>
 				<Row>
 					<Col md={6}>
-						<EditLanguage />
+						<EditLanguage
+							languageId={this.props.match.params.languageId}
+							onSuccess={() => {
+								this.props.history.push("/languages");
+							}}
+							onRemove={() => {
+								this.props.history.push("/languages");
+							}}
+							getCancelLinkPath={() => {
+								return "/languages";
+							}} />
 					</Col>
 					<Col md={6}>
 						<LanguageSearch

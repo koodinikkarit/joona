@@ -87,7 +87,7 @@ export class EditSong extends React.Component {
 					</Link>
 					<Button bsStyle="danger" className={AppendRight}
 						onClick={e => {
-							this.props.removeVariation(this.props.variation.id).then(data => {
+							this.props.removeVariation(this.props.variation.id).then(() => {
 								if (this.props.onRemove) {
 									this.props.onRemove();
 								}
@@ -96,12 +96,12 @@ export class EditSong extends React.Component {
 						Poista
 					</Button>
 					<Button bsStyle="success"
-						onClick={e => {
+						onClick={() => {
 							this.props.editVariation({
 								id: this.props.variation.id,
 								name: this.state.name,
 								text: this.state.text
-							}).then(data => {
+							}).then(() => {
 								if (this.props.onSuccess) {
 									this.props.onSuccess();
 								}

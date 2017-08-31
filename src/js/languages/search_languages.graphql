@@ -1,0 +1,9 @@
+query searchLanguages($params: SearchLanguagesInput) {
+	languagesConnection: searchLanguages(params: $params) {
+		languages {
+			id
+			name
+		}
+		maxLanguages
+	}
+}

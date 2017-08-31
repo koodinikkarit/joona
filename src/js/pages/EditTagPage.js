@@ -16,7 +16,17 @@ export class EditTagPage extends React.Component {
 			<Grid>
 				<Row>
 					<Col md={6}>
-						<EditTag />
+						<EditTag
+							tagId={this.props.match.params.id}
+							onSuccess={() => {
+								this.props.history.push("/tags");
+							}}
+							onRemove={() => {
+								this.props.history.push("/tags");
+							}}
+							getCancelLinkPath={() => {
+								return "/tags";
+							}} />
 					</Col>
 					<Col md={6}>
 						<TagSearch

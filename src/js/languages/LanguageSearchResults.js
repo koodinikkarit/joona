@@ -1,6 +1,7 @@
 import React from "react";
 import {
-	compose
+	compose,
+	graphql
 } from "react-apollo";
 
 import {
@@ -17,35 +18,50 @@ import {
 	AppendBottomSmall
 } from "../styles/Layout.css";
 
+import SEARCH_LANGUAGES from "./search_languages.graphql";
+
 export class LanguageSearchResults extends React.Component {
 	render() {
 		return (
 			<div>
 				<ul className={List}>
-					<li className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
-						<Link	
-							to={this.props.getItemLink(1)}>
-							Suomi
-						</Link>
-					</li>
-					<li className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
-						<Link
-							to={this.props.getItemLink(2)}>
-							Englanti
-						</Link>
-					</li>
-					<li className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
-						<Link
-							to={this.props.getItemLink(3)}>
-							Ruotsi
-						</Link>
-					</li>
+					{this.props.languages.map(p => (
+						<li key={p.id} 
+							className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
+							<Link
+								to={this.props.getItemLink(p.id)}>
+								{p.name}
+							</Link>
+						</li>
+					))}
 				</ul>
 			</div>
-		)
+		);
 	}
 }
 
 export default compose(
+	graphql(SEARCH_LANGUAGES, {
+		options: () => {
+			return {
+				variables: {
+					params: {
 
+					}
+				},
+				fetchPolicy: "cache-and-network"
+			};
+		},
+		props: ({
+			data: {
+				loading,
+				maxLanguages,
+				languagesConnection
+			}
+		}) => ({
+			loading,
+			maxLanguages,
+			languages: !loading ? languagesConnection.languages : []
+		})
+	})
 )(LanguageSearchResults);

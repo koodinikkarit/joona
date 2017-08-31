@@ -1,6 +1,7 @@
 import React from "react";
 import {
-	compose
+	compose,
+	graphql
 } from "react-apollo";
 
 import {
@@ -17,26 +18,20 @@ import {
 	AppendBottomSmall
 } from "../styles/Layout.css";
 
+import SEARCH_TAGS_QUERY from "./search_tags.graphql";
+
 export class TagSearchResults extends React.Component {
 	render() {
 		return (
 			<div>
 				<ul className={List}>
-					<li className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
-						<Link to={this.props.getItemLink(1)}>
-							Joona
-						</Link>
-					</li>
-					<li className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
-						<Link to={this.props.getItemLink(2)}>
-							Jsound
-						</Link>
-					</li>
-					<li className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
-						<Link to={this.props.getItemLink(3)}>
-							HL
-						</Link>
-					</li>
+					{this.props.tags.map(p => (
+						<li key={p.id} className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
+							<Link to={this.props.getItemLink(p.id)}>
+								{p.name}
+							</Link>
+						</li>
+					))}
 				</ul>
 			</div>
 		);
@@ -44,5 +39,27 @@ export class TagSearchResults extends React.Component {
 }
 
 export default compose(
+	graphql(SEARCH_TAGS_QUERY, {
+		options: () => {
+			return {
+				variables: {
+					parmas: {
 
+					}
+				},
+				fetchPolicy: "cache-and-network"
+			};
+		},
+		props: ({
+			data: {
+				loading,
+				maxTags,
+				tagsConnection
+			}
+		}) => ({
+			loading,
+			maxTags,
+			tags: !loading ? tagsConnection.tags : []
+		})
+	})
 )(TagSearchResults);

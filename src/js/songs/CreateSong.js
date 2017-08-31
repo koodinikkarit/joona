@@ -68,11 +68,11 @@ export class CreateSong extends React.Component {
 					</Button>
 				</Link>
 				<Button bsStyle="success"
-					onClick={e => {
+					onClick={() => {
 						this.props.createVariation({
 							name: this.state.name,
 							text: this.state.text
-						}).then(data => {
+						}).then(() => {
 							if (this.props.onSuccess) {
 								this.props.onSuccess();
 							}

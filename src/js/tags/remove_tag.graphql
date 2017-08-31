@@ -1,0 +1,4 @@
+
+mutation removeTag($tagId: ID) {
+	removeTag(tagId: $tagId)
+}
