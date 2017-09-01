@@ -4,5 +4,6 @@ mutation editVariation($params: EditVariationInput) {
 		id 
 		name
 		text
+		languageId
 	}
 }

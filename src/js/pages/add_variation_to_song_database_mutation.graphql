@@ -6,5 +6,9 @@ mutation addVariationToSongDatabase($songDatabaseId: ID!, $variationId: ID!) {
 			id 
 			name
 		}
+		songDatabase {
+			id
+			name
+		}
 	}
 }

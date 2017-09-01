@@ -78,7 +78,7 @@ export class EditSongDatabase extends React.Component {
 									overflow: "auto"
 								}}>
 								{this.props.songDatabase.variations.map(p => (
-									<li className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
+									<li key={p.id} className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
 										<div className={AppendRight}>
 											{p.name}
 										</div>
@@ -113,11 +113,11 @@ export class EditSongDatabase extends React.Component {
 						Poista
 					</Button>
 					<Button bsStyle="success"
-						onClick={e => {
+						onClick={() => {
 							this.props.editSongDatabase({
 								songDatabaseId: this.props.songDatabaseId,
 								name: this.state.name
-							}).then(data => {
+							}).then(() => {
 								this.props.history.push("/songdatabases");
 							});
 						}}>

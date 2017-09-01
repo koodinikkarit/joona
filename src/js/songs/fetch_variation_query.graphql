@@ -4,5 +4,13 @@ query variation($variationId: ID!) {
 		id
 		name
 		text
+		languageId
+		tags {
+			id
+			name
+		}
+		songDatabases {
+			id
+		}
 	}
 }

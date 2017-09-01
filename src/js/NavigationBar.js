@@ -76,23 +76,23 @@ export class NavigationBar extends React.Component {
 }
 
 export default compose(
-	graphql(
-		FETCH_USER,
-		{
-			option: () => {
-				return {
+	// graphql(
+	// 	FETCH_USER,
+	// 	{
+	// 		option: () => {
+	// 			return {
 
-				};
-			},
-			props: ({
-				data: {
-					loading,
-					user
-				}
-			}) => ({
-				loading,
-				user
-			})
-		}
-	)
+	// 			};
+	// 		},
+	// 		props: ({
+	// 			data: {
+	// 				loading,
+	// 				user
+	// 			}
+	// 		}) => ({
+	// 			loading,
+	// 			user
+	// 		})
+	// 	}
+	// )
 )(NavigationBar);

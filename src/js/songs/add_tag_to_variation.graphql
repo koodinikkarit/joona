@@ -1,0 +1,8 @@
+mutation addTagToVariation($tagId: ID, $variationId: ID) {
+	tagVariation: addTagToVariation(tagId: $tagId, variationId: $variationId) {
+		tag {
+			id 
+			name
+		}
+	}
+}

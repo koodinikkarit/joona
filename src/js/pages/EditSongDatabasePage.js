@@ -83,9 +83,6 @@ export default compose(
 					songDatabaseId,
 					variationId
 				},
-				update: (store, { data }) => {
-					console.log("update", store, data);
-				},
 				updateQueries: {
 					songDatabase: (prev, { mutationResult }) => {
 						if (!prev.songDatabase.variations.some(p => p.id === mutationResult.data.songDatabaseVariation.variation.id)) {
@@ -102,7 +99,6 @@ export default compose(
 						}
 					},
 					searchVariations: (prev, { mutationResult }) => {
-						console.log("prev", prev, mutationResult);
 						return {
 							...prev,
 							variationsConnection: {
