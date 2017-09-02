@@ -6,7 +6,7 @@ Ohjelman asetukset asetetaan ympäristömuuttujiin.
 
 ```
 JOONA_PORT = Porttinumero johon joonan webbi serveri bindataan.
-PETRI_IP = Petrin ip
-PETRI_PORT = Petrin port
+JOONA_PETRI_IP = Petrin ip
+JOONA_PETRI_PORT = Petrin port
 
 ````
