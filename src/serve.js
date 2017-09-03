@@ -24,7 +24,7 @@ export default (app) => {
 		} else {
 			req.session.logincount++;
 		}
-		request.post("http://localhost:9595/login", {
+		request.post("http://${process.env.JOONA_PETRI_IP}:${process.env.JOONA_PETRI_PORT}/login", {
 			form: req.body
 		}, (err, data) => {
 			if (!err) {
