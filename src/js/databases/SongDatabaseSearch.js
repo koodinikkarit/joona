@@ -51,6 +51,13 @@ export class SongDatabaseSearch extends React.Component {
 									<Link to={"/editsongdatabase/" + p.id}>
 										{p.name || "Tyhjä"}
 									</Link>
+									<div style={{
+											float: "right"
+										}}>
+										<Link to={`/songdatabase/${p.id}/songs`}>
+											Laulut
+										</Link>
+									</div>
 								</li>
 							))}							
 						</ul>

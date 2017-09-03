@@ -60,14 +60,18 @@ export default compose(
 		options: ({
 			searchWord,
 			songDatabaseId,
-			songDatabaseFilterId
+			songDatabaseFilterId,
+			tagId,
+			languageId
 		}) => {
 			return {
 				variables: {
 					params: {
 						searchWord,
 						songDatabaseId,
-						songDatabaseFilterId
+						songDatabaseFilterId,
+						tagId,
+						languageId
 					}
 				},
 				fetchPolicy: "cache-and-network"

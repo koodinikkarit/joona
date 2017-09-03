@@ -29,6 +29,13 @@ export class TagSearchResults extends React.Component {
 						<li key={p.id} className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
 							<Link to={this.props.getItemLink(p.id)}>
 								{p.name}
+								<div style={{
+									float: "right"
+								}}>
+									<Link to={`/tag/${p.id}/songs`}>
+										Laulut
+									</Link>
+								</div>
 							</Link>
 						</li>
 					))}

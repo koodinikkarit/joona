@@ -32,6 +32,13 @@ export class LanguageSearchResults extends React.Component {
 								to={this.props.getItemLink(p.id)}>
 								{p.name}
 							</Link>
+							<div style={{
+								float: "right"
+							}}>
+								<Link to={`/language/${p.id}/songs`}>
+									Laulut
+								</Link>
+							</div>
 						</li>
 					))}
 				</ul>
