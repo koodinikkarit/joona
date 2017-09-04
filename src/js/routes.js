@@ -63,7 +63,7 @@ export default class Routes extends React.Component {
 					<Route path="/createsongdatabase" component={CreateSongDatabasePage} />
 					<Route path="/editsongdatabase/:songDatabaseId" component={EditSongDatabasePage} />
 					<Route path="/songdatabase/:songDatabaseId/songs" component={SongDatabaseSongsPage} />
-					<Route path="/songdatabase/:songDatabaseId/editsong" component={SongDatabaseEditSongPage} />
+					<Route path="/songdatabase/:songDatabaseId/editsong/:variationId" component={SongDatabaseEditSongPage} />
 					<Route path="/ewdatabases" component={EwDatabasesSearchPage} />
 					<Route path="/createewdatabase" component={CreateEwDatabasePage} />
 					<Route path="/editewDatabase/:ewDatabaseId" component={EditEwDatabasePage} />
