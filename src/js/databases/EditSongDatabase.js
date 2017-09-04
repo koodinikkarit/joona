@@ -31,13 +31,14 @@ import FETCH_SONG_DATABASE from "./fetch_song_database_query.graphql";
 import EDIT_SONG_DATABASE from "./edit_song_database_mutation.graphql";
 import REMOVE_SONG_DATABASE from "./remove_song_database.graphql";
 import REMOVE_VARIATION_FROM_SONG_DATABASE from "./remove_variation_from_song_database.graphql";
-import FETCH_VARIATION_QUERY from "../songs/fetch_variation_query.graphql";
+import SEARCH_TAGS_QUERY from "../tags/search_tags.graphql";
 
 export class EditSongDatabase extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			name: ""
+			name: "",
+			changedTagStates: {}
 		};
 	}
 
@@ -68,6 +69,34 @@ export class EditSongDatabase extends React.Component {
 									}} />
 							</div>
 						</div>
+						<label>
+							Tunnisteet
+						</label>
+						<div className={AppendBottomMedium + " " + RectBox + " " + BoxInnerMedium}
+							style={{
+								maxHeight: "200px",
+								overflowY: "auto"
+							}}>
+							{this.props.tags.map(p => {
+								var checked = this.state.changedTagStates[p.id] != null ?
+									this.state.changedTagStates[p.id] :
+									this.props.songDatabase.tags.some(e => e.id === p.id);
+								return (
+									<div key={p.id}>
+										<input type="checkbox" checked={checked} 
+											onChange={() => {
+												this.setState({
+													changedTagStates: {
+														...this.state.changedTagStates,
+														[p.id]: !checked
+													}
+												});
+											}} />
+										{" " + p.name}
+									</div>
+								);
+							})}
+						</div>
 						<div className={AppendBottomBig}>
 							<label>
 								Laulut
@@ -83,7 +112,7 @@ export class EditSongDatabase extends React.Component {
 											{p.name}
 										</div>
 										<Button bsStyle="danger"
-											onClick={e => {
+											onClick={() => {
 												this.props.removeVariationFromSongDatabase(this.props.songDatabase.id, p.id);
 											}}>
 											Poista laulu
@@ -105,8 +134,8 @@ export class EditSongDatabase extends React.Component {
 						</Button>
 					</Link>
 					<Button bsStyle="danger" className={AppendRight}
-						onClick={e => {
-							this.props.removeSongDatabase(this.props.songDatabase.id).then(data => {
+						onClick={() => {
+							this.props.removeSongDatabase(this.props.songDatabase.id).then(() => {
 								this.props.history.push("/songdatabases");
 							});
 						}}>
@@ -114,9 +143,23 @@ export class EditSongDatabase extends React.Component {
 					</Button>
 					<Button bsStyle="success"
 						onClick={() => {
+							let addTagIds = [];
+							let removeTagIds = [];
+
+							Object.keys(this.state.changedTagStates).forEach(key => {
+								let state = this.state.changedTagStates[key];
+								if (state === true) {
+									addTagIds.push(key);
+								} else if (state === false) {
+									removeTagIds.push(key);
+								}
+							});
+
 							this.props.editSongDatabase({
 								songDatabaseId: this.props.songDatabaseId,
-								name: this.state.name
+								name: this.state.name,
+								addTagIds,
+								removeTagIds
 							}).then(() => {
 								this.props.history.push("/songdatabases");
 							});
@@ -148,7 +191,7 @@ export default compose(
 					songDatabaseId: id
 				},
 				updateQueries: {
-					searchSongDatabases: (prev, { mutationResult }) => {
+					searchSongDatabases: (prev) => {
 						return Object.assign({}, prev, {
 							songDatabasesConnection: {
 								...prev.songDatabasesConnection,
@@ -180,6 +223,26 @@ export default compose(
 			songDatabase
 		})
 	}),
+	graphql(SEARCH_TAGS_QUERY, {
+		options: () => {
+			return {
+				variables: {
+					params: {
+					
+					}
+				}
+			};
+		},
+		props: ({
+			data: {
+				loading,
+				tagsConnection
+			}
+		}) => ({
+			loadingTags: loading,
+			tags: !loading ? tagsConnection.tags : []
+		})
+	}),
 	graphql(REMOVE_VARIATION_FROM_SONG_DATABASE, {
 		props: ({ mutate }) => ({
 			removeVariationFromSongDatabase: (songDatabaseId, variationId) => mutate({
@@ -188,7 +251,7 @@ export default compose(
 					variationId
 				},
 				updateQueries: {
-					songDatabase: (prev, { mutationResult }) => {
+					songDatabase: (prev) => {
 						return {
 							...prev,
 							songDatabase: {
@@ -196,16 +259,6 @@ export default compose(
 								variations: prev.songDatabase.variations.filter(p => p.id !== variationId)
 							}
 						};
-					},
-					searchVariations: (prev, { mutationResult }) => {
-						console.log("prev", prev, mutationResult);
-						// return {
-						// 	...prev,
-						// 	variationsConnection: {
-						// 		...prev.variationsConnection,
-						// 		variations: prev.variationsConnection.variations.filter(p => p.id !== mutationResult.data.songDatabaseVariation.variation.id)
-						// 	}
-						// }
 					}
 				}
 			})

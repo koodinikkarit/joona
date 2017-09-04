@@ -393,7 +393,6 @@ export default compose(
 				},
 				updateQueries: {
 					variation: (prev) => {
-						console.log("prev", prev, songDatabaseId, variationId);
 						if (prev.variation.id === variationId) {						
 							return {
 								...prev,
