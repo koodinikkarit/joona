@@ -71,7 +71,8 @@ export default compose(
 						songDatabaseId,
 						songDatabaseFilterId,
 						tagId,
-						languageId
+						languageId,
+						limit: 100
 					}
 				},
 				fetchPolicy: "cache-and-network"

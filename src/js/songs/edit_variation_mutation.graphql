@@ -1,9 +1,11 @@
 
-mutation editVariation($params: EditVariationInput) {
-	editVariation(params: $params) {
-		id 
-		name
-		text
-		languageId
+mutation updateVariation($params: UpdateVariationInput) {
+	updateVariation(params: $params) {
+		variation {
+			id 
+			name
+			text
+			languageId
+		}
 	}
 }

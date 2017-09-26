@@ -63,7 +63,7 @@ export class CreateTag extends React.Component {
 							}
 						});
 					}}>
-					Luo laulu
+					Luo tunniste
 				</Button>
 			</div>
 		);

@@ -39,7 +39,7 @@ export class SongDatabaseEditSongPage extends React.Component {
 						}} />
 				</Col>
 			</Row>
-		)
+		);
 	}
 }
 

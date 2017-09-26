@@ -1,5 +1,5 @@
 {
-	"name": "Joona",
+	"name": "joona",
 	"version": "0.1.5",
 	"scripts": {
 		"start": "npm run build-production && cd dist && node ./joona.js",

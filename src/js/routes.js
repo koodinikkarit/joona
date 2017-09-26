@@ -76,10 +76,10 @@ export default class Routes extends React.Component {
 					<Route path="/createlanguage" component={CreateLanguagePage} />
 					<Route path="/editlanguage/:languageId" component={EditLanguagePage} />
 					<Route path="/language/:languageId/songs" component={LanguageSongsPage} />
-					<Route path="/language/:languageId/editsong" component={LanguageEditSongPage} />
+					<Route path="/language/:languageId/editsong/:variationId" component={LanguageEditSongPage} />
 					<Route path="/login" component={LoginPage} />
 				</Grid>
 			</div>
-		)
+		);
 	}
 }

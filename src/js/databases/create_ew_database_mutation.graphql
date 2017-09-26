@@ -1,7 +1,9 @@
 
 mutation createEwDatabase($params: CreateEwDatabaseInput) {
-	ewDatabase: createEwDatabase(params: $params) {
-		id
-		name
+	createEwDatabase(params: $params) {
+		ewDatabase {
+			id
+			name
+		}
 	}
 }

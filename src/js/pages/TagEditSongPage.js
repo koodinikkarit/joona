@@ -35,7 +35,7 @@ export class TagEditsongPage extends React.Component {
 						}} />
 				</Col>
 			</Row>
-		)
+		);
 	}
 }
 

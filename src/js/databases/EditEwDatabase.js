@@ -5,8 +5,8 @@ import {
 } from "react-apollo";
 
 import {
-  Link
-} from 'react-router-dom'
+	Link
+} from "react-router-dom";
 
 import Button from "react-bootstrap/lib/Button";
 
@@ -77,7 +77,7 @@ export class EditEwDatabase extends React.Component {
 							onChange={value => {
 								this.setState({
 									selectedSongDatabaseId: value
-								})
+								});
 							}} />
 					</div>
 				</div>
@@ -107,7 +107,7 @@ export class EditEwDatabase extends React.Component {
 					Tallenna
 				</Button>
 			</div>
-		)
+		);
 	}
 }
 
@@ -120,7 +120,7 @@ export default compose(
 				variables: {
 					ewDatabaseId
 				}
-			}
+			};
 		},
 		props: ({
 			data: {

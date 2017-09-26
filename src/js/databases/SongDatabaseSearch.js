@@ -52,8 +52,8 @@ export class SongDatabaseSearch extends React.Component {
 										{p.name || "Tyhjä"}
 									</Link>
 									<div style={{
-											float: "right"
-										}}>
+										float: "right"
+									}}>
 										<Link to={`/songdatabase/${p.id}/songs`}>
 											Laulut
 										</Link>
