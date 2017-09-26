@@ -31,7 +31,7 @@ export class TagEditsongPage extends React.Component {
 					<SongSearch 
 						tagId={this.props.match.params.tagId}
 						getSongItemLink={id => {
-							return "/tag/" + this.props.match.params.tagId + "/editsong/" + this.props.match.params.variationId;
+							return "/tag/" + this.props.match.params.tagId + "/editsong/" + id;
 						}} />
 				</Col>
 			</Row>

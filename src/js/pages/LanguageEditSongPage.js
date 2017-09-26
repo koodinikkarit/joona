@@ -17,7 +17,6 @@ export class LanguageEditSongPage extends React.Component {
 			variationId,
 			languageId
 		} = this.props.match.params;
-		console.log("edit song page");
 		return (
 			<Row>
 				<Col md={6}>
@@ -47,4 +46,4 @@ export class LanguageEditSongPage extends React.Component {
 
 export default compose(
 
-)(SongSearch);
+)(LanguageEditSongPage);

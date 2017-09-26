@@ -92,10 +92,10 @@ export class EditSong extends React.Component {
 							maxHeight: "200px",
 							overflowY: "auto"
 						}}>
-						{this.props.tags.length === 0 ?
-							"Laululle ei ole lisätty tunnisteita" :
+						{!this.props.tags || this.props.tags.length === 0 ?
+							"Ei ole tunnisteita" :
 							this.props.tags.map(p => {
-								const originalState = this.props.variation.tags.tags.some(e => e.id === p.id);
+								const originalState = this.props.variation ? this.props.variation.tags.tags.some(e => e.id === p.id) : false;
 								let realState = originalState;
 								if (realState === true) {
 									if (this.state.removeTagIds.some(e => e === p.id)) {
@@ -145,16 +145,15 @@ export class EditSong extends React.Component {
 					<label>
 						Laulutietokannat
 					</label>
-					
 					<div className={AppendBottomMedium + " " + RectBox + " " + BoxInnerMedium}
 						style={{
 							maxHeight: "200px",
 							overflowY: "auto"
 						}}>
-						{this.props.songDatabases.length === 0 ?
-							"Laulua ei ole lisätty mihinkään tietokantaan" :
+						{!this.props.songDatabases || this.props.songDatabases.length === 0 ?
+							"Ei ole laulutietokantoja" :
 							this.props.songDatabases.map(p => {
-								const originalState = this.props.variation.songDatabases.songDatabases.some(e => e.id === p.id);
+								const originalState = this.props.variation ? this.props.variation.songDatabases.songDatabases.some(e => e.id === p.id) : false;
 								let realState = originalState;
 								if (realState === true) {
 									realState = !this.state.removeSongDatabaseIds.some(e => e === p.id);
@@ -273,7 +272,8 @@ export default compose(
 			return {
 				variables: {
 					variationId: ownProps.variationId
-				}
+				},
+				fetchPolicy: "cache-and-network"
 			};
 		},
 		props: ({
@@ -301,16 +301,16 @@ export default compose(
 				variables: {
 					variationId: id
 				},
-				updateQueries: {
-					searchVariations: (prev, { mutationResult }) => {
-						return Object.assign({}, prev, {
-							variationsConnection: {
-								...prev.variationsConnection,
-								variations: prev.variationsConnection.variations.filter(p => p.id !== id)
-							}
-						});
-					}
-				}
+				// updateQueries: {
+				// 	searchVariations: (prev, { mutationResult }) => {
+				// 		return Object.assign({}, prev, {
+				// 			variationsConnection: {
+				// 				...prev.variationsConnection,
+				// 				variations: prev.variationsConnection.variations.filter(p => p.id !== id)
+				// 			}
+				// 		});
+				// 	}
+				// }
 			})
 		})	
 	}),
@@ -322,7 +322,7 @@ export default compose(
 
 					}
 				},
-				//fetchPolicy: "cache-and-network"
+				fetchPolicy: "cache-and-network"
 			};
 		},
 		props: ({
@@ -332,7 +332,6 @@ export default compose(
 				tagsConnection
 			}
 		}) => {
-			console.log("tagsConnection", tagsConnection);
 			return {
 				loadingTags: loading,
 				maxTags,
@@ -350,22 +349,22 @@ export default compose(
 					tagId,
 					variationId
 				},
-				updateQueries: {
-					variation: (prev, { mutationResult }) => {
-						if (prev.variation.id === variationId) {
-							return {
-								...prev,
-								variation: {
-									...prev.variation,
-									tags: [
-										...prev.variation.tags, //.filter(p => p.id !== tagId)
-										mutationResult.data.tagVariation.tag
-									]
-								}
-							};
-						}
-					}
-				}
+				// updateQueries: {
+				// 	variation: (prev, { mutationResult }) => {
+				// 		if (prev.variation.id === variationId) {
+				// 			return {
+				// 				...prev,
+				// 				variation: {
+				// 					...prev.variation,
+				// 					tags: [
+				// 						...prev.variation.tags, //.filter(p => p.id !== tagId)
+				// 						mutationResult.data.tagVariation.tag
+				// 					]
+				// 				}
+				// 			};
+				// 		}
+				// 	}
+				// }
 			})
 		})		
 	}),
@@ -379,22 +378,22 @@ export default compose(
 					tagId,
 					variationId
 				},
-				updateQueries: {
-					variation: (prev, { mutationResult }) => {
-						if (
-							mutationResult.data.removeTagFromVariation &&
-							prev.variation.id === variationId
-						) {
-							return {
-								...prev,
-								variation: {
-									...prev.variation,
-									tags: prev.variation.tags.filter(p => p.id !== tagId)
-								}
-							};
-						}
-					}
-				}
+				// updateQueries: {
+				// 	variation: (prev, { mutationResult }) => {
+				// 		if (
+				// 			mutationResult.data.removeTagFromVariation &&
+				// 			prev.variation.id === variationId
+				// 		) {
+				// 			return {
+				// 				...prev,
+				// 				variation: {
+				// 					...prev.variation,
+				// 					tags: prev.variation.tags.filter(p => p.id !== tagId)
+				// 				}
+				// 			};
+				// 		}
+				// 	}
+				// }
 			})
 		})
 	}),
@@ -405,7 +404,8 @@ export default compose(
 					parmas: {
 
 					}
-				}
+				},
+				fetchPolicy: "cache-and-network"
 			};
 		},
 		props: ({
@@ -425,24 +425,24 @@ export default compose(
 					songDatabaseId,
 					variationId
 				},
-				updateQueries: {
-					variation: (prev, {
-						mutationResult
-					}) => {
-						if (prev.variation.id === variationId) {						
-							return {
-								...prev,
-								variation: {
-									...prev.variation,
-									songDatabases: [
-										...prev.variation.songDatabases,
-										mutationResult.data.songDatabaseVariation.songDatabase
-									]
-								}
-							};
-						}
-					}
-				}
+				// updateQueries: {
+				// 	variation: (prev, {
+				// 		mutationResult
+				// 	}) => {
+				// 		if (prev.variation.id === variationId) {						
+				// 			return {
+				// 				...prev,
+				// 				variation: {
+				// 					...prev.variation,
+				// 					songDatabases: [
+				// 						...prev.variation.songDatabases,
+				// 						mutationResult.data.songDatabaseVariation.songDatabase
+				// 					]
+				// 				}
+				// 			};
+				// 		}
+				// 	}
+				// }
 			})
 		})
 	}),
@@ -453,19 +453,19 @@ export default compose(
 					songDatabaseId,
 					variationId
 				},
-				updateQueries: {
-					variation: (prev) => {
-						if (prev.variation.id === variationId) {						
-							return {
-								...prev,
-								variation: {
-									...prev.variation,
-									songDatabases: prev.variation.songDatabases.filter(p => p.id !== songDatabaseId)
-								}
-							};
-						}
-					}
-				}
+				// updateQueries: {
+				// 	variation: (prev) => {
+				// 		if (prev.variation.id === variationId) {						
+				// 			return {
+				// 				...prev,
+				// 				variation: {
+				// 					...prev.variation,
+				// 					songDatabases: prev.variation.songDatabases.filter(p => p.id !== songDatabaseId)
+				// 				}
+				// 			};
+				// 		}
+				// 	}
+				// }
 			})
 		})
 	}),

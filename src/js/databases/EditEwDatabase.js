@@ -146,16 +146,16 @@ export default compose(
 				variables: {
 					ewDatabaseId: id
 				},
-				updateQueries: {
-					searchEwDatabases: (prev, { mutationResult }) => {
-						return Object.assign({}, prev, {
-							ewDatabasesConnection: {
-								...prev.ewDatabasesConnection,
-								ewDatabases: prev.ewDatabasesConnection.ewDatabases.filter(p => p.id !== id)
-							}
-						});
-					}
-				}
+				// updateQueries: {
+				// 	searchEwDatabases: (prev, { mutationResult }) => {
+				// 		return Object.assign({}, prev, {
+				// 			ewDatabasesConnection: {
+				// 				...prev.ewDatabasesConnection,
+				// 				ewDatabases: prev.ewDatabasesConnection.ewDatabases.filter(p => p.id !== id)
+				// 			}
+				// 		});
+				// 	}
+				// }
 			})
 		})
 	})

@@ -192,16 +192,16 @@ export default compose(
 				variables: {
 					songDatabaseId: id
 				},
-				updateQueries: {
-					searchSongDatabases: (prev) => {
-						return Object.assign({}, prev, {
-							songDatabasesConnection: {
-								...prev.songDatabasesConnection,
-								songDatabases: prev.songDatabasesConnection.songDatabases.filter(p => p.id !== id)
-							}
-						});
-					}
-				}
+				// updateQueries: {
+				// 	searchSongDatabases: (prev) => {
+				// 		return Object.assign({}, prev, {
+				// 			songDatabasesConnection: {
+				// 				...prev.songDatabasesConnection,
+				// 				songDatabases: prev.songDatabasesConnection.songDatabases.filter(p => p.id !== id)
+				// 			}
+				// 		});
+				// 	}
+				// }
 			})
 		})	
 	}),
@@ -252,17 +252,17 @@ export default compose(
 					songDatabaseId,
 					variationId
 				},
-				updateQueries: {
-					songDatabase: (prev) => {
-						return {
-							...prev,
-							songDatabase: {
-								...prev.songDatabase,
-								variations: prev.songDatabase.variations.filter(p => p.id !== variationId)
-							}
-						};
-					}
-				}
+				// updateQueries: {
+				// 	songDatabase: (prev) => {
+				// 		return {
+				// 			...prev,
+				// 			songDatabase: {
+				// 				...prev.songDatabase,
+				// 				variations: prev.songDatabase.variations.filter(p => p.id !== variationId)
+				// 			}
+				// 		};
+				// 	}
+				// }
 			})
 		})
 	})

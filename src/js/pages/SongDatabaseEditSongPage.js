@@ -22,10 +22,10 @@ export class SongDatabaseEditSongPage extends React.Component {
 					<EditSong
 						variationId={variationId}
 						onSuccess={() => {
-							this.props.hisory.push(`/songdatabase/${songDatabaseId}/songs`);
+							this.props.history.push(`/songdatabase/${songDatabaseId}/songs`);
 						}}
 						onRemove={() => {
-							this.props.hisory.push(`/songdatabase/${songDatabaseId}/songs`);
+							this.props.history.push(`/songdatabase/${songDatabaseId}/songs`);
 						}}
 						getCancelLinkPath={() => {
 							return `/songdatabase/${songDatabaseId}/songs`;

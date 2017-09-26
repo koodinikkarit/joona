@@ -62,7 +62,8 @@ export default compose(
 			songDatabaseId,
 			songDatabaseFilterId,
 			tagId,
-			languageId
+			languageId,
+			limit
 		}) => {
 			return {
 				variables: {
@@ -72,7 +73,7 @@ export default compose(
 						songDatabaseFilterId,
 						tagId,
 						languageId,
-						limit: 100
+						limit
 					}
 				},
 				fetchPolicy: "cache-and-network"

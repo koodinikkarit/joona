@@ -6,6 +6,18 @@ mutation updateVariation($params: UpdateVariationInput) {
 			name
 			text
 			languageId
+			tags {
+				tags {
+					id
+					name
+				}
+			}
+			songDatabases {
+				songDatabases {
+					id
+					name
+				}
+			}
 		}
 	}
 }
