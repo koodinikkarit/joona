@@ -44,7 +44,11 @@ export class EditSong extends React.Component {
 		this.state = {
 			name: "",
 			text: "",
-			languageId: ""
+			languageId: "",
+			addTagIds: [],
+			removeTagIds: [],
+			addSongDatabaseIds: [],
+			removeSongDatabaseIds: []
 		};
 	}
 
@@ -59,8 +63,6 @@ export class EditSong extends React.Component {
 	}
 
 	render() {
-
-
 		if (this.props.loadingVariation || 
 			this.props.loadingTags ||
 			this.props.loadingSongDatabases) {
@@ -91,20 +93,46 @@ export class EditSong extends React.Component {
 							overflowY: "auto"
 						}}>
 						{this.props.tags.map(p => {
-							let checked = this.props.variation.tags.some(e => e.id === p.id);
+							const originalState = this.props.variation.tags.tags.some(e => e.id === p.id);
+							let realState = originalState;
+							if (realState === true) {
+								if (this.state.removeTagIds.some(e => e === p.id)) {
+									realState = false;
+								}
+							} else if (realState === false) {
+								if (this.state.addTagIds.some(e => e === p.id)) {
+									realState = true;
+								}
+							}
 							return (
 								<div key={p.id}>
-									<input type="checkbox" checked={checked} onChange={() => {
-										if (checked) {
-											this.props.removeTagFromVariation(
-												p.id, 
-												this.props.variation.id
-											);
-										} else {
-											this.props.addTagToVariation(
-												p.id, 
-												this.props.variation.id
-											);
+									<input type="checkbox" checked={realState} onChange={() => {
+										if (originalState === true) {
+											if (realState === true) {
+												this.setState({
+													removeTagIds: [
+														...this.state.removeTagIds,
+														p.id
+													]
+												});
+											} else if (realState === false) {
+												this.setState({
+													removeTagIds: this.state.removeTagIds.filter(e => e !== p.id)
+												});
+											}
+										} else if (originalState === false) {
+											if (realState === true) {
+												this.setState({
+													addTagIds: this.state.addTagIds.filter(e => e !== p.id)
+												});
+											} else if (realState === false) {
+												this.setState({
+													addTagIds: [
+														...this.state.addTagIds,
+														p.id
+													]
+												});
+											}
 										}
 									}} />
 									{" " + p.name}
@@ -121,20 +149,42 @@ export class EditSong extends React.Component {
 							overflowY: "auto"
 						}}>
 						{this.props.songDatabases.map(p => {
-							var checked = this.props.variation.songDatabases.some(e => e.id === p.id);
+							const originalState = this.props.variation.songDatabases.songDatabases.some(e => e.id === p.id);
+							let realState = originalState;
+							if (realState === true) {
+								realState = !this.state.removeSongDatabaseIds.some(e => e === p.id);
+							} else if (realState === false) {
+								realState = this.state.addSongDatabaseIds.some(e => e === p.id);
+							}
 							return (
 								<div key={p.id}>
-									<input type="checkbox" checked={checked} onChange={() => {
-										if (checked) {
-											this.props.removeVariationFromSongDatabase(
-												p.id,
-												this.props.variation.id
-											);
-										} else {
-											this.props.addVariationToSongDatabase(
-												p.id,
-												this.props.variation.id
-											);
+									<input type="checkbox" checked={realState} onChange={() => {
+										if (originalState === true) {
+											if (realState === true) {
+												this.setState({
+													removeSongDatabaseIds: [
+														...this.state.removeSongDatabaseIds,
+														p.id
+													]
+												});
+											} else if (realState === false) {
+												this.setState({
+													removeSongDatabaseIds: this.state.removeSongDatabaseIds.filter(e => e !== p.id)
+												});
+											}
+										} else if (originalState === false) {
+											if (realState === true) {
+												this.setState({
+													addSongDatabaseIds: this.state.addSongDatabaseIds.filter(e => e !== p.id)
+												});
+											} else if (realState === false) {
+												this.setState({
+													addSongDatabaseIds: [
+														...this.state.addSongDatabaseIds,
+														p.id
+													]
+												});
+											}
 										}
 									}} />
 									{" " + p.name}
@@ -193,7 +243,11 @@ export class EditSong extends React.Component {
 								variationId: this.props.variation.id,
 								name: this.state.name,
 								text: this.state.text,
-								languageId: this.state.languageId
+								languageId: this.state.languageId,
+								addTagIds: this.state.addTagIds,
+								removeTagIds: this.state.removeTagIds,
+								addSongDatabaseIds: this.state.addSongDatabaseIds,
+								removeSongDatabaseIds: this.state.removeSongDatabaseIds
 							}).then(() => {
 								if (this.props.onSuccess) {
 									this.props.onSuccess();
@@ -263,7 +317,7 @@ export default compose(
 
 					}
 				},
-				fetchPolicy: "cache-and-network"
+				//fetchPolicy: "cache-and-network"
 			};
 		},
 		props: ({
@@ -272,11 +326,14 @@ export default compose(
 				maxTags,
 				tagsConnection
 			}
-		}) => ({
-			loadingTags: loading,
-			maxTags,
-			tags: !loading ? tagsConnection.tags : []
-		})
+		}) => {
+			console.log("tagsConnection", tagsConnection);
+			return {
+				loadingTags: loading,
+				maxTags,
+				tags: tagsConnection ? tagsConnection.tags : []
+			}
+		}
 	}),
 	graphql(ADD_TAG_TO_VARIATION_MUTATION, {
 		props: ({ mutate }) => ({
@@ -353,7 +410,7 @@ export default compose(
 			}
 		}) => ({
 			loadingSongDatabases: loading,
-			songDatabases: !loading ? songDatabasesConnection.songDatabases : []
+			songDatabases: songDatabasesConnection && songDatabasesConnection.songDatabases ? songDatabasesConnection.songDatabases : []
 		})		
 	}),
 	graphql(ADD_VARIATION_TO_SONG_DATABASE_MUTATION, {
@@ -393,7 +450,6 @@ export default compose(
 				},
 				updateQueries: {
 					variation: (prev) => {
-						console.log("prev", prev, songDatabaseId, variationId);
 						if (prev.variation.id === variationId) {						
 							return {
 								...prev,

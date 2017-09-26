@@ -5,8 +5,8 @@ import {
 } from "react-apollo";
 
 import {
-  Link
-} from 'react-router-dom'
+	Link
+} from "react-router-dom";
 
 import Button from "react-bootstrap/lib/Button";
 
@@ -59,7 +59,7 @@ export class CreateEwDatabase extends React.Component {
 							onChange={value => {
 								this.setState({
 									selectedSongDatabaseId: value
-								})
+								});
 							}} />
 					</div>
 				</div>
@@ -91,19 +91,19 @@ export default compose(
 				variables: {
 					params
 				},
-				updateQueries: {
-					searchEwDatabases: (prev, { mutationResult }) => {
-						return Object.assign({}, prev, {
-							ewDatabasesConnection: {
-								...prev.ewDatabasesConnection,
-								ewDatabases: [
-									...prev.ewDatabasesConnection.ewDatabases,
-									mutationResult.data.ewDatabase
-								]
-							}
-						});
-					}
-				}
+				// updateQueries: {
+				// 	searchEwDatabases: (prev, { mutationResult }) => {
+				// 		return Object.assign({}, prev, {
+				// 			ewDatabasesConnection: {
+				// 				...prev.ewDatabasesConnection,
+				// 				ewDatabases: [
+				// 					...prev.ewDatabasesConnection.ewDatabases,
+				// 					mutationResult.data.ewDatabase
+				// 				]
+				// 			}
+				// 		});
+				// 	}
+				// }
 			})
 		})
 	})

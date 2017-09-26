@@ -19,11 +19,6 @@ import PageFrame from "./js/PageFrame";
 
 export default (app) => {
 	app.post("/login", (req, res) => {
-		if (!req.session.logincount) {
-			req.session.logincount = 1;
-		} else {
-			req.session.logincount++;
-		}
 		request.post("http://${process.env.JOONA_PETRI_IP}:${process.env.JOONA_PETRI_PORT}/login", {
 			form: req.body
 		}, (err, data) => {
@@ -49,6 +44,7 @@ export default (app) => {
 					if (!data) {
 						console.log("500 service unvaivable");
 						res.writeHead(500);
+						res.end();
 					} else {
 						res.end(data.body);
 					}
@@ -56,7 +52,9 @@ export default (app) => {
 		});
 	} else {
 		app.use("/api", (req, res) => {
+			console.log("500 service unvaivable");
 			res.writeHead(500);
+			res.end();
 		});
 	}
 

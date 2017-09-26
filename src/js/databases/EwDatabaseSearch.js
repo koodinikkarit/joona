@@ -14,13 +14,8 @@ import {
 	AppendBottomMedium,
 	RectBox,
 	BoxInnerMedium,
-	AppendBottomBig,
 	AppendBottomSmall
 } from "../styles/Layout.css";
-
-import {
-	textInput
-} from "../styles/Form.css";
 
 import {
 	List
@@ -42,7 +37,7 @@ export class EwDatabasesSearch extends React.Component {
 				<div className={RectBox + " " + BoxInnerMedium}>
 					<ul className={List}>
 						{this.props.ewDatabases.map(p => (
-							<li className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
+							<li key={p.id} className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
 								<Link to={"/editewdatabase/" + p.id}>
 									{p.name || "Tyhjä"}
 								</Link>
@@ -57,14 +52,12 @@ export class EwDatabasesSearch extends React.Component {
 
 export default compose(
 	graphql(SEARCH_EW_DATABASES_QUERY, {
-		options: ({
-		}) => {
+		options: (params) => {
 			return {
 				variables: {
-					params: {
-
-					}
-				}
+					params
+				},
+				fetchPolicy: "cache-and-network"
 			};
 		},
 		props: ({

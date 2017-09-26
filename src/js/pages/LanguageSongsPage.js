@@ -15,7 +15,7 @@ export class LanguageSongsPage extends React.Component {
 		const {
 			languageId
 		} = this.props.match.params;
-
+		console.log("language songs page");
 		return (
 			<Row>
 				<Col md={12}>

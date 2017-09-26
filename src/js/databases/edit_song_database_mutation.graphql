@@ -2,6 +2,13 @@
 mutation editSongDatabase($params: EditSongDatabaseInput) {
 	editSongDatabase(params: $params) {
 		id 
-		name
+		name,
+		variations {
+			id
+			name
+		}
+		tags {
+			id
+		}
 	}
 }

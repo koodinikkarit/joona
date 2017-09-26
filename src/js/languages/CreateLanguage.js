@@ -63,7 +63,7 @@ export class CreateLanguage extends React.Component {
 							}
 						});
 					}}>
-					Tallenna
+					Lisää kieli
 				</Button>
 			</div>
 		);

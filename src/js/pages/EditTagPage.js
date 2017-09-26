@@ -34,7 +34,7 @@ export class EditTagPage extends React.Component {
 					</Col>
 				</Row>
 			</Grid>
-		)
+		);
 	}
 }
 
