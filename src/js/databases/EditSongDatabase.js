@@ -27,6 +27,8 @@ import {
 	textInput
 } from "../styles/Form.css";
 
+import SongsMultiselect from "../songs/SongsMultiselect";
+
 import FETCH_SONG_DATABASE from "./fetch_song_database_query.graphql";
 import EDIT_SONG_DATABASE from "./edit_song_database_mutation.graphql";
 import REMOVE_SONG_DATABASE from "./remove_song_database.graphql";
@@ -67,6 +69,12 @@ export class EditSongDatabase extends React.Component {
 										});
 									}} />
 							</div>
+						</div>
+						<label>
+							Laulut
+						</label>
+						<div className={AppendBottomBig}>
+							<SongsMultiselect />
 						</div>
 						<div className={AppendBottomBig}>
 							<label>
