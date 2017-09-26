@@ -92,105 +92,110 @@ export class EditSong extends React.Component {
 							maxHeight: "200px",
 							overflowY: "auto"
 						}}>
-						{this.props.tags.map(p => {
-							const originalState = this.props.variation.tags.tags.some(e => e.id === p.id);
-							let realState = originalState;
-							if (realState === true) {
-								if (this.state.removeTagIds.some(e => e === p.id)) {
-									realState = false;
+						{this.props.tags.length === 0 ?
+							"Laululle ei ole lisätty tunnisteita" :
+							this.props.tags.map(p => {
+								const originalState = this.props.variation.tags.tags.some(e => e.id === p.id);
+								let realState = originalState;
+								if (realState === true) {
+									if (this.state.removeTagIds.some(e => e === p.id)) {
+										realState = false;
+									}
+								} else if (realState === false) {
+									if (this.state.addTagIds.some(e => e === p.id)) {
+										realState = true;
+									}
 								}
-							} else if (realState === false) {
-								if (this.state.addTagIds.some(e => e === p.id)) {
-									realState = true;
-								}
-							}
-							return (
-								<div key={p.id}>
-									<input type="checkbox" checked={realState} onChange={() => {
-										if (originalState === true) {
-											if (realState === true) {
-												this.setState({
-													removeTagIds: [
-														...this.state.removeTagIds,
-														p.id
-													]
-												});
-											} else if (realState === false) {
-												this.setState({
-													removeTagIds: this.state.removeTagIds.filter(e => e !== p.id)
-												});
+								return (
+									<div key={p.id}>
+										<input type="checkbox" checked={realState} onChange={() => {
+											if (originalState === true) {
+												if (realState === true) {
+													this.setState({
+														removeTagIds: [
+															...this.state.removeTagIds,
+															p.id
+														]
+													});
+												} else if (realState === false) {
+													this.setState({
+														removeTagIds: this.state.removeTagIds.filter(e => e !== p.id)
+													});
+												}
+											} else if (originalState === false) {
+												if (realState === true) {
+													this.setState({
+														addTagIds: this.state.addTagIds.filter(e => e !== p.id)
+													});
+												} else if (realState === false) {
+													this.setState({
+														addTagIds: [
+															...this.state.addTagIds,
+															p.id
+														]
+													});
+												}
 											}
-										} else if (originalState === false) {
-											if (realState === true) {
-												this.setState({
-													addTagIds: this.state.addTagIds.filter(e => e !== p.id)
-												});
-											} else if (realState === false) {
-												this.setState({
-													addTagIds: [
-														...this.state.addTagIds,
-														p.id
-													]
-												});
-											}
-										}
-									}} />
-									{" " + p.name}
-								</div>
-							);
-						})}
+										}} />
+										{" " + p.name}
+									</div>
+								);
+							})}
 					</div>
 					<label>
 						Laulutietokannat
 					</label>
+					
 					<div className={AppendBottomMedium + " " + RectBox + " " + BoxInnerMedium}
 						style={{
 							maxHeight: "200px",
 							overflowY: "auto"
 						}}>
-						{this.props.songDatabases.map(p => {
-							const originalState = this.props.variation.songDatabases.songDatabases.some(e => e.id === p.id);
-							let realState = originalState;
-							if (realState === true) {
-								realState = !this.state.removeSongDatabaseIds.some(e => e === p.id);
-							} else if (realState === false) {
-								realState = this.state.addSongDatabaseIds.some(e => e === p.id);
-							}
-							return (
-								<div key={p.id}>
-									<input type="checkbox" checked={realState} onChange={() => {
-										if (originalState === true) {
-											if (realState === true) {
-												this.setState({
-													removeSongDatabaseIds: [
-														...this.state.removeSongDatabaseIds,
-														p.id
-													]
-												});
-											} else if (realState === false) {
-												this.setState({
-													removeSongDatabaseIds: this.state.removeSongDatabaseIds.filter(e => e !== p.id)
-												});
+						{this.props.songDatabases.length === 0 ?
+							"Laulua ei ole lisätty mihinkään tietokantaan" :
+							this.props.songDatabases.map(p => {
+								const originalState = this.props.variation.songDatabases.songDatabases.some(e => e.id === p.id);
+								let realState = originalState;
+								if (realState === true) {
+									realState = !this.state.removeSongDatabaseIds.some(e => e === p.id);
+								} else if (realState === false) {
+									realState = this.state.addSongDatabaseIds.some(e => e === p.id);
+								}
+								return (
+									<div key={p.id}>
+										<input type="checkbox" checked={realState} onChange={() => {
+											if (originalState === true) {
+												if (realState === true) {
+													this.setState({
+														removeSongDatabaseIds: [
+															...this.state.removeSongDatabaseIds,
+															p.id
+														]
+													});
+												} else if (realState === false) {
+													this.setState({
+														removeSongDatabaseIds: this.state.removeSongDatabaseIds.filter(e => e !== p.id)
+													});
+												}
+											} else if (originalState === false) {
+												if (realState === true) {
+													this.setState({
+														addSongDatabaseIds: this.state.addSongDatabaseIds.filter(e => e !== p.id)
+													});
+												} else if (realState === false) {
+													this.setState({
+														addSongDatabaseIds: [
+															...this.state.addSongDatabaseIds,
+															p.id
+														]
+													});
+												}
 											}
-										} else if (originalState === false) {
-											if (realState === true) {
-												this.setState({
-													addSongDatabaseIds: this.state.addSongDatabaseIds.filter(e => e !== p.id)
-												});
-											} else if (realState === false) {
-												this.setState({
-													addSongDatabaseIds: [
-														...this.state.addSongDatabaseIds,
-														p.id
-													]
-												});
-											}
-										}
-									}} />
-									{" " + p.name}
-								</div>
-							);
-						})}
+										}} />
+										{" " + p.name}
+									</div>
+								);
+							})}
 					</div>
 					<label>
 						Kieli

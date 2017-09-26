@@ -30,16 +30,15 @@ import REMOVE_EW_DATBASE_MUTATION from "./remove_ew_database_mutation.graphql";
 
 export class EditEwDatabase extends React.Component {
 	state = {
-		name: "",
-		selectedSongDatabaseId: ""
+		name: this.props.ewDatabase ? this.props.ewDatabase.name : "",
+		selectedSongDatabaseId: this.props.ewDatabase ? this.props.ewDatabase.songDatabaseId : ""
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.ewDatabase) {
-			console.log("name", nextProps.ewDatabase.name ? nextProps.ewDatabase.name : "");
 			this.setState({
 				name: nextProps.ewDatabase.name ? nextProps.ewDatabase.name : "",
-				selectedSongDatabaseId: nextProps.ewDatabase.songDatabase ? nextProps.ewDatabase.songDatabase.id : null
+				selectedSongDatabaseId: nextProps.ewDatabase.songDatabaseId
 			});
 		}
 	}

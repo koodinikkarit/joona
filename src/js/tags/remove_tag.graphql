@@ -1,4 +1,6 @@
 
-mutation removeTag($tagId: ID) {
-	removeTag(tagId: $tagId)
+mutation removeTag($params: RemoveTagInput) {
+	removeTag(params: $params) {
+		success
+	}
 }

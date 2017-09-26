@@ -92,19 +92,19 @@ export default compose(
 				variables: {
 					params
 				},
-				updateQueries: {
-					searchVariations: (prev, { mutationResult }) => {
-						return Object.assign({}, prev, {
-							variationsConnection: {
-								...prev.variationsConnection,
-								variations: [
-									...prev.variationsConnection.variations,
-									mutationResult.data.variation
-								]
-							}
-						});
-					}
-				}
+				// updateQueries: {
+				// 	searchVariations: (prev, { mutationResult }) => {
+				// 		return Object.assign({}, prev, {
+				// 			variationsConnection: {
+				// 				...prev.variationsConnection,
+				// 				variations: [
+				// 					...prev.variationsConnection.variations,
+				// 					mutationResult.data.variation
+				// 				]
+				// 			}
+				// 		});
+				// 	}
+				// }
 			})
 		})
 	})

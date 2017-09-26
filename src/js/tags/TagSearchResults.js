@@ -28,7 +28,7 @@ export class TagSearchResults extends React.Component {
 					{this.props.tags.map(p => (
 						<li key={p.id} className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
 							<Link to={this.props.getItemLink(p.id)}>
-								{p.name}
+								{p.name || "Ei nimeä"}
 								<div style={{
 									float: "right"
 								}}>

@@ -1,14 +1,16 @@
 
-mutation editSongDatabase($params: EditSongDatabaseInput) {
-	editSongDatabase(params: $params) {
-		id 
-		name,
-		variations {
-			id
-			name
-		}
-		tags {
-			id
+mutation updateSongDatabase($params: UpdateSongDatabaseInput) {
+	updateSongDatabase(params: $params) {
+		songDatabase {
+			id 
+			name,
+			variations {
+				id
+				name
+			}
+			tags {
+				id
+			}
 		}
 	}
 }

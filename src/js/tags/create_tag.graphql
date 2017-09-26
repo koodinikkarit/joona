@@ -1,7 +1,9 @@
 
 mutation createTag($params: CreateTagInput) {
-	tag: createTag(params: $params) {
-		id
-		name
+	createTag(params: $params) {
+		tag {
+			id
+			name
+		}
 	}
 }

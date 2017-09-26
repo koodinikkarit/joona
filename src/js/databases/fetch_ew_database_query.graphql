@@ -4,8 +4,6 @@ query ewDatabase($ewDatabaseId: ID!) {
 		id 
 		name
 		key
-		songDatabase {
-			id
-		}
+		songDatabaseId
 	}
 }

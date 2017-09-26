@@ -30,7 +30,7 @@ export class LanguageSearchResults extends React.Component {
 							className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}>
 							<Link
 								to={this.props.getItemLink(p.id)}>
-								{p.name}
+								{p.name || "Ei nimeä"}
 							</Link>
 							<div style={{
 								float: "right"

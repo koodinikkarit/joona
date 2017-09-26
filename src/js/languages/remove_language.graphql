@@ -1,3 +1,5 @@
-mutation removeLanguage($languageId: ID) {
-	removeLanguage(languageId: $languageId)
+mutation removeLanguage($params: RemoveLanguageInput) {
+	removeLanguage(params: $params) {
+		success
+	}
 }

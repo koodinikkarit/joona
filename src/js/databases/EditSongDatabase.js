@@ -39,7 +39,7 @@ export class EditSongDatabase extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			name: "",
+			name: this.props.songDatabase ? this.props.songDatabase.name : "",
 			changedTagStates: {}
 		};
 	}
@@ -99,7 +99,7 @@ export class EditSongDatabase extends React.Component {
 								);
 							})}
 						</div>
-						<div className={AppendBottomBig}>
+						{/* <div className={AppendBottomBig}>
 							<label>
 								Laulut
 							</label>
@@ -128,7 +128,7 @@ export class EditSongDatabase extends React.Component {
 									Lisää laulut
 								</Button>
 							</Link>}
-						</div>
+						</div> */}
 					</div>
 					<Link to="/songdatabases">
 						<Button className={AppendRight}>

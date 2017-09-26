@@ -28,7 +28,7 @@ import REMOVE_TAG_MUTATION from "./remove_tag.graphql";
 
 export class EditTag extends React.Component {
 	state = {
-		name: ""
+		name: this.props.tag ? this.props.tag.name : ""
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -63,7 +63,7 @@ export class EditTag extends React.Component {
 				</Link>
 				<Button bsStyle="danger" className={AppendRight}
 					onClick={() => {
-						this.props.removeTag(this.props.tag.id).then(() => {
+						this.props.removeTag({ tagId: this.props.tag.id }).then(() => {
 							if (this.props.onRemove) {
 								this.props.onRemove();
 							}
@@ -125,9 +125,9 @@ export default compose(
 	}),
 	graphql(REMOVE_TAG_MUTATION, {
 		props: ({ mutate }) => ({
-			removeTag: (tagId) => mutate({
+			removeTag: (params) => mutate({
 				variables: {
-					tagId
+					params
 				}
 			})
 		})

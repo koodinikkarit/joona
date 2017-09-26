@@ -72,6 +72,14 @@ export class SongDatabaseSearch extends React.Component {
 
 export default compose(
 	graphql(SEARCH_SONG_DATABASES, {
+		options: (params) => {
+			return {
+				variables: {
+					params
+				},
+				fetchPolicy: "cache-and-network"
+			};
+		},
 		props: ({
 			data: {
 				loading,

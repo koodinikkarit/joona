@@ -1,11 +1,11 @@
 
-mutation editEwDatabase($params: EditEwDatabaseInput) {
-	editEwDatabase(params: $params) {
-		id
-		name
-		key
-		songDatabase {
+mutation updateEwDatabase($params: UpdateEwDatabaseInput) {
+	updateEwDatabase(params: $params) {
+		ewDatabase {
 			id
+			name
+			key
+			songDatabaseId
 		}
 	}
 }

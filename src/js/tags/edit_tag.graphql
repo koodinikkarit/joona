@@ -1,7 +1,9 @@
 
-mutation editTag($params: EditTagInput) {
-	tag: editTag(params: $params) {
-		id
-		name
+mutation updateTag($params: UpdateTagInput) {
+	updateTag(params: $params) {
+		tag {
+			id
+			name
+		}
 	}
 }

@@ -28,7 +28,7 @@ import REMOVE_LANGUAGE_MUTATION from "./remove_language.graphql";
 
 export class EditLanguage extends React.Component {
 	state = {
-		name: ""
+		name: this.props.language ? this.props.language.name : ""
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -63,7 +63,7 @@ export class EditLanguage extends React.Component {
 				</Link>
 				<Button bsStyle="danger" className={AppendRight}
 					onClick={() => {
-						this.props.removeLanguage(this.props.languageId).then(() => {
+						this.props.removeLanguage(this.props.language.id).then(() => {
 							if (this.props.onRemove) {
 								this.props.onRemove();
 							}
@@ -74,8 +74,8 @@ export class EditLanguage extends React.Component {
 				<Button bsStyle="success"
 					onClick={() => {
 						this.props.editLanguage({
-							languageId: this.props.id,
-							name: this.props.name
+							languageId: this.props.language.id,
+							name: this.state.name
 						}).then(() => {
 							if (this.props.onSuccess) {
 								this.props.onSuccess();
@@ -119,9 +119,11 @@ export default compose(
 	}),
 	graphql(REMOVE_LANGUAGE_MUTATION, {
 		props: ({ mutate }) => ({
-			removeLanguage: (languageId) => mutate({
+			removeLanguage: (id) => mutate({
 				variables: {
-					languageId
+					params: {
+						languageId: id
+					}
 				}
 			})
 		})

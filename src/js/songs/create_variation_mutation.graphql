@@ -1,8 +1,10 @@
 
 mutation createVariation($params: CreateVariationInput) {
-	variation: createVariation(params: $params) {
-		id
-		name
-		text
+	createVariation(params: $params) {
+		variation {
+			id
+			name
+			text
+		}
 	}
 }

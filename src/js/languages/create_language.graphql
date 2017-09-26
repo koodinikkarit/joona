@@ -1,6 +1,8 @@
  mutation createLanguage($params: CreateLanguageInput) {
-	 language: createLanguage(params: $params) {
-		 id
-		 name
+	 createLanguage(params: $params) {
+		 language {
+		 	id
+		 	name
+		 }
 	 }
  }

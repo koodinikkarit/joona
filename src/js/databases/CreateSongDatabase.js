@@ -80,19 +80,19 @@ export default compose(
 						name
 					}
 				},
-				updateQueries: {
-					searchSongDatabases: (prev, { mutationResult }) => {
-						return Object.assign({}, prev, {
-							songDatabasesConnection: {
-								...prev.songDatabasesConnection,
-								songDatabases: [
-									...prev.songDatabasesConnection.songDatabases,
-									mutationResult.data.songDatabase
-								]
-							}
-						});
-					}
-				}
+				// updateQueries: {
+				// 	searchSongDatabases: (prev, { mutationResult }) => {
+				// 		return Object.assign({}, prev, {
+				// 			songDatabasesConnection: {
+				// 				...prev.songDatabasesConnection,
+				// 				songDatabases: [
+				// 					...prev.songDatabasesConnection.songDatabases,
+				// 					mutationResult.data.songDatabase
+				// 				]
+				// 			}
+				// 		});
+				// 	}
+				// }
 			})
 		})
 	})
