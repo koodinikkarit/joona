@@ -55,6 +55,11 @@ export class NavigationBar extends React.Component {
 							Kielet
 						</Link>
 					</NavItem>
+					<NavItem eventKey={5}>
+						<Link to="/schedules">
+							Aikataulut
+						</Link>
+					</NavItem>
 				</Nav>
 				<Nav pullRight>
 					<NavItem eventKey={1}>

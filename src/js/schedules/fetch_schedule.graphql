@@ -1,0 +1,9 @@
+query schedule($scheduleId: ID) {
+	schedule(scheduleId: $scheduleId) {
+		id
+		name
+		variations {
+			id
+		}
+	}
+}

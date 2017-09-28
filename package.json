@@ -37,7 +37,9 @@
 		"request": "2.81.0",
 		"style-loader": "0.18.2",
 		"webpack": "^2.6.1",
-		"webpack-bundle-analyzer": "^2.9.0"
+		"webpack-bundle-analyzer": "^2.9.0",
+		"koodinikkarit-ui-kit": "^0.0.1",
+		"react-beautiful-dnd": "^2.3.1"
 	},
 	"devDependencies": {
 		"babel-cli": "6.11.4",

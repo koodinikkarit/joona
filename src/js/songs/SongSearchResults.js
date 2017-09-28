@@ -26,13 +26,13 @@ export class SongSearchResults extends React.Component {
 				<ul className={List}
 					style={{
 						overflow: "auto",
-						maxHeight: "600px"
+						maxHeight: this.props.maxHeight || "600px"
 					}}>
 					{!this.props.loading && this.props.variations.map(p => (
 						<li key={p.id} className={RectBox + " " + BoxInnerMedium + " " + AppendBottomSmall}
 							onClick={() => {
-								if (this.props.songItemClick) {
-									this.props.songItemClick(p.id);
+								if (this.props.onItemClick) {
+									this.props.onItemClick(p.id);
 								}
 							}}>
 							{this.props.getSongItemLink ?
@@ -63,7 +63,8 @@ export default compose(
 			songDatabaseFilterId,
 			tagId,
 			languageId,
-			limit
+			limit,
+			skipVariationIds
 		}) => {
 			return {
 				variables: {
@@ -73,7 +74,8 @@ export default compose(
 						songDatabaseFilterId,
 						tagId,
 						languageId,
-						limit
+						limit,
+						skipVariationIds
 					}
 				},
 				fetchPolicy: "cache-and-network"

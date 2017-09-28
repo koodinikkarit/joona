@@ -1,0 +1,8 @@
+query searchVariations($params: SearchVariationsInput) {
+	searchVariations(params: $params) {
+		variations {
+			id
+			name
+		}
+	}
+}

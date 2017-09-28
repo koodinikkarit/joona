@@ -1,6 +1,5 @@
 import React from "react";
 import {
-	graphql,
 	compose
 } from "react-apollo";
 
@@ -8,17 +7,11 @@ import {
 	Link
 } from "react-router-dom";
 
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
-
 import Button from "react-bootstrap/lib/Button";
 import InputGroup from "react-bootstrap/lib/InputGroup";
 import DropdownButton from "react-bootstrap/lib/DropdownButton";
 import MenuItem from "react-bootstrap/lib/MenuItem";
 
-import {
-	textInput
-} from "../styles/Form.css";
 
 import SongSearchResults from "./SongSearchResults";
 import DelayTextInput from "../common/DelayTextInput";
@@ -26,7 +19,6 @@ import DelayTextInput from "../common/DelayTextInput";
 import {
 	RectBox,
 	BoxInnerMedium,
-	AppendBottomSmall,
 	AppendBottomBig,
 	AppendBottomMedium
 } from "../styles/Layout.css";
@@ -34,7 +26,7 @@ import {
 export class SongSearch extends React.Component {
 	state = {
 		searchWord: "",
-		limit: 100
+		limit: 15
 	};
 
 	constructor(props) {
@@ -81,14 +73,16 @@ export class SongSearch extends React.Component {
 							<DropdownButton
 								componentClass={InputGroup.Button}
 								title={this.state.limit === 0 ? "Näytä kaikki" : `Näytä ${this.state.limit} tulosta`}>
-								<MenuItem key="1" onClick={() => this.setState({ limit: 50 })}>50</MenuItem>
-								<MenuItem key="2" onClick={() => this.setState({ limit: 100 })}>100</MenuItem>
+								<MenuItem key="1" onClick={() => this.setState({ limit: 15 })}>15</MenuItem>
+								<MenuItem key="2" onClick={() => this.setState({ limit: 50 })}>50</MenuItem>
+								<MenuItem key="3" onClick={() => this.setState({ limit: 100 })}>100</MenuItem>
 								<MenuItem key="4" onClick={() => this.setState({ limit: 1000 })}>1000</MenuItem>
 								<MenuItem key="5" onClick={() => this.setState({ limit: 0 })}>Kaikki</MenuItem>
 							</DropdownButton>
 						</InputGroup>
 					</div>
 					<SongSearchResults
+						maxHeight={this.props.maxHeight}
 						limit={this.state.limit}
 						songItemClick={this.props.songItemClick}
 						getSongItemLink={this.props.getSongItemLink}
@@ -96,7 +90,9 @@ export class SongSearch extends React.Component {
 						songDatabaseId={this.props.songDatabaseId}
 						songDatabaseFilterId={this.props.songDatabaseFilterId}
 						tagId={this.props.tagId}
-						languageId={this.props.languageId} />
+						languageId={this.props.languageId}
+						onItemClick={this.props.onItemClick}
+						skipVariationIds={this.props.skipVariationIds} />
 				</div>
 			</div>
 		);

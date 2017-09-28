@@ -37,6 +37,10 @@ import EditLanguagePage from "./pages/EditLanguagePage";
 import LanguageSongsPage from "./pages/LanguageSongsPage";
 import LanguageEditSongPage from "./pages/LanguageEditSongPage";
 
+import SchedulesSearchPage from "./pages/SchedulesSearchPage";
+import CreateSchedulePage from "./pages/CreateSchedulePage";
+import UpdateSchedulePage from  "./pages/UpdateSchedulePage";
+
 import LoginPage from "./pages/LoginPage";
 
 export default class Routes extends React.Component {
@@ -77,6 +81,9 @@ export default class Routes extends React.Component {
 					<Route path="/editlanguage/:languageId" component={EditLanguagePage} />
 					<Route path="/language/:languageId/songs" component={LanguageSongsPage} />
 					<Route path="/language/:languageId/editsong/:variationId" component={LanguageEditSongPage} />
+					<Route path="/schedules" component={SchedulesSearchPage} />
+					<Route path="/createschedule" component={CreateSchedulePage} />
+					<Route path="/updateschedule/:scheduleId" component={UpdateSchedulePage} />
 					<Route path="/login" component={LoginPage} />
 				</Grid>
 			</div>
