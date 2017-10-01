@@ -1,6 +1,6 @@
 {
 	"name": "joona",
-	"version": "0.1.5",
+	"version": "0.2.0",
 	"scripts": {
 		"start": "npm run build-production && cd dist && node ./joona.js",
 		"build-dev": "webpack --config webpack.client.config.js && webpack --config webpack.server.config.js",
@@ -40,7 +40,6 @@
 		"request": "2.81.0",
 		"style-loader": "0.18.2",
 		"webpack": "^2.6.1",
-		"webpack-bundle-analyzer": "^2.9.0",
 		"koodinikkarit-ui-kit": "^0.0.1",
 		"react-beautiful-dnd": "^2.3.1"
 	},
