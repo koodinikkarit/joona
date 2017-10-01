@@ -9,7 +9,10 @@
 		"dev": "babel-node ./src/dev.js",
 		"test": "npm run lint",
 		"lint": "eslint src/",
-		"lint-fix": "eslint --fix src/"
+		"lint-fix": "eslint --fix src/",
+		"bump-patch": "grunt bump:patch",
+		"bump-minor": "grunt bump:minor",
+		"bump-major": "grunt bump:major"
 	},
 	"dependencies": {
 		"apollo-client": "^1.9.2",
@@ -52,11 +55,12 @@
 		"eslint-plugin-import": "2.7.0",
 		"eslint-plugin-jest": "20.0.3",
 		"eslint-plugin-react": "7.2.1",
-		"grunt-bump": "0.8.0",
 		"jest": "^20.0.4",
 		"flow-bin": "^0.51.0",
 		"identity-obj-proxy": "3.0.0",
 		"webpack-dev-middleware": "1.10.2",
-		"webpack-bundle-analyzer": "2.9.0"
+		"webpack-bundle-analyzer": "2.9.0",
+		"grunt": "^1.0.1",
+		"grunt-bump": "^0.8.0"
 	}
 }
