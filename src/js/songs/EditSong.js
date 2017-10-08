@@ -299,7 +299,9 @@ export default compose(
 		props: ({ mutate }) => ({
 			removeVariation: (id) => mutate({
 				variables: {
-					variationId: id
+					params: {
+						variationId: id
+					}
 				},
 				// updateQueries: {
 				// 	searchVariations: (prev, { mutationResult }) => {
