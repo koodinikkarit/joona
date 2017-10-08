@@ -37,10 +37,10 @@ export class SongSearchResults extends React.Component {
 							}}>
 							{this.props.getSongItemLink ?
 								<Link to={this.props.getSongItemLink(p.id)}>
-									{p.name}
+									{p.name || "Ei nimeä"}
 								</Link> :
 								<a style={{ cursor: "pointer" }}>
-									{p.name}
+									{p.name || "Ei nimeä"}
 								</a>}
 						</li>
 					))}
