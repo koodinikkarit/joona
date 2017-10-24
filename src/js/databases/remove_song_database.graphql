@@ -1,4 +1,6 @@
 
-mutation removeSongDatabase($songDatabaseId: ID) {
-	removeSongDatabase(songDatabaseId: $songDatabaseId)
+mutation removeSongDatabase($params: RemoveSongDatabaseInput) {
+	removeSongDatabase(params: $params) {
+		success
+	}
 }

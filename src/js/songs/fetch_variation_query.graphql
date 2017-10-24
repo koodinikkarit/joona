@@ -6,13 +6,11 @@ query variation($variationId: ID!) {
 		text
 		languageId
 		tags {
-			id
 			tags {
 				id
 			}
 		}
 		songDatabases {
-			id
 			songDatabases {
 				id
 			}

@@ -190,7 +190,9 @@ export default compose(
 		props: ({ mutate }) => ({
 			removeSongDatabase: (id) => mutate({
 				variables: {
-					songDatabaseId: id
+					params: {
+						songDatabaseId: id
+					}
 				},
 				// updateQueries: {
 				// 	searchSongDatabases: (prev) => {

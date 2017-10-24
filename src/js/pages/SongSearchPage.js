@@ -11,9 +11,11 @@ import SongSearch from "../songs/SongSearch";
 
 export class SongSearchPage extends React.Component {
 	changeSearchWord(searchWord) {
+		var words = searchWord.split(" ");
+		console.log("Words is", words);
 		this.props.history.push({
 			pathName: this.props.location,
-			search: searchWord ? "?q=" + searchWord : ""
+			search: searchWord ? "?q=" + words.join("+") : ""
 		});
 	}
 
@@ -23,7 +25,7 @@ export class SongSearchPage extends React.Component {
 			<Row>
 				<Col md={12}>
 					<SongSearch
-						searchWord={query.q}
+						searchWord={query.q ? query.q.replace("+", " ") : ""}
 						history={this.props.history}
 						addSongButtonEnabled={true}
 						getSongItemLink={(id) => {
