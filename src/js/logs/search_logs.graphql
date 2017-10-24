@@ -1,0 +1,11 @@
+query searchSeppoLogs($params: SearchSeppoLogsInput) {
+	logsConnection: searchSeppoLogs(params: $params) {
+		logs {
+			id
+			logType
+			message
+			messageDate
+		}
+		maxLogs
+	}
+}

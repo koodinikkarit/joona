@@ -60,6 +60,11 @@ export class NavigationBar extends React.Component {
 							Aikataulut
 						</Link>
 					</NavItem>
+					<NavItem eventKey={6}>
+						<Link to="/logs">
+							Lokit
+						</Link>
+					</NavItem>
 				</Nav>
 				<Nav pullRight>
 					<NavItem eventKey={1}>

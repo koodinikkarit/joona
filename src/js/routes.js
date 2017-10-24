@@ -41,6 +41,8 @@ import SchedulesSearchPage from "./pages/SchedulesSearchPage";
 import CreateSchedulePage from "./pages/CreateSchedulePage";
 import UpdateSchedulePage from  "./pages/UpdateSchedulePage";
 
+import LogsPage from "./pages/LogsPage";
+
 import LoginPage from "./pages/LoginPage";
 
 export default class Routes extends React.Component {
@@ -84,6 +86,7 @@ export default class Routes extends React.Component {
 					<Route path="/schedules" component={SchedulesSearchPage} />
 					<Route path="/createschedule" component={CreateSchedulePage} />
 					<Route path="/updateschedule/:scheduleId" component={UpdateSchedulePage} />
+					<Route path="/logs" component={LogsPage} />
 					<Route path="/login" component={LoginPage} />
 				</Grid>
 			</div>
