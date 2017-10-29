@@ -17,7 +17,7 @@ export class EditSongPage extends React.Component {
 	changeSearchWord(searchWord) {
 		this.props.history.push({
 			pathName: this.props.location,
-			search: (searchWord ? "?q=" + searchWord : "")
+			search: (searchWord ? "?q=" + searchWord.split(" ").join("+") : "")
 		});
 	}
 
@@ -36,7 +36,7 @@ export class EditSongPage extends React.Component {
 							this.props.history.push("/songs" + (query.q ? "?q=" + query.q : ""));
 						}}
 						getCancelLinkPath={() => {
-							return "/songs" + (query.q ? "?q=" + query.q : "");
+							return "/songs" + (query.q ? "?q=" + query.q.split(" ").join("+") : "");
 						}} />
 				</Col>
 				<Col md={6}>
@@ -45,7 +45,7 @@ export class EditSongPage extends React.Component {
 						history={this.props.history}
 						addSongButtonEnabled={true}
 						getSongItemLink={(id) => {
-							return "/editsong/" + id + (query.q ? "?q=" + query.q : "");
+							return "/editsong/" + id + (query.q ? "?q=" + query.q.split(" ").join("+") : "");
 						}}
 						onSearchWordChanged={this.changeSearchWord.bind(this)} />
 				</Col>

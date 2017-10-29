@@ -13,9 +13,10 @@ import CreateSong from "../songs/CreateSong";
 
 export class CreateSongPage extends React.Component {
 	changeSearchWord(searchWord) {
+		var words = searchWord.split(" ");
 		this.props.history.push({
 			pathName: this.props.location,
-			search: (searchWord ? "?q=" + searchWord : "")
+			search: (searchWord ? "?q=" + words.join("+") : "")
 		});
 	}
 
@@ -30,16 +31,16 @@ export class CreateSongPage extends React.Component {
 							this.props.history.push("/songs/" + (query.q ? "?q=" + query.q : ""));
 						}}
 						getCancelLinkPath={() => {
-							return "/songs/" + (query.q ? "?q=" + query.q : "");
+							return "/songs/" + (query.q ? "?q=" + query.q.split(" ").join("+") : "");
 						}} />
 				</Col>
 				<Col md={6}>
 					<SongSearch
-						searchWord={query.q}
+						searchWord={query.q ? query.q.replace("+", " ") : ""}
 						history={this.props.history}
 						addSongButtonEnabled={true}
 						getSongItemLink={(id) => {
-							return "/editsong/" + id + (query.q ? "?q=" + query.q : "");
+							return "/editsong/" + id + (query.q ? "?q=" + query.q.split(" ").join("+") : "");
 						}}
 						onSearchWordChanged={this.changeSearchWord.bind(this)} />
 				</Col>
