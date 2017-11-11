@@ -2,10 +2,13 @@
 mutation updateEwDatabase($params: UpdateEwDatabaseInput) {
 	updateEwDatabase(params: $params) {
 		ewDatabase {
-			id
+			id 
 			name
-			key
+			databaseKey
 			songDatabaseId
+			removeSongsFromExternalDatabase
+			removeSongsFromSongDatabase
+			variationVersionConflictAction
 		}
 	}
 }

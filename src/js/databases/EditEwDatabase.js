@@ -31,14 +31,20 @@ import REMOVE_EW_DATBASE_MUTATION from "./remove_ew_database_mutation.graphql";
 export class EditEwDatabase extends React.Component {
 	state = {
 		name: this.props.ewDatabase ? this.props.ewDatabase.name : "",
-		selectedSongDatabaseId: this.props.ewDatabase ? this.props.ewDatabase.songDatabaseId : ""
+		selectedSongDatabaseId: this.props.ewDatabase ? this.props.ewDatabase.songDatabaseId : "",
+		removeSongsFromExternalDatabase: this.props.ewDatabase ? this.props.ewDatabase.removeSongsFromExternalDatabase : false,
+		removeSongsFromSongDatabase: this.props.ewDatabase ? this.props.ewDatabase.removeSongsFromSongDatabase : false,
+		variationVersionConflictAction: this.props.ewDatabase ? this.props.ewDatabase.variationVersionConflictAction : null
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.ewDatabase) {
 			this.setState({
 				name: nextProps.ewDatabase.name ? nextProps.ewDatabase.name : "",
-				selectedSongDatabaseId: nextProps.ewDatabase.songDatabaseId
+				selectedSongDatabaseId: nextProps.ewDatabase.songDatabaseId,
+				removeSongsFromExternalDatabase: this.props.ewDatabase ? this.props.ewDatabase.removeSongsFromExternalDatabase : false,
+				removeSongsFromSongDatabase: this.props.ewDatabase ? this.props.ewDatabase.removeSongsFromSongDatabase : false,
+				variationVersionConflictAction: this.props.ewDatabase ? this.props.ewDatabase.variationVersionConflictAction : null
 			});
 		}
 	}
@@ -64,8 +70,55 @@ export class EditEwDatabase extends React.Component {
 					<label>
 						Avain:
 					</label>
-					{!this.props.loading && this.props.ewDatabase.key}
+					{!this.props.loading && this.props.ewDatabase.databaseKey}
 				</div>
+				<div>
+					<input type="checkbox" checked={this.state.removeSongsFromExternalDatabase}
+						onChange={() => {
+							this.setState({
+								removeSongsFromExternalDatabase: !this.state.removeSongsFromExternalDatabase
+							});
+						}} />
+					Poista lauluja ew tietokannasta
+				</div>
+				<div>
+					<input type="checkbox" checked={this.state.removeSongsFromSongDatabase}
+						onChange={() => {
+							this.setState({
+								removeSongsFromSongDatabase: !this.state.removeSongsFromSongDatabase
+							});
+						}} />
+					Poista lauluja laulutietokannasta
+				</div>
+				<br />
+				<label>
+					Konflikti tilanteissa
+				</label>
+				<div>
+					<select value={this.state.variationVersionConflictAction}
+						onChange={e => {
+							this.setState({
+								variationVersionConflictAction: e.target.value
+							});
+						}}>
+						<option value={0}>
+							Valitse
+						</option>
+						<option value={1}>
+							Käytä ohjelman versiota
+						</option>
+						<option value={2}>
+							Käytä tietokannan versiota
+						</option>
+						<option value={3}>
+							Ilmoita konflikti tilanteet
+						</option>
+						<option value={4}>
+							Luo uusi oksa
+						</option>
+					</select>
+				</div>
+				<br />
 				<div className={AppendBottomBig}>
 					<label>
 						Laulutietokanta
@@ -94,12 +147,16 @@ export class EditEwDatabase extends React.Component {
 					Poista
 				</Button>
 				<Button bsStyle="success"
-					onClick={e => {
+					onClick={() => {
+						console.log("state", this.state);
 						this.props.editEwDatabase({
 							ewDatabaseId: this.props.ewDatabase.id,
 							name: this.state.name,
-							songDatabaseId: this.state.selectedSongDatabaseId
-						}).then(data => {
+							songDatabaseId: this.state.selectedSongDatabaseId,
+							removeSongsFromExternalDatabase: this.state.removeSongsFromExternalDatabase,
+							removeSongsFromSongDatabase: this.state.removeSongsFromSongDatabase,
+							variationVersionConflictAction: this.state.variationVersionConflictAction
+						}).then(() => {
 							this.props.history.push("/ewdatabases");
 						});
 					}}>
