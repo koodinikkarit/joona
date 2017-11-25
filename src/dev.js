@@ -3,7 +3,7 @@ import path from "path";
 import webpack from "webpack";
 import WebpackMiddleware from "webpack-dev-middleware";
 import bodyParser from "body-parser";
-import session from "express-session";
+import pluginsConfig from "./plugins-config";
 
 const moduleConfig = require(path.resolve(__dirname, "module-config"));
 
@@ -24,26 +24,14 @@ output.path = "/public/";
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(
-	session(
-		{ 
-			secret: "keyboard cat",
-			resave: false,
-			saveUninitialized: false,
-			cookie: { 
-				maxAge: 60000000,
-				secure: false
-			}
-		}
-	)
-);
 app.use("/static", express.static("public"));
 
 app.use(WebpackMiddleware(webpack({
 	devtool: "eval",
 	entry: entry,
 	module: moduleConfig,
-	output: output
+	output: output,
+	plugins: pluginsConfig
 }), {
 	contentBase: "../public/",
 	publicPath: "/js/",
