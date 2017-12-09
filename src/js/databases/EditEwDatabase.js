@@ -201,7 +201,9 @@ export default compose(
 		props: ({ mutate }) => ({
 			removeEwDatabase: (id) => mutate({
 				variables: {
-					ewDatabaseId: id
+					params: {
+						ewDatabaseId: id
+					}
 				},
 				// updateQueries: {
 				// 	searchEwDatabases: (prev, { mutationResult }) => {

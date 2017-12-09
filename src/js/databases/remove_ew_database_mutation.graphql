@@ -1,4 +1,6 @@
 
-mutation removeEwDatabase($ewDatabaseId: ID) {
-	removeEwDatabase(ewDatabaseId: $ewDatabaseId)
+mutation removeEwDatabase($params: RemoveEwDatabaseInput) {
+	removeEwDatabase(params: $params) {
+		success
+	}
 }
