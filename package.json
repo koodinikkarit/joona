@@ -1,12 +1,12 @@
 {
 	"name": "joona",
-	"version": "0.2.3",
+	"version": "0.2.4",
 	"scripts": {
 		"start": "npm run build-production && cd dist && node ./joona.js",
 		"build-dev": "webpack --config webpack.client.config.js && webpack --config webpack.server.config.js",
 		"build-production": "webpack -p --config webpack.client.config.js && webpack --config webpack.server.config.js",
 		"analyze": "webpack -p --config webpack.analyze.config.js",
-		"dev": "babel-node ./src/dev.js",
+		"dev": "env-cmd ./config.env babel-node ./src/dev.js",
 		"test": "npm run lint",
 		"lint": "eslint src/",
 		"lint-fix": "eslint --fix src/",
@@ -26,7 +26,6 @@
 		"css-loader": "0.28.4",
 		"draft-js": "0.10.1",
 		"express": "4.15.2",
-		"express-session": "1.15.5",
 		"graphql-tag": "^2.0.0",
 		"immutability-helper": "2.3.0",
 		"query-string": "5.0.0",
@@ -36,12 +35,11 @@
 		"react-dom": "^15.4.2",
 		"react-router": "4.1.1",
 		"react-router-dom": "^4.1.1",
-		"read-yaml": "1.1.0",
-		"request": "2.81.0",
 		"style-loader": "0.18.2",
 		"webpack": "^2.6.1",
 		"koodinikkarit-ui-kit": "^0.0.1",
-		"react-beautiful-dnd": "^2.3.1"
+		"react-beautiful-dnd": "^2.3.1",
+		"env-cmd": "^7.0.0"
 	},
 	"devDependencies": {
 		"babel-cli": "6.11.4",

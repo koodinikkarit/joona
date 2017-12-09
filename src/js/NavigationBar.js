@@ -34,37 +34,68 @@ export class NavigationBar extends React.Component {
 								Laulutietokannat
 							</Link>
 						</MenuItem>
-						<MenuItem eventKey={1.2}>
+						{/* <MenuItem eventKey={1.2}>
 							<Link to="/ewdatabases">
 								Ewtietokannat
 							</Link>
-						</MenuItem>
+						</MenuItem> */}
+						{/* <MenuItem eventKey={1.2}>
+							<Link to="/databaselinks">
+								Linkki ulkoiseen tietokantaan
+							</Link>
+						</MenuItem> */}
 					</NavDropdown>
 					<NavItem eventKey={2}>
 						<Link to="/songs">
 							Laulut
 						</Link>
 					</NavItem>
-					<NavItem eventKey={3}>
-						<Link to="/tags">
-							Tunnisteet
-						</Link>
-					</NavItem>
-					<NavItem eventKey={4}>
-						<Link to="/languages">
-							Kielet
-						</Link>
-					</NavItem>
-					<NavItem eventKey={5}>
-						<Link to="/schedules">
-							Aikataulut
-						</Link>
-					</NavItem>
-					<NavItem eventKey={6}>
-						<Link to="/logs">
-							Lokit
-						</Link>
-					</NavItem>
+					<NavDropdown eventKey={3} title="Lisukkeet">
+						<MenuItem eventKey={3.1}>
+							<Link to="/tags">
+								Tunnisteet
+							</Link>
+						</MenuItem>
+						<MenuItem eventKey={3.2}>
+							<Link to="/languages">
+								Kielet
+							</Link>
+						</MenuItem>
+						{/* <MenuItem eventKey={3.3}>
+							<Link to="/authors">
+								Kirjailijat
+							</Link>
+						</MenuItem>
+						<MenuItem eventKey={3.4}>
+							<Link to="/copyrights">
+								Tekijänoikeudet
+							</Link>
+						</MenuItem> */}
+					</NavDropdown>
+					{/* <NavDropdown eventKey={4} title="Tapahtumat">
+						<MenuItem eventKey={4.1}>
+							<Link to="/events">
+								Tapahtumat
+							</Link>
+						</MenuItem>
+						<MenuItem eventKey={4.2}>
+							<Link to="/schedules">
+								Aikataulut
+							</Link>
+						</MenuItem>
+					</NavDropdown>
+					<NavDropdown eventKey={5} title="Hallinta">
+						<MenuItem eventKey={5.1}>
+							<Link to="/logs">
+								Lokit
+							</Link>
+						</MenuItem>
+						<MenuItem eventKey={5.2}>
+							<Link to="/history">
+								Historia
+							</Link>
+						</MenuItem>
+					</NavDropdown> */}
 				</Nav>
 				<Nav pullRight>
 					<NavItem eventKey={1}>

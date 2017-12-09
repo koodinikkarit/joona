@@ -3,7 +3,10 @@ query ewDatabase($ewDatabaseId: ID!) {
 	ewDatabase(ewDatabaseId: $ewDatabaseId) {
 		id 
 		name
-		key
+		databaseKey
 		songDatabaseId
+		removeSongsFromExternalDatabase
+		removeSongsFromSongDatabase
+		variationVersionConflictAction
 	}
 }

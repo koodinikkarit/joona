@@ -1,4 +1,4 @@
 node_modules/*
-config.yml
+config.env
 dist/*
 *.log

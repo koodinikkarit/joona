@@ -1,5 +1,6 @@
 const path = require("path");
 const moduleConfig = require(path.resolve(__dirname, "src", "module-config"));
+const pluginsConfig = require(path.resolve(__dirname, "src", "plugins-config"));
 
 module.exports = {
 	module: moduleConfig,
@@ -9,5 +10,6 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, "dist"),
 		filename: "app.js"
-	}	
+	},
+	plugins: pluginsConfig	
 };

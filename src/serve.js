@@ -1,62 +1,8 @@
 import React from "react";
-// import {
-// 	match,
-// 	RouterContext
-// } from "react-router-dom";
-
-// import { 
-// 	ApolloClient, 
-// 	createNetworkInterface, 
-// 	ApolloProvider ,
-// 	renderToStringWithData
-// } from "react-apollo";
-
 import ReactDOMServer from "react-dom/server";
-import request from "request";
 import PageFrame from "./js/PageFrame";
 
-//import Routes from "./js/routes";
-
 export default (app) => {
-	app.post("/login", (req, res) => {
-		request.post("http://${process.env.JOONA_PETRI_IP}:${process.env.JOONA_PETRI_PORT}/login", {
-			form: req.body
-		}, (err, data) => {
-			if (!err) {
-				req.session.token = JSON.parse(data.body).token;
-				req.session.save();
-			}
-		});
-		res.redirect(302, "/");
-	});
-
-	if (process.env.JOONA_PETRI_IP && process.env.JOONA_PETRI_PORT) {
-		app.use("/api", (req, res) => {
-			request.post(
-				`http://${process.env.JOONA_PETRI_IP}:${process.env.JOONA_PETRI_PORT}/`,
-				{
-					headers: {
-						"token": req.session.token
-					},
-					form: req.body 
-				}, 
-				(err, data) => {
-					if (!data) {
-						console.log("500 service unvaivable");
-						res.writeHead(500);
-						res.end();
-					} else {
-						res.end(data.body);
-					}
-				});
-		});
-	} else {
-		app.use("/api", (req, res) => {
-			console.log("500 service unvaivable");
-			res.writeHead(500);
-			res.end();
-		});
-	}
 
 	app.use((req, res) => {
 		// match({

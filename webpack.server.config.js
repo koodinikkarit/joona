@@ -1,6 +1,6 @@
 const path = require("path");
-
 const moduleConfig = require(path.resolve(__dirname, "src", "module-config"));
+const pluginsConfig = require(path.resolve(__dirname, "src", "plugins-config"));
 
 module.exports = {
 	target: "node",
@@ -11,5 +11,6 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, "dist"),
 		filename: "joona.js"
-	}
+	},
+	plugins: pluginsConfig
 };
