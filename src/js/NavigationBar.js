@@ -34,16 +34,16 @@ export class NavigationBar extends React.Component {
 								Laulutietokannat
 							</Link>
 						</MenuItem>
-						<MenuItem eventKey={1.2}>
+						{/* <MenuItem eventKey={1.2}>
 							<Link to="/ewdatabases">
 								Ewtietokannat
 							</Link>
-						</MenuItem>
-						<MenuItem eventKey={1.3}>
+						</MenuItem> */}
+						{/* <MenuItem eventKey={1.2}>
 							<Link to="/databaselinks">
 								Linkki ulkoiseen tietokantaan
 							</Link>
-						</MenuItem>
+						</MenuItem> */}
 					</NavDropdown>
 					<NavItem eventKey={2}>
 						<Link to="/songs">
@@ -61,7 +61,7 @@ export class NavigationBar extends React.Component {
 								Kielet
 							</Link>
 						</MenuItem>
-						<MenuItem eventKey={3.3}>
+						{/* <MenuItem eventKey={3.3}>
 							<Link to="/authors">
 								Kirjailijat
 							</Link>
@@ -70,9 +70,9 @@ export class NavigationBar extends React.Component {
 							<Link to="/copyrights">
 								Tekijänoikeudet
 							</Link>
-						</MenuItem>
+						</MenuItem> */}
 					</NavDropdown>
-					<NavDropdown eventKey={4} title="Tapahtumat">
+					{/* <NavDropdown eventKey={4} title="Tapahtumat">
 						<MenuItem eventKey={4.1}>
 							<Link to="/events">
 								Tapahtumat
@@ -95,7 +95,7 @@ export class NavigationBar extends React.Component {
 								Historia
 							</Link>
 						</MenuItem>
-					</NavDropdown>
+					</NavDropdown> */}
 				</Nav>
 				<Nav pullRight>
 					<NavItem eventKey={1}>
