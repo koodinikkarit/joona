@@ -1,6 +1,0 @@
-query variations($params: VariationsInput) {
-	variations(params: $params) {
-		id
-		name
-	}
-}

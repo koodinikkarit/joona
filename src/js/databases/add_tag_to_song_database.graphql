@@ -1,5 +1,0 @@
-mutation addTagToSongDatabase($tagId: ID, $songDatabaseId: ID) {
-	addTagToSongDatabase(tagId: $tagId, songDatabaseId: $songDatabaseId) {
-
-	}
-}

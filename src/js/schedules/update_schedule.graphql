@@ -1,8 +1,0 @@
-mutation updateSchedule($params: UpdateScheduleInput) {
-	updateSchedule(params: $params) {
-		schedule {
-			id
-			name
-		}
-	}
-}

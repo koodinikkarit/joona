@@ -1,7 +1,0 @@
-
-query tag($tagId: ID) {
-	tag(tagId: $tagId) {
-		id
-		name
-	}
-}

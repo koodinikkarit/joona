@@ -1,5 +1,0 @@
-mutation removeSchedule($params: RemoveScheduleInput) {
-	removeSchedule(params: $params) {
-		success
-	}
-}

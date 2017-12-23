@@ -1,6 +1,0 @@
-
-mutation removeSongDatabase($params: RemoveSongDatabaseInput) {
-	removeSongDatabase(params: $params) {
-		success
-	}
-}
