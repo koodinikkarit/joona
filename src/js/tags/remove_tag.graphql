@@ -1,6 +1,0 @@
-
-mutation removeTag($params: RemoveTagInput) {
-	removeTag(params: $params) {
-		success
-	}
-}

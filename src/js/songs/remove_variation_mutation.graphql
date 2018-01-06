@@ -1,6 +1,0 @@
-
-mutation removeVariation($params: RemoveVariationInput) {
-	removeVariation(params: $params) {
-		success
-	}
-}

@@ -1,9 +1,0 @@
-
-mutation createSongdatabase($params: CreateSongDatabaseInput) {
-	createSongDatabase(params: $params) {
-		songDatabase {
-			id
-			name
-		}
-	}
-}

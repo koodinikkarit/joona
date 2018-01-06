@@ -1,6 +1,0 @@
-
-mutation removeEwDatabase($params: RemoveEwDatabaseInput) {
-	removeEwDatabase(params: $params) {
-		success
-	}
-}
