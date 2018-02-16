@@ -1,17 +1,24 @@
-import express from "express";
-import path from "path";
-import bodyParser from "body-parser";
-import serve from "./serve";
+import React, { Component } from "react";
+import "./App.css";
 
-const app = express();
+import { BrowserRouter as Router } from "react-router-dom";
 
+import Variations from "./Variations";
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use("/static", express.static("public"));
+import NavigationBar from "./navigationbar";
+import Routes from "./routes";
 
-app.use("/js/app.js", (req, res) => {
-	res.sendFile(path.join(process.cwd(), "app.js"));
-});
+class App extends Component {
+	render() {
+		return (
+			<Router>
+				<div>
+					<NavigationBar />
+					<Routes />
+				</div>
+			</Router>
+		);
+	}
+}
 
-serve(app);
+export default App;

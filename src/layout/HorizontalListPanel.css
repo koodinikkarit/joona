@@ -1,0 +1,17 @@
+
+.HorizontalListPanel {
+	float: left;
+	margin-right: 10px;
+}
+
+@media (min-width: 650px) {
+	.HorizontalListPanel {
+		min-width: 400px;
+	}
+}
+
+@media (max-width: 650px) {
+	.HorizontalListPanel {
+		width: 100%;
+	}
+}

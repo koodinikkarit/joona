@@ -1,9 +1,0 @@
-
-mutation createEwDatabase($params: CreateEwDatabaseInput) {
-	createEwDatabase(params: $params) {
-		ewDatabase {
-			id
-			name
-		}
-	}
-}

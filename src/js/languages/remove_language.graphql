@@ -1,5 +1,0 @@
-mutation removeLanguage($params: RemoveLanguageInput) {
-	removeLanguage(params: $params) {
-		success
-	}
-}

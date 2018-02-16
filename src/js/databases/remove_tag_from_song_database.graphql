@@ -1,3 +1,0 @@
-mutation removeTagFromSongDatabase($tagId: ID, $songDatabaseId: ID) {
-	removeTagFromSongDatabase(tagId: $tagId, songDatabaseId: $songDatabaseId)
-}

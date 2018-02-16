@@ -1,8 +1,0 @@
-mutation createSchedule($params: CreateScheduleInput) {
-	createSchedule(params: $params) {
-		schedule {
-			id
-			name
-		}
-	}
-}

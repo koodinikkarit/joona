@@ -1,3 +1,0 @@
-mutation removeTagFromVariation($tagId: ID, $variationId: ID) {
-	removeTagFromVariation(tagId: $tagId, variationId: $variationId)
-}

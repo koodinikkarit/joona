@@ -1,7 +1,0 @@
-
-query fetchUser {
-	user {
-		id
-		userName
-	}
-}

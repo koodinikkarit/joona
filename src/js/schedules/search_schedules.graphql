@@ -1,8 +1,0 @@
-query searchSchedules($params: SearchSchedulesInput) {
-	schedulesConnection: searchSchedules(params: $params) {
-		schedules {
-			id
-			name
-		}
-	}
-}
