@@ -83,9 +83,9 @@ export class NavigationBar extends React.Component {
 								Aikataulut
 							</Link>
 						</MenuItem>
-					</NavDropdown>
+					</NavDropdown> */}
 					<NavDropdown eventKey={5} title="Hallinta">
-						<MenuItem eventKey={5.1}>
+						{/* <MenuItem eventKey={5.1}>
 							<Link to="/logs">
 								Lokit
 							</Link>
@@ -94,8 +94,13 @@ export class NavigationBar extends React.Component {
 							<Link to="/history">
 								Historia
 							</Link>
+						</MenuItem> */}
+						<MenuItem eventKey={5.1}>
+							<Link to="/mm">
+								Matiakset
+							</Link>
 						</MenuItem>
-					</NavDropdown> */}
+					</NavDropdown>
 				</Nav>
 				<Nav pullRight>
 					<NavItem eventKey={1}>
