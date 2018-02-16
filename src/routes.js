@@ -9,6 +9,8 @@ import TagsPage from "./pages/TagsPage";
 import LanguagesPage from "./pages/LanguagesPage";
 import AuthorsPage from "./pages/AuthorsPage";
 import CopyrightPage from "./pages/CopyrightsPage";
+import MatiasClientsPage from "./pages/MatiasClientsPage";
+import MatiasClientPage from "./pages/MatiasClientPage";
 
 export default class Routes extends React.Component {
 	render() {
@@ -24,6 +26,14 @@ export default class Routes extends React.Component {
 					<Route path="/languages" component={LanguagesPage} />
 					<Route path="/authors" component={AuthorsPage} />
 					<Route path="/copyrights" component={CopyrightPage} />
+					<Route
+						path="/matiasclients"
+						component={MatiasClientsPage}
+					/>
+					<Route
+						path="/matiasclient/:matiasClientId"
+						component={MatiasClientPage}
+					/>
 				</Grid>
 			</div>
 		);

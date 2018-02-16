@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  "7"
+
+script:
+  - docker build -t $DOCKER_ID_USER/joona .
+
+after_success:
+  - docker login -u $DOCKER_ID_USER -p $DOCKER_USER_PASSWORD
+  - export TAG=${TRAVIS_TAG:-latest}
+  - docker tag $DOCKER_ID_USER/joona $DOCKER_ID_USER/joona:$TAG
+  - docker push $DOCKER_ID_USER/joona
