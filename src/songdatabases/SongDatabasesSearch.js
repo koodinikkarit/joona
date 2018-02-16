@@ -12,8 +12,8 @@ import FieldGroup from "../form/FieldGroup";
 
 export default graphql(
 	gql`
-		query searchSongDatabases($params: SearchSongDatabasesInput) {
-			allSongDatabases: searchSongDatabases(params: $params) {
+		query searchSongDatabases {
+			allSongDatabases: searchSongDatabases {
 				songDatabases {
 					id
 					name
@@ -62,7 +62,15 @@ export default graphql(
 					/>
 					<ListGroup>
 						{songDatabases.map(p => (
-							<ListGroupItem key={p.id} href="#">
+							<ListGroupItem
+								key={p.id}
+								href="#"
+								onClick={() => {
+									if (this.props.onSongDatabaseClicked) {
+										this.props.onSongDatabaseClicked(p.id);
+									}
+								}}
+							>
 								{p.name}
 							</ListGroupItem>
 						))}

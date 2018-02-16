@@ -42,7 +42,7 @@ export default class extends React.Component {
 					</NavDropdown>
 					<NavDropdown eventKey={5} title="Hallinta">
 						<MenuItem eventKey={5.1}>
-							<Link to="/mm">Matiakset</Link>
+							<Link to="/matiasclients">Matiakset</Link>
 						</MenuItem>
 					</NavDropdown>
 				</Nav>

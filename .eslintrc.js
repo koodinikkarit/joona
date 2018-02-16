@@ -4,7 +4,7 @@ module.exports = {
 		commonjs: true,
 		es6: true
 	},
-	extends: ["eslint:recommended", "react-app", "plugin:jsx-a11y/recommended"],
+	extends: ["eslint:recommended", "react-app"],
 	parser: "babel-eslint",
 	parserOptions: {
 		ecmaFeatures: {
@@ -13,7 +13,7 @@ module.exports = {
 		},
 		sourceType: "module"
 	},
-	plugins: ["react", "graphql", "jsx-a11y", "styled-components-config"],
+	plugins: ["react", "graphql", "styled-components-config"],
 	rules: {
 		indent: ["error", "tab"],
 		"linebreak-style": ["error", "unix"],

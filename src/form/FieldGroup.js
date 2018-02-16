@@ -55,7 +55,7 @@ export default class extends Component {
 							}, this.props.delay);
 						} else {
 							if (this.props.onChange) {
-								this.props.onChange(this.state.value);
+								this.props.onChange(e.target.value);
 							}
 						}
 					}}

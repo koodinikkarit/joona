@@ -49,7 +49,7 @@ export default graphql(
 					}
 				>
 					<FieldGroup
-						tyoe="text"
+						type="text"
 						label="Hakusana"
 						placeholder="Hakusana"
 						delay={400}
