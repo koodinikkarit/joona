@@ -12,7 +12,11 @@
         {
           "kind": "OBJECT",
           "name": "Query",
+<<<<<<< HEAD
           "description": null,
+=======
+          "description": "",
+>>>>>>> typescript
           "fields": [
             {
               "name": "variation",
@@ -103,6 +107,7 @@
                 }
               ],
               "type": {
+<<<<<<< HEAD
                 "kind": "LIST",
                 "name": null,
                 "ofType": {
@@ -110,6 +115,11 @@
                   "name": "Variation",
                   "ofType": null
                 }
+=======
+                "kind": "OBJECT",
+                "name": "VariationsConnection",
+                "ofType": null
+>>>>>>> typescript
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -141,6 +151,7 @@
             {
               "name": "searchSongDatabases",
               "description": "",
+<<<<<<< HEAD
               "args": [],
               "type": {
                 "kind": "LIST",
@@ -150,6 +161,54 @@
                   "name": "SongDatabase",
                   "ofType": null
                 }
+=======
+              "args": [
+                {
+                  "name": "offset",
+                  "description": "",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "limit",
+                  "description": "",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "searchWord",
+                  "description": "",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "variationId",
+                  "description": "",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "SongDatabasesConnection",
+                "ofType": null
+>>>>>>> typescript
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -183,7 +242,87 @@
               "args": [],
               "type": {
                 "kind": "OBJECT",
+<<<<<<< HEAD
                 "name": "SearchMatiasClientsResponse",
+=======
+                "name": "MatiasClientsConnection",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "ewDatabase",
+              "description": "",
+              "args": [
+                {
+                  "name": "ewDatabaseId",
+                  "description": "",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "EwDatabase",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "searchEwDatabases",
+              "description": "",
+              "args": [
+                {
+                  "name": "offset",
+                  "description": "",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "limit",
+                  "description": "",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "songDatabaseId",
+                  "description": "",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "matiasClientId",
+                  "description": "",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "EwDatabasesConnection",
+>>>>>>> typescript
                 "ofType": null
               },
               "isDeprecated": false,
@@ -353,6 +492,42 @@
               },
               "isDeprecated": false,
               "deprecationReason": null
+<<<<<<< HEAD
+=======
+            },
+            {
+              "name": "songDatabases",
+              "description": "",
+              "args": [
+                {
+                  "name": "offset",
+                  "description": "",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "limit",
+                  "description": "",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "SongDatabasesConnection",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+>>>>>>> typescript
             }
           ],
           "inputFields": null,
@@ -510,7 +685,185 @@
         },
         {
           "kind": "OBJECT",
+<<<<<<< HEAD
           "name": "VariationVersion",
+          "description": "",
+          "fields": [
+            {
+              "name": "id",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "name",
+=======
+          "name": "SongDatabasesConnection",
+          "description": "",
+          "fields": [
+            {
+              "name": "totalCount",
+>>>>>>> typescript
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+<<<<<<< HEAD
+                "name": "String",
+=======
+                "name": "Int",
+>>>>>>> typescript
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+<<<<<<< HEAD
+              "name": "text",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "version",
+=======
+              "name": "songDatabases",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "SongDatabase",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "SongDatabase",
+          "description": "",
+          "fields": [
+            {
+              "name": "id",
+>>>>>>> typescript
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+<<<<<<< HEAD
+                "name": "Int",
+=======
+                "name": "ID",
+>>>>>>> typescript
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+<<<<<<< HEAD
+              "name": "createdAt",
+=======
+              "name": "name",
+>>>>>>> typescript
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+<<<<<<< HEAD
+              "name": "disabledAt",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+=======
+              "name": "variations",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Variation",
+                  "ofType": null
+                }
+>>>>>>> typescript
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+<<<<<<< HEAD
+              "name": "variation",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Variation",
+                "ofType": null
+=======
+              "name": "tags",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Tag",
+                  "ofType": null
+                }
+>>>>>>> typescript
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+<<<<<<< HEAD
+          "name": "SongDatabase",
+=======
+          "name": "Tag",
+>>>>>>> typescript
           "description": "",
           "fields": [
             {
@@ -538,6 +891,123 @@
               "deprecationReason": null
             },
             {
+              "name": "variations",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Variation",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+<<<<<<< HEAD
+            },
+            {
+              "name": "tags",
+=======
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "VariationsConnection",
+          "description": "",
+          "fields": [
+            {
+              "name": "totalCount",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "variations",
+>>>>>>> typescript
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+<<<<<<< HEAD
+                  "name": "Tag",
+=======
+                  "name": "Variation",
+>>>>>>> typescript
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+<<<<<<< HEAD
+          "name": "Tag",
+=======
+          "name": "VariationVersion",
+>>>>>>> typescript
+          "description": "",
+          "fields": [
+            {
+              "name": "id",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "name",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+<<<<<<< HEAD
+              "name": "variations",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Variation",
+                  "ofType": null
+                }
+=======
               "name": "text",
               "description": "",
               "args": [],
@@ -593,124 +1063,7 @@
                 "kind": "OBJECT",
                 "name": "Variation",
                 "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "SongDatabase",
-          "description": "",
-          "fields": [
-            {
-              "name": "id",
-              "description": "",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "ID",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "name",
-              "description": "",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "variations",
-              "description": "",
-              "args": [],
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Variation",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "tags",
-              "description": "",
-              "args": [],
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Tag",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "Tag",
-          "description": "",
-          "fields": [
-            {
-              "name": "id",
-              "description": "",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "ID",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "name",
-              "description": "",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "variations",
-              "description": "",
-              "args": [],
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Variation",
-                  "ofType": null
-                }
+>>>>>>> typescript
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -848,7 +1201,11 @@
               "deprecationReason": null
             },
             {
+<<<<<<< HEAD
               "name": "matiasClientID",
+=======
+              "name": "matiasClientId",
+>>>>>>> typescript
               "description": "",
               "args": [],
               "type": {
@@ -884,7 +1241,11 @@
               "deprecationReason": null
             },
             {
+<<<<<<< HEAD
               "name": "songDatabaseID",
+=======
+              "name": "songDatabaseId",
+>>>>>>> typescript
               "description": "",
               "args": [],
               "type": {
@@ -951,10 +1312,29 @@
         },
         {
           "kind": "OBJECT",
+<<<<<<< HEAD
           "name": "SearchMatiasClientsResponse",
           "description": "",
           "fields": [
             {
+=======
+          "name": "MatiasClientsConnection",
+          "description": "",
+          "fields": [
+            {
+              "name": "totalCount",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+>>>>>>> typescript
               "name": "matiasClients",
               "description": "",
               "args": [],
@@ -969,9 +1349,26 @@
               },
               "isDeprecated": false,
               "deprecationReason": null
+<<<<<<< HEAD
             },
             {
               "name": "maxMatiasClients",
+=======
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "EwDatabasesConnection",
+          "description": "",
+          "fields": [
+            {
+              "name": "totalCount",
+>>>>>>> typescript
               "description": "",
               "args": [],
               "type": {
@@ -981,6 +1378,25 @@
               },
               "isDeprecated": false,
               "deprecationReason": null
+<<<<<<< HEAD
+=======
+            },
+            {
+              "name": "ewDatabases",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "EwDatabase",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+>>>>>>> typescript
             }
           ],
           "inputFields": null,
@@ -991,7 +1407,11 @@
         {
           "kind": "OBJECT",
           "name": "Mutation",
+<<<<<<< HEAD
           "description": null,
+=======
+          "description": "",
+>>>>>>> typescript
           "fields": [
             {
               "name": "createVariation",
@@ -1020,7 +1440,11 @@
               ],
               "type": {
                 "kind": "OBJECT",
+<<<<<<< HEAD
                 "name": "CreateVariationResponse",
+=======
+                "name": "Variation",
+>>>>>>> typescript
                 "ofType": null
               },
               "isDeprecated": false,
@@ -1031,6 +1455,7 @@
               "description": "",
               "args": [
                 {
+<<<<<<< HEAD
                   "name": "variationId",
                   "description": "",
                   "type": {
@@ -1052,20 +1477,12 @@
                 },
                 {
                   "name": "text",
+=======
+                  "name": "params",
                   "description": "",
                   "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
-                  "name": "languageId",
-                  "description": "",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "ID",
+                    "kind": "INPUT_OBJECT",
+                    "name": "UpdateVariationInputType",
                     "ofType": null
                   },
                   "defaultValue": null
@@ -1108,6 +1525,72 @@
               "args": [
                 {
                   "name": "name",
+>>>>>>> typescript
+                  "description": "",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+<<<<<<< HEAD
+                },
+                {
+                  "name": "languageId",
+                  "description": "",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+=======
+>>>>>>> typescript
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+<<<<<<< HEAD
+                "name": "UpdateVariationResponse",
+=======
+                "name": "SongDatabase",
+>>>>>>> typescript
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+<<<<<<< HEAD
+              "name": "removeVariation",
+              "description": "",
+              "args": [
+                {
+                  "name": "variationId",
+=======
+              "name": "updateSongDatabase",
+              "description": "",
+              "args": [
+                {
+                  "name": "songDatabaseId",
+>>>>>>> typescript
+                  "description": "",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+<<<<<<< HEAD
+                }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+=======
+                },
+                {
+                  "name": "name",
                   "description": "",
                   "type": {
                     "kind": "SCALAR",
@@ -1119,18 +1602,67 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "SongDatabase",
+                "name": "UpdateSongDatabaseResponse",
+>>>>>>> typescript
                 "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
+<<<<<<< HEAD
+              "name": "createSongDatabase",
+              "description": "",
+              "args": [
+                {
+                  "name": "name",
+                  "description": "",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+=======
+              "name": "removeSongDatabase",
+              "description": "",
+              "args": [
+                {
+                  "name": "songDatabaseId",
+                  "description": "",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+>>>>>>> typescript
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+<<<<<<< HEAD
+                "kind": "OBJECT",
+                "name": "SongDatabase",
+=======
+                "kind": "SCALAR",
+                "name": "Boolean",
+>>>>>>> typescript
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+<<<<<<< HEAD
               "name": "updateSongDatabase",
               "description": "",
               "args": [
                 {
                   "name": "songDatabaseId",
+=======
+              "name": "updateMatiasClient",
+              "description": "",
+              "args": [
+                {
+                  "name": "matiasClientId",
+>>>>>>> typescript
                   "description": "",
                   "type": {
                     "kind": "SCALAR",
@@ -1148,22 +1680,83 @@
                     "ofType": null
                   },
                   "defaultValue": null
+<<<<<<< HEAD
+=======
+                },
+                {
+                  "name": "accepted",
+                  "description": "",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+>>>>>>> typescript
                 }
               ],
               "type": {
                 "kind": "OBJECT",
+<<<<<<< HEAD
                 "name": "UpdateSongDatabaseResponse",
+=======
+                "name": "UpdateMatiasClientResponse",
+>>>>>>> typescript
                 "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
+<<<<<<< HEAD
               "name": "removeSongDatabase",
               "description": "",
               "args": [
                 {
+=======
+              "name": "createEwDatabase",
+              "description": "",
+              "args": [
+                {
+                  "name": "name",
+                  "description": "",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "filesystemPath",
+                  "description": "",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+>>>>>>> typescript
                   "name": "songDatabaseId",
+                  "description": "",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+<<<<<<< HEAD
+                }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+=======
+                },
+                {
+                  "name": "matiasClientId",
                   "description": "",
                   "type": {
                     "kind": "SCALAR",
@@ -1174,19 +1767,28 @@
                 }
               ],
               "type": {
-                "kind": "SCALAR",
-                "name": "Boolean",
+                "kind": "OBJECT",
+                "name": "EwDatabase",
+>>>>>>> typescript
                 "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
+<<<<<<< HEAD
               "name": "updateMatiasClient",
               "description": "",
               "args": [
                 {
                   "name": "matiasClientId",
+=======
+              "name": "updateEwDatabase",
+              "description": "",
+              "args": [
+                {
+                  "name": "ewDatabaseId",
+>>>>>>> typescript
                   "description": "",
                   "type": {
                     "kind": "SCALAR",
@@ -1218,7 +1820,11 @@
               ],
               "type": {
                 "kind": "OBJECT",
+<<<<<<< HEAD
                 "name": "UpdateMatiasClientResponse",
+=======
+                "name": "UpdateEwDatabaseResponse",
+>>>>>>> typescript
                 "ofType": null
               },
               "isDeprecated": false,
@@ -1231,6 +1837,7 @@
           "possibleTypes": null
         },
         {
+<<<<<<< HEAD
           "kind": "OBJECT",
           "name": "CreateVariationResponse",
           "description": "",
@@ -1250,6 +1857,83 @@
           ],
           "inputFields": null,
           "interfaces": [],
+=======
+          "kind": "INPUT_OBJECT",
+          "name": "UpdateVariationInputType",
+          "description": "",
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "variationId",
+              "description": "",
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "name",
+              "description": "",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "text",
+              "description": "",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "languageId",
+              "description": "",
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "addSongDatabaseIds",
+              "description": "",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "removeSongDatabaseIds",
+              "description": "",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+>>>>>>> typescript
           "enumValues": null,
           "possibleTypes": null
         },
@@ -1329,6 +2013,21 @@
           "description": "",
           "fields": [
             {
+<<<<<<< HEAD
+=======
+              "name": "success",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+>>>>>>> typescript
               "name": "matiasClient",
               "description": "",
               "args": [],
@@ -1339,7 +2038,22 @@
               },
               "isDeprecated": false,
               "deprecationReason": null
+<<<<<<< HEAD
             },
+=======
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "UpdateEwDatabaseResponse",
+          "description": "",
+          "fields": [
+>>>>>>> typescript
             {
               "name": "success",
               "description": "",
@@ -1351,6 +2065,21 @@
               },
               "isDeprecated": false,
               "deprecationReason": null
+<<<<<<< HEAD
+=======
+            },
+            {
+              "name": "ewDatabase",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "EwDatabase",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+>>>>>>> typescript
             }
           ],
           "inputFields": null,
@@ -2195,12 +2924,106 @@
             }
           ],
           "possibleTypes": null
+<<<<<<< HEAD
+=======
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Person",
+          "description": "",
+          "fields": [
+            {
+              "name": "id",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "name",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Schedule",
+          "description": "",
+          "fields": [
+            {
+              "name": "id",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "name",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "variations",
+              "description": "",
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Variation",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+>>>>>>> typescript
         }
       ],
       "directives": [
         {
+<<<<<<< HEAD
           "name": "include",
           "description": "Directs the executor to include this field or fragment only when the `if` argument is true.",
+=======
+          "name": "skip",
+          "description": "Directs the executor to skip this field or fragment when the `if` argument is true.",
+>>>>>>> typescript
           "locations": [
             "FIELD",
             "FRAGMENT_SPREAD",
@@ -2209,7 +3032,11 @@
           "args": [
             {
               "name": "if",
+<<<<<<< HEAD
               "description": "Included when true.",
+=======
+              "description": "Skipped when true.",
+>>>>>>> typescript
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
@@ -2224,8 +3051,13 @@
           ]
         },
         {
+<<<<<<< HEAD
           "name": "skip",
           "description": "Directs the executor to skip this field or fragment when the `if` argument is true.",
+=======
+          "name": "include",
+          "description": "Directs the executor to include this field or fragment only when the `if` argument is true.",
+>>>>>>> typescript
           "locations": [
             "FIELD",
             "FRAGMENT_SPREAD",
@@ -2234,7 +3066,11 @@
           "args": [
             {
               "name": "if",
+<<<<<<< HEAD
               "description": "Skipped when true.",
+=======
+              "description": "Included when true.",
+>>>>>>> typescript
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
