@@ -41,6 +41,7 @@
 		"@types/lodash": "^4.14.92",
 		"@types/graphql": "^0.11.7",
 		"@types/query-string": "^5.0.1",
-		"env-cmd": "^7.0.0"
+		"env-cmd": "^7.0.0",
+		"ts-graphql-plugin": "^1.1.2"
 	}
 }

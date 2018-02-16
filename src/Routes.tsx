@@ -5,7 +5,8 @@ import {
 	SongDatabasesPage,
 	SongDatabasePage,
 	MatiasClientPage,
-	MatiasClientsPage
+	MatiasClientsPage,
+	SongsPage
 } from "./pages";
 
 export const Routes = () => {
@@ -21,6 +22,7 @@ export const Routes = () => {
 				component={MatiasClientPage}
 			/>
 			<Route path="/matiasclients" component={MatiasClientsPage} />
+			<Route path="/songs" component={SongsPage} />
 		</div>
 	);
 };

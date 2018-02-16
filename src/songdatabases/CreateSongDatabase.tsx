@@ -1,10 +1,10 @@
 import * as React from "react";
 import gql from "graphql-tag";
-import { graphql, compose } from "react-apollo";
+import { graphql, ChildProps } from "react-apollo";
 
-import { Button, Panel } from "react-bootstrap";
+import { Button, Panel, FormGroup, ControlLabel } from "react-bootstrap";
 
-import { FieldGroup } from "../forms";
+import { TextInput } from "../forms";
 
 import {
 	searchSongDatabasesQuery,
@@ -13,68 +13,18 @@ import {
 
 import { SongDatabaseType } from "../types";
 
-type UpdateCreateSongDatabaseFormContentInputProps = {
-	name: string;
-};
-
-type CreateSongDatabasePcInputTypes = {
+type InputProps = {
 	onSuccess?: () => void;
 	onCancel?: () => void;
-	name?: string | number;
-	createSongDatabase?: (
-		{ name }: { name: string }
-	) => Promise<SongDatabaseType>;
-	withUpdateCreateSongDatabaseFormContent?: (
-		props: UpdateCreateSongDatabaseFormContentInputProps
-	) => void;
 };
 
-const CreateSongDatabasePC = (props: CreateSongDatabasePcInputTypes) => {
-	return (
-		<Panel header="Luo uusi laulutietokanta">
-			<FieldGroup
-				type="text"
-				label="Nimi"
-				placeholder="Nimi"
-				value={props.name}
-				onChange={value => {
-					props.withUpdateCreateSongDatabaseFormContent({
-						name: value as string
-					});
-				}}
-			/>
-
-			<Button
-				style={{ marginRight: "10px" }}
-				onClick={() => {
-					if (props.onCancel) {
-						props.onCancel();
-					}
-				}}
-			>
-				Peruuta
-			</Button>
-			<Button
-				bsStyle="success"
-				onClick={() => {
-					props
-						.createSongDatabase({
-							name: props.name as string
-						})
-						.then(() => {
-							if (props.onSuccess) {
-								props.onSuccess();
-							}
-						});
-				}}
-			>
-				Tallenna
-			</Button>
-		</Panel>
-	);
+type ResponseProps = {
+	onSuccess?: () => void;
+	onCancel?: () => void;
+	createSongDatabase?: (props: { name: string }) => Promise<SongDatabaseType>;
 };
 
-const withCreateSongDatabaseMutation = graphql(
+const withCreateSongDatabaseMutation = graphql<InputProps, ResponseProps>(
 	gql`
 		mutation createSongDatabase($name: String) {
 			songDatabase: createSongDatabase(name: $name) {
@@ -85,52 +35,90 @@ const withCreateSongDatabaseMutation = graphql(
 	`,
 	{
 		props: ({ mutate }) => ({
-			createSongDatabase: ({ name }: { name: string }) => {
-				return mutate({
-					variables: { name },
-					update: (
-						proxy,
-						{
-							data: { songDatabase }
-						}: { data: { songDatabase: SongDatabaseType } }
-					) => {
-						const data: SearchSongDatabasesQueryResponseType = proxy.readQuery(
+			data: {
+				createSongDatabase: props =>
+					mutate({
+						variables: props,
+						update: (
+							proxy,
 							{
-								query: searchSongDatabasesQuery
-							}
-						);
-						data.allSongDatabases.maxSongDatabases += 1;
-						data.allSongDatabases.songDatabases.push(songDatabase);
-						proxy.writeQuery({
-							query: searchSongDatabasesQuery,
-							data
-						});
-					}
-				});
+								data: { songDatabase }
+							}: { data: { songDatabase: SongDatabaseType } }
+						) => {
+							const data: SearchSongDatabasesQueryResponseType = proxy.readQuery(
+								{
+									query: searchSongDatabasesQuery
+								}
+							);
+							data.allSongDatabases.maxSongDatabases += 1;
+							data.allSongDatabases.songDatabases.push(
+								songDatabase
+							);
+							proxy.writeQuery({
+								query: searchSongDatabasesQuery,
+								data
+							});
+						}
+					})
 			}
 		})
 	}
 );
 
-const withUpdateCreateSongDatabaseFormContent = graphql(
-	gql`
-		mutation updateCreateSongDatabaseFormContent($name: String) {
-			updateCreateSongDatabaseFromContent(name: $name)
+export const CreateSongDatabase = withCreateSongDatabaseMutation(
+	class extends React.Component<ChildProps<InputProps, ResponseProps>, {}> {
+		state = {
+			name: ""
+		};
+
+		render() {
+			console.log("props", this.props);
+			if (this.props.data.loading) {
+				return <div />;
+			}
+
+			return (
+				<Panel header="Luo uusi laulutietokanta">
+					<FormGroup>
+						<ControlLabel>Nimi</ControlLabel>
+						<TextInput
+							placeholder="Nimi"
+							value={this.state.name}
+							onChange={value => {
+								console.log("newValue", value);
+								this.setState({
+									name: value
+								});
+							}}
+						/>
+					</FormGroup>
+
+					<Button
+						style={{ marginRight: "10px" }}
+						onClick={() => {
+							if (this.props.onCancel) {
+								this.props.onCancel();
+							}
+						}}
+					>
+						Peruuta
+					</Button>
+					<Button
+						bsStyle="success"
+						onClick={() => {
+							this.props.data
+								.createSongDatabase({
+									name: this.state.name
+								})
+								.then(() => {
+									this.props.onSuccess();
+								});
+						}}
+					>
+						Tallenna
+					</Button>
+				</Panel>
+			);
 		}
-	`,
-	{
-		props: ({ mutate }) => ({
-			updateCreateSongDatabaseFormContent: (
-				props: UpdateCreateSongDatabaseFormContentInputProps
-			) =>
-				mutate({
-					variables: props
-				})
-		})
 	}
 );
-
-export const CreateSongDatabase = compose(
-	withCreateSongDatabaseMutation,
-	withUpdateCreateSongDatabaseFormContent
-)(CreateSongDatabasePC);

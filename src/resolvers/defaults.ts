@@ -24,5 +24,15 @@ export const defaults = {
 		filesystemPath: "",
 		songDatabaseId: 0,
 		__typename: "CreateEwDatabaseState"
-	}
+	},
+	songsPageState: {
+		creatingSong: false,
+		__typename: "SongsPage"
+	},
+	createVariationState: {
+		name: "",
+		text: "",
+		__typename: "CreateVariationState"
+	},
+	changedVariations: []
 };

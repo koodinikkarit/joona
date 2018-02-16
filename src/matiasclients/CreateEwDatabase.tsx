@@ -11,6 +11,7 @@ import { FieldGroup } from "../forms";
 type InputProps = {
 	onSuccess?: () => void;
 	onCancel?: () => void;
+	matiasClientId: number;
 };
 
 type Parameters = {
@@ -22,7 +23,14 @@ type Parameters = {
 type ResponseProps = {
 	onSuccess?: () => void;
 	onCancel?: () => void;
-	createEwDatabase?: (props: Parameters) => Promise<any>;
+	createEwDatabase?: (
+		props: {
+			name: string;
+			filesystemPath: string;
+			songDatabaseId: number;
+			matiasClientId: number;
+		}
+	) => Promise<any>;
 	updateState?: (props: Parameters) => void;
 	data?: {
 		state: {
@@ -31,6 +39,7 @@ type ResponseProps = {
 			songDatabaseId: number;
 		};
 	};
+	matiasClientId: number;
 };
 
 const CREATE_EW_DATABASE_MUTATION = gql`
@@ -38,12 +47,19 @@ const CREATE_EW_DATABASE_MUTATION = gql`
 		$name: String
 		$filesystemPath: String
 		$songDatabaseId: ID
+		$matiasClientId: ID
 	) {
 		createEwDatabase(
 			name: $name
 			filesystemPath: $filesystemPath
 			songDatabaseId: $songDatabaseId
-		)
+			matiasClientId: $matiasClientId
+		) {
+			id
+			name
+			filesystemPath
+			songDatabaseId
+		}
 	}
 `;
 
@@ -75,9 +91,10 @@ const withCreateEwDatabase = graphql<ResponseProps, InputProps>(
 	CREATE_EW_DATABASE_MUTATION,
 	{
 		props: ({ mutate }) => ({
-			createEwDatabase: variables => ({
-				variables
-			})
+			createEwDatabase: variables =>
+				mutate({
+					variables
+				})
 		})
 	}
 );
@@ -150,7 +167,21 @@ export const CreateEwDatabase = compose(
 				>
 					Peruuta
 				</Button>
-				<Button bsStyle="success"> Luo </Button>
+				<Button
+					bsStyle="success"
+					onClick={() => {
+						console.log("createEwDatabase??");
+						props.createEwDatabase({
+							name: props.data.state.name,
+							filesystemPath: props.data.state.filesystemPath,
+							songDatabaseId: props.data.state.songDatabaseId,
+							matiasClientId: props.matiasClientId
+						});
+					}}
+				>
+					{" "}
+					Luo{" "}
+				</Button>
 			</div>
 		</Panel>
 	);

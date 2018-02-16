@@ -12,11 +12,11 @@ const batchHttpLink = new BatchHttpLink({
 	uri: `http://localhost:9595`
 });
 
-console.log("resolvers", resolvers);
-
 const localState = withClientState({ cache, resolvers, defaults });
 
+const link = ApolloLink.from([localState, batchHttpLink]);
+
 export const client = new ApolloClient({
-	link: ApolloLink.from([localState, batchHttpLink]),
+	link,
 	cache
 });

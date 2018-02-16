@@ -11,6 +11,8 @@ type FieldGroupInputTypes = {
 	min?: number;
 	max?: number;
 	placeholder?: string;
+	componentClass?: string;
+	style?: React.CSSProperties;
 	type?:
 		| "text"
 		| "email"
@@ -65,6 +67,7 @@ export class FieldGroup extends React.Component<FieldGroupInputTypes, Object> {
 			<FormGroup>
 				<ControlLabel>{this.props.label}</ControlLabel>
 				<FormControl
+					componentClass={this.props.componentClass}
 					type={this.props.type}
 					value={this.state.value}
 					min={this.props.min}

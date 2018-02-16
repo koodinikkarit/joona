@@ -73,7 +73,7 @@ const withSetSongDatabaseSearchWord = graphql(
 const searchSongDatabasesQuery = gql`
 	query searchSongDatabases {
 		allSongDatabases: searchSongDatabases {
-			maxSongDatabases
+			totalCount
 			songDatabases {
 				id
 				name

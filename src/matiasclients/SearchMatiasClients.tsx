@@ -59,7 +59,7 @@ const withMatiasClients = graphql(gql`
 				key
 				accepted
 			}
-			maxMatiasClients
+			totalCount
 		}
 	}
 `);

@@ -24,6 +24,13 @@ type ResponseProps = {
 	};
 	matiasClientId?: number;
 	updateState?: (props: ControlMatiasClientStateType) => void;
+	updateMatiasClient?: (
+		props: {
+			matiasClientId: number;
+			name?: string;
+			accepted?: boolean;
+		}
+	) => Promise<any>;
 };
 
 const withMatiasClient = graphql<ResponseProps, InputProps>(
@@ -70,14 +77,48 @@ const withUpdateControlMatiasClient = graphql<ResponseProps, InputProps>(
 	}
 );
 
+const UPDATE_MATIASCLIENT_MUTATION = gql`
+	mutation UpdateMatiasClient(
+		$matiasClientId: ID
+		$name: String
+		$accepted: Boolean
+	) {
+		updateMatiasClient(
+			matiasClientId: $matiasClientId
+			name: $name
+			accepted: $accepted
+		) {
+			success
+			matiasClient {
+				id
+				hostName
+				accepted
+			}
+		}
+	}
+`;
+
+const withUpdateMatiasClient = graphql<ResponseProps, InputProps>(
+	UPDATE_MATIASCLIENT_MUTATION,
+	{
+		props: ({ mutate }) => ({
+			updateMatiasClient: props => {
+				return mutate({
+					variables: props
+				});
+			}
+		})
+	}
+);
+
 export const ControlMatiasClient = compose(
 	withMatiasClient,
-	withUpdateControlMatiasClient
+	withUpdateControlMatiasClient,
+	withUpdateMatiasClient
 )((props: ResponseProps) => {
 	if (props.data.loading) {
 		return <h1>Ladataan...</h1>;
 	}
-	console.log("props", props);
 	return (
 		<Panel header={<h3>Hallitse matiasta</h3>}>
 			<label>Isäntänimi: </label>
@@ -91,14 +132,35 @@ export const ControlMatiasClient = compose(
 			{props.data.matiasClient && props.data.matiasClient.key}
 			<div style={{ marginBottom: "20px" }}>
 				{props.data.matiasClient && props.data.matiasClient.accepted ? (
-					<Button bsStyle="danger">Hylkää </Button>
+					<Button
+						bsStyle="danger"
+						onClick={() => {
+							props.updateMatiasClient({
+								matiasClientId: props.matiasClientId,
+								accepted: false
+							});
+						}}
+					>
+						Hylkää{" "}
+					</Button>
 				) : (
-					<Button bsStyle="success">Hyväksy </Button>
+					<Button
+						bsStyle="success"
+						onClick={() => {
+							props.updateMatiasClient({
+								matiasClientId: props.matiasClientId,
+								accepted: true
+							});
+						}}
+					>
+						Hyväksy{" "}
+					</Button>
 				)}
 			</div>
 			<div style={{ marginBottom: "20px" }}>
 				{props.data.controlMatiasClientState.creatingEwDatabase ? (
 					<CreateEwDatabase
+						matiasClientId={props.matiasClientId}
 						onCancel={() => {
 							props.updateState({
 								creatingEwDatabase: false

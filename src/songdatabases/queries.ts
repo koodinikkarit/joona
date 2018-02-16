@@ -11,7 +11,7 @@ export type SearchSongDatabasesQueryResponseType = {
 export const searchSongDatabasesQuery = gql`
 	query searchSongDatabases {
 		allSongDatabases: searchSongDatabases {
-			maxSongDatabases
+			totalCount
 			songDatabases {
 				id
 				name

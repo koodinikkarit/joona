@@ -3,11 +3,7 @@
 		"outDir": "build/dist",
 		"module": "esnext",
 		"target": "es5",
-		"lib": [
-			"es6",
-			"dom",
-			"esnext.asynciterable"
-		],
+		"lib": ["es6", "dom", "esnext.asynciterable"],
 		"sourceMap": true,
 		"allowJs": true,
 		"jsx": "react",
@@ -19,7 +15,14 @@
 		"noImplicitAny": false,
 		"strictNullChecks": false,
 		"suppressImplicitAnyIndexErrors": true,
-		"noUnusedLocals": true
+		"noUnusedLocals": true,
+		"plugins": [
+			{
+				"name": "ts-graphql-plugin",
+				"schema": "schema.json",
+				"tag": "gql"
+			}
+		]
 	},
 	"exclude": [
 		"node_modules",
