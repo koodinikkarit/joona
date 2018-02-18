@@ -32,5 +32,7 @@ export const initializeConnection = () => {
 		connectionOptions.password = mysqlPassword;
 	}
 
+	console.log("connectionOptions", connectionOptions);
+
 	return createConnection(connectionOptions);
 };
