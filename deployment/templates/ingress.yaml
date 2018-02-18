@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: {{ .Release.Name }}-joona-ingress
   annotations:
+    kubernetes.io/ingress.class: "nginx"
 spec:
   backend:
     serviceName: {{ .Release.Name }}-joona-api-service
