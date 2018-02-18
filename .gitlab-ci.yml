@@ -55,4 +55,4 @@ deploy-production:
     - ./linux/install_dependencies.sh
     - ./linux/setup_kubectl.sh
     - ./linux/install_tiller.sh
-    - ./linux/helm_upgrade.shr
+    - ./linux/helm_upgrade.sh
