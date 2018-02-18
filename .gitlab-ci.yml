@@ -1,5 +1,8 @@
 image: docker:latest
 
+before_script:
+  - chmod +x ./linux/*.sh
+
 stages:
   - building
   - unit-testing
