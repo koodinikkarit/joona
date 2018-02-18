@@ -9,8 +9,6 @@ import {
 import { Variation } from "../entities";
 import { InitializeSchema1518825023453 } from "../migrations/1518825023453-InitializeSchema";
 
-console.log("mysqlUsername", mysqlUsername);
-
 export const initializeConnection = () => {
 	let connectionOptions: any = {
 		type: "mysql",
