@@ -10,4 +10,4 @@ helm upgrade \
 	--set mysqlDatabaseName=joona$RELEASE_NAME \
 	--set mysqlHost=$MYSQL_HOST \
 	--set mysqlUser=$MYSQL_USER \
-	--install doorhub-$RELEASE_NAME ./deployment
+	--install $RELEASE_NAME ./deployment
