@@ -20,6 +20,8 @@ spec:
               value: "8080"
             - name: MYSQL_PORT
               value: "3306"
+            - name: MYSQL_PASSWORD
+              value: "qwerty"
             - name: MYSQL_HOST
               value: "{{ .Values.mysqlHost }}"
             - name: MYSQL_USER
