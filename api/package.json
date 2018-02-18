@@ -6,12 +6,15 @@
 		"start": "env-cmd ./config.env ts-node-dev --respawn src/app.ts",
 		"watch": "tsc --watch -p tsconfig.json",
 		"build": "tsc -p tsconfig.json",
-		"app": "env-cmd ./config.env ts-node src/app.ts",
+		"app": "env-cmd ./config.env node dist/app.js",
 		"prettier": "prettier **/src/*.ts",
-		"build-schemadef": "node combineGraphqlSchema.js && graphql-to-typescript schema.gql src/schemadef.ts",
-		"build-json-schema": "node combineGraphqlSchema.js && apollo-codegen introspect-schema schema.gql --output schema.json",
+		"build-schemadef":
+			"node combineGraphqlSchema.js && graphql-to-typescript schema.gql src/schemadef.ts",
+		"build-json-schema":
+			"node combineGraphqlSchema.js && apollo-codegen introspect-schema schema.gql --output schema.json",
 		"create-migration": "typeorm migrations:create -n",
-		"generate-migrations": "env-cmd ./config.env typeorm migrations:generate -n",
+		"generate-migrations":
+			"env-cmd ./config.env typeorm migrations:generate -n",
 		"migrations": "env-cmd ./config.env typeorm migrations:run",
 		"revert-migration": "env-cmd ./config.env typeorm migrations:revert",
 		"clean": "rimraf ./node_modules"
