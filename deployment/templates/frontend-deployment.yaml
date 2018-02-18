@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-joona-frontend
+  labels:
+    app: {{ .Release.Name }}-joona-frontend
+spec:
+  template:
+    metadata:
+      labels:
+        app: joona-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: "{{ .Values.joonaFrontendImage }}"
+          ports:
+            - containerPort: 8080
+          env:
+            - name: API_IP
+              value: api.{{ .Values.basedomain }}
+            - name: API_PORT
+              value: "80"
+            - name: HTTP_PORT
+              value: "8080"

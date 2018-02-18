@@ -45,3 +45,11 @@ build-joona-api-image:
     - docker push jaska/joona-api
   cache:
     untracked: true
+
+deploy-production:
+  stage: production
+  script:
+    - ./linux/install_dependencies.sh
+    - ./linux/setup_kubectl.sh
+    - ./linux/install_tiller.sh
+    - ./linux/helm_upgrade.shr

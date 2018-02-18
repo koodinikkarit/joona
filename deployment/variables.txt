@@ -1,0 +1,7 @@
+joonaApiImage
+mysqlHost
+mysqlUser
+mysqlPassword
+mysqlDatabaseName
+joonaFrontendImage
+baseDomain
