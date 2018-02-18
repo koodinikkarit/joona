@@ -24,10 +24,13 @@ export const prepareDatabase = () =>
 					connection.query(
 						`create database if not exists ${mysqlDatabaseName}`,
 						err => {
+							console.log("create database query redy");
 							connection.destroy();
 							if (!err) {
+								console.log("success");
 								resolve();
 							} else {
+								console.log("failed");
 								reject(err);
 							}
 						}
