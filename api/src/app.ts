@@ -7,7 +7,7 @@ import { graphqlExpress, graphiqlExpress } from "apollo-server-express";
 import { initializeConnection } from "./database/initializeconnection";
 import { schema } from "./schema";
 import { httpPort } from "./config";
-import { prepareDatabase } from "./preparedatabase";
+import { prepareDatabase } from "./prepareDatabase";
 
 import * as config from "./config";
 
