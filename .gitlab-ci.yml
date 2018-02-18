@@ -23,6 +23,7 @@ build-joona-api:
   script:
     - cd api
     - npm install
+    - npm run build-schemadef
     - npm run build
   cache:
     untracked: true

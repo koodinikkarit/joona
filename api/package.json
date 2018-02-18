@@ -51,6 +51,7 @@
 		"tslint-config-prettier": "^1.8.0",
 		"ts-node": "^4.1.0",
 		"ts-node-dev": "^1.0.0-pre.16",
-		"apollo-codegen": "^0.18.5"
+		"apollo-codegen": "^0.18.5",
+		"graphql-to-typescript": "^0.1.2"
 	}
 }
