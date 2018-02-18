@@ -29,17 +29,17 @@ build-joona-api:
     untracked: true
 
 build-joona-frontend-image:
-  image: node:9.3.0-wheezy
   stage: docker-images
   script:
+    - docker login -u $DOCKER_ID_USER -p $DOCKER_USER_PASSWORD
     - docker build -t jaska/joona/frontend:$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA -f dockerfiles/frontend/Dockerfile .
   cache: 
     untracked: true
 
 build-joona-api-image:
-  image: node:9.3.0-wheezy
   stage: docker-images
   script:
+    - docker login -u $DOCKER_ID_USER -p $DOCKER_USER_PASSWORD
     - docker build -t jaska/joona/api:$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA -f dockerfiles/api/Dockerfile .
   cache:
     untracked: true
