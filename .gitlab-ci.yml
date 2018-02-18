@@ -33,6 +33,7 @@ build-joona-frontend-image:
   script:
     - docker login -u $DOCKER_ID_USER -p $DOCKER_USER_PASSWORD
     - docker build -t jaska/joona/frontend:$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA -f dockerfiles/frontend/Dockerfile .
+    - docker push jaska/joona/frontend
   cache: 
     untracked: true
 
@@ -41,5 +42,6 @@ build-joona-api-image:
   script:
     - docker login -u $DOCKER_ID_USER -p $DOCKER_USER_PASSWORD
     - docker build -t jaska/joona/api:$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA -f dockerfiles/api/Dockerfile .
+    - docker push jaska/joona/api
   cache:
     untracked: true
