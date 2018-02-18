@@ -1,0 +1,44 @@
+image: docker:latest
+
+stages:
+  - building
+  - unit-testing
+  - docker-images
+  - staging
+  - production
+
+build-joona-frontend:
+  image: node:9.3.0-wheezy
+  stage: building
+  script:
+    - cd frontend
+    - npm install
+    - npm run build
+  cache:
+    untracked: true
+
+build-joona-api:
+  image: node:9.3.0-wheezy
+  stage: building
+  script:
+    - cd api
+    - npm install
+    - npm run build
+  cache:
+    untracked: true
+
+build-joona-frontend-image:
+  image: node:9.3.0-wheezy
+  stage: docker-images
+  script:
+    - docker build -t jaska/joona/frontend:$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA -f dockerfiles/frontend/Dockerfile .
+  cache: 
+    untracked: true
+
+build-joona-api-image:
+  image: node:9.3.0-wheezy
+  stage: docker-images
+  script:
+    - docker build -t jaska/joona/api:$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA -f dockerfiles/api/Dockerfile .
+  cache:
+    untracked: true

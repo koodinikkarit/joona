@@ -3,6 +3,10 @@ end_of_line = lf
 indent_style = tab
 indent_size = 4
 
-[.travis.yml]
+[*.yml]
+indent_style = space
+indent_size = 2
+
+[*.yaml]
 indent_style = space
 indent_size = 2
