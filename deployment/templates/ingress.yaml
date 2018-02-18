@@ -5,7 +5,7 @@ metadata:
   annotations:
 spec:
   backend:
-    serviceName: {{ .Release.Name }}-joona-frontend-service
+    serviceName: {{ .Release.Name }}-joona-api-service
     servicePort: 80
   rules:
   - host: {{ .Values.basedomain }}
