@@ -30,7 +30,7 @@ export const prepareDatabase = () =>
 								console.log("success");
 								resolve();
 							} else {
-								console.log("failed");
+								console.log("failed", err);
 								reject(err);
 							}
 						}
