@@ -11,12 +11,20 @@ import {
 export const prepareDatabase = () =>
 	new Promise((resolve, reject) => {
 		const tryToConnect = () => {
-			const connection = createConnection({
+			const connectionOptions: any = {
 				host: mysqlHost,
-				user: mysqlUsername,
-				password: mysqlPassword,
-				port: mysqlPort
-			});
+				user: mysqlUsername
+			};
+
+			if (mysqlPassword) {
+				connectionOptions.password = mysqlPassword;
+			}
+
+			if (mysqlPort) {
+				connectionOptions.port = mysqlPort;
+			}
+
+			const connection = createConnection(connectionOptions);
 
 			connection.connect(err => {
 				if (!err) {
