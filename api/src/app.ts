@@ -15,7 +15,7 @@ console.log("config", config);
 
 export const Main = async () =>
 	new Promise(async (resolve, reject) => {
-		// await prepareDatabase();
+		await prepareDatabase();
 		await initializeConnection();
 
 		const app = express();

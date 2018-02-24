@@ -4,50 +4,22 @@ before_script:
   - chmod +x ./linux/*.sh
 
 stages:
-  - building
-  - unit-testing
-  - docker-images
-  - staging
+  - Build
   - production
 
-build-joona-frontend:
-  image: node:9.3.0-wheezy
-  stage: building
-  script:
-    - cd frontend
-    - npm install
-    - npm run build
-  cache:
-    untracked: true
-
-build-joona-api:
-  image: node:9.3.0-wheezy
-  stage: building
-  script:
-    - cd api
-    - npm install
-    - npm run build-schemadef
-    - npm run build
-  cache:
-    untracked: true
-
 build-joona-frontend-image:
-  stage: docker-images
+  stage: Build
   script:
     - docker login -u $DOCKER_ID_USER -p $DOCKER_USER_PASSWORD
     - docker build -t jaska/joona-frontend:$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA -f dockerfiles/frontend/Dockerfile .
     - docker push jaska/joona-frontend
-  cache: 
-    untracked: true
 
 build-joona-api-image:
-  stage: docker-images
+  stage: Build
   script:
     - docker login -u $DOCKER_ID_USER -p $DOCKER_USER_PASSWORD
     - docker build -t jaska/joona-api:$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA -f dockerfiles/api/Dockerfile .
     - docker push jaska/joona-api
-  cache:
-    untracked: true
 
 deploy-production:
   stage: production

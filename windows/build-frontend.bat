@@ -1,0 +1,1 @@
+docker build -t jaska/joona-frontend -f dockerfiles/frontend/Dockerfile .
