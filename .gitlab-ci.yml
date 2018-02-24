@@ -1,4 +1,4 @@
-image: docker:latest
+image: docker:18.02.0-git
 
 before_script:
   - chmod +x ./linux/*.sh
