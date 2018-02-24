@@ -14,11 +14,11 @@ spec:
         - name: frontend
           image: "{{ .Values.joonaFrontendImage }}"
           ports:
-            - containerPort: 8080
+            - containerPort: 80
           env:
             - name: API_IP
               value: api.{{ .Values.basedomain }}
             - name: API_PORT
               value: "80"
             - name: HTTP_PORT
-              value: "8080"
+              value: "80"
