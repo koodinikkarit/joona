@@ -6,8 +6,9 @@ import {
 	mysqlDatabaseName,
 	mysqlPort
 } from "../config";
-import { Variation } from "../entities";
+import { Variation, User } from "../entities";
 import { InitializeSchema1518825023453 } from "../migrations/1518825023453-InitializeSchema";
+import { AddUSersTable1519559635038 } from "../migrations/1519559635038-AddUSersTable";
 
 export const initializeConnection = () => {
 	let connectionOptions: any = {
@@ -18,8 +19,8 @@ export const initializeConnection = () => {
 		synchronize: false,
 		logging: true,
 		migrationsRun: true,
-		entities: [Variation],
-		migrations: [InitializeSchema1518825023453]
+		entities: [Variation, User],
+		migrations: [InitializeSchema1518825023453, AddUSersTable1519559635038]
 	};
 
 	if (mysqlPort) {

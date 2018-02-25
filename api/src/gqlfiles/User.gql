@@ -1,0 +1,15 @@
+type User {
+	id: ID
+	userName: String
+	passwordHash: String
+	isAdmin: Boolean
+}
+
+type LoginResponse {
+	success: Boolean
+}
+
+type RegisterResponse {
+	success: Boolean
+	userNameAlreadyInUse: Boolean
+}

@@ -6,23 +6,45 @@ import {
 	SongDatabasePage,
 	MatiasClientPage,
 	MatiasClientsPage,
-	SongsPage
+	SongsPage,
+	LoginPage,
+	RegisterPage
 } from "./pages";
+import { graphql, ChildProps } from "react-apollo";
+import { PAGE_VIEWER_QUERY } from "./servergql";
+import { getPageViewerQuery } from "./types";
 
-export const Routes = () => {
-	return (
-		<div>
-			<Route path="/songdatabases" component={SongDatabasesPage} />
-			<Route
-				path="/songdatabase/:songDatabaseId"
-				component={SongDatabasePage}
-			/>
-			<Route
-				path="/matiasclient/:matiasClientId"
-				component={MatiasClientPage}
-			/>
-			<Route path="/matiasclients" component={MatiasClientsPage} />
-			<Route path="/songs" component={SongsPage} />
-		</div>
-	);
-};
+const withViewer = graphql(PAGE_VIEWER_QUERY);
+
+export const Routes = withViewer(
+	(props: ChildProps<{}, getPageViewerQuery>) => {
+		if (props.data.loading) {
+			return <div />;
+		}
+
+		if (props.data.error) {
+			return <div />;
+		}
+
+		if (!props.data.viewer.adminInitialized) {
+			return <RegisterPage />;
+		}
+
+		return (
+			<div>
+				<Route path="/songdatabases" component={SongDatabasesPage} />
+				<Route
+					path="/songdatabase/:songDatabaseId"
+					component={SongDatabasePage}
+				/>
+				<Route
+					path="/matiasclient/:matiasClientId"
+					component={MatiasClientPage}
+				/>
+				<Route path="/matiasclients" component={MatiasClientsPage} />
+				<Route path="/songs" component={SongsPage} />
+				<Route path="/login" component={LoginPage} />
+			</div>
+		);
+	}
+);

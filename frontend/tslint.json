@@ -9,7 +9,7 @@
 		"eofline": false,
 		"forin": true,
 		"indent": [true, "tabs"],
-		"interface-name": [true, "never-prefix"],
+		"interface-name": [true, "always"],
 		"jsdoc-format": true,
 		"jsx-no-lambda": false,
 		"jsx-no-multiline-js": false,

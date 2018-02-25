@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
-export const NAVIGATION_BAR_VIEWER = gql`
-	query getNavigationBarViewer {
+export const PAGE_VIEWER_QUERY = gql`
+	query getPageViewer {
 		viewer {
 			id
 			user {
