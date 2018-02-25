@@ -15,10 +15,3 @@ spec:
           image: "{{ .Values.joonaFrontendImage }}"
           ports:
             - containerPort: 80
-          env:
-            - name: API_IP
-              value: api.{{ .Values.basedomain }}
-            - name: API_PORT
-              value: "80"
-            - name: HTTP_PORT
-              value: "80"
