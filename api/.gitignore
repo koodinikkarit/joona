@@ -3,3 +3,4 @@ dist
 config.env
 src/schemadef.ts
 schema.gql
+schema.json

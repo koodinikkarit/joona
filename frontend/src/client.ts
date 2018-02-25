@@ -19,6 +19,9 @@ const protocol = window.location.protocol;
 const isHttps = protocol.includes("https:");
 
 export const getApiBaseUrl = () => {
+	if (!config.API_IP || !config.API_PORT) {
+		return window.location.origin;
+	}
 	const port = isHttps ? config.API_HTTPS_PORT : config.API_PORT;
 	return `${window.location.protocol}//${config.API_IP}:${port}`;
 };

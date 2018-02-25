@@ -1,3 +1,5 @@
+export * from "./operation-results-types";
+
 export type SongDatabaseType = {
 	id: number;
 	name: string;

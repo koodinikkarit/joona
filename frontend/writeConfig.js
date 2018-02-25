@@ -5,14 +5,9 @@ const API_PORT = process.env.API_PORT;
 const API_HTTPS_PORT = process.env.API_HTTPS_PORT;
 const API_IP = process.env.API_IP;
 
-if (!API_IP)
-	throw new Error(
-		"API_IP environment variable is not defined in file config.env"
-	);
-
 const config = `
 window.config = {
-	API_IP: "${API_IP}",
+	API_IP: ${API_IP ? `"${API_IP}"` : "null"},
 	API_PORT: ${API_PORT || 80},
 	API_HTTPS_PORT: ${API_HTTPS_PORT || 443}
 };
