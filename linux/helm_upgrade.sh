@@ -10,4 +10,4 @@ helm upgrade \
 	--set mysqlDatabaseName=joona$RELEASE_NAME \
 	--set mysqlHost=$MYSQL_HOST \
 	--set mysqlUser=$MYSQL_USER \
-	--install $RELEASE_NAME ./deployment
+	--install joona-$RELEASE_NAME ./deployment
