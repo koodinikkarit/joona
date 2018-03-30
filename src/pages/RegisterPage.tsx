@@ -55,7 +55,7 @@ export const RegisterPage = compose(withPageViewer, wtihRegisterUser)(
 				return <div />;
 			}
 
-			console.log("props", this.props);
+			// console.log("props", this.props);
 
 			return (
 				<Grid fluid={false}>
