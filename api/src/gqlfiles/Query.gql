@@ -1,4 +1,0 @@
-type Query {
-	variation(variationId: ID): Variation
-	viewer: Viewer
-}

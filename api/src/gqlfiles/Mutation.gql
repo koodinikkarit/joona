@@ -1,8 +1,0 @@
-type Mutation {
-	login(userName: String, password: String): LoginResponse
-	registerUser(
-		userName: String!
-		password: String!
-		admin: Boolean
-	): RegisterResponse
-}

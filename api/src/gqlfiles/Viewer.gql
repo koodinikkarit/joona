@@ -1,5 +1,0 @@
-type Viewer {
-	id: ID
-	adminInitialized: Boolean
-	user: User
-}

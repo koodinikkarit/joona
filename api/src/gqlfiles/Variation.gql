@@ -1,3 +1,0 @@
-type Variation {
-	id: ID!
-}
