@@ -1,11 +1,16 @@
-FROM node:9.3.0-wheezy
-WORKDIR /usr/src/joona
+FROM node:9.3.0-wheezy as builder
+WORKDIR /usr/src
 COPY ./src ./src
 COPY ./public ./public
-ADD package.json package.json
 ADD package-lock.json package-lock.json
-ADD production-app.js production-app.js
+ADD package.json package.json
+ADD tsconfig.json tsconfig.json
+ADD tsconfig.test.json tsconfig.test.json
+ADD tslint.json tslint.json
 RUN npm install
+RUN npm run build-schema-types
 RUN npm run build
-CMD ["npm", "run", "start-production"]
-EXPOSE 8080
+
+FROM nginx:1.13
+COPY --from=builder /usr/src/build /usr/share/nginx/html
+CMD ["nginx -g 'daemon off;'"]
