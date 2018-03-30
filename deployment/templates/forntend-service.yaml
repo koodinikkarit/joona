@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: {{ .Release.Name }}-joona-frontend-service
+  name: joona-service
 spec:
   selector:
-    app: joona-frontend
+    app: joona
   ports:
   - protocol: TCP
     port: 80

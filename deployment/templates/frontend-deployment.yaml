@@ -1,17 +1,17 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-joona-frontend
+  name: joona
   labels:
-    app: {{ .Release.Name }}-joona-frontend
+    app: joona
 spec:
   template:
     metadata:
       labels:
-        app: joona-frontend
+        app: joona
     spec:
       containers:
-        - name: frontend
-          image: "{{ .Values.joonaFrontendImage }}"
+        - name: joona-container
+          image: "{{ .Values.joonaImage }}"
           ports:
             - containerPort: 80
