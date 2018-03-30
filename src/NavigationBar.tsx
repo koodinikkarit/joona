@@ -1,18 +1,34 @@
 import * as React from "react";
 
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from "react-bootstrap";
+import {
+	Navbar,
+	Nav,
+	NavItem,
+	NavDropdown,
+	MenuItem,
+	Button
+} from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 import { Link } from "react-router-dom";
-import { graphql, ChildProps } from "react-apollo";
-import { PAGE_VIEWER_QUERY } from "./servergql";
+import { graphql, ChildProps, compose, MutationResult } from "react-apollo";
+import { PAGE_VIEWER_QUERY, USER_LOGOUT_MUTATION } from "./servergql";
 
-import { getNavigationBarViewerQuery } from "./types";
+import { getPageViewerQuery, logoutMutation } from "./types";
+
+type InputProps = {};
+
+interface IResponseProps extends getPageViewerQuery {}
+
+interface INavigationBar extends ChildProps<InputProps, IResponseProps> {
+	logout: () => Promise<MutationResult<logoutMutation>>;
+}
 
 const withViewer = graphql(PAGE_VIEWER_QUERY);
+const withLogout = graphql(USER_LOGOUT_MUTATION);
 
-export const NavigationBar = withViewer(
-	(props: ChildProps<{}, getNavigationBarViewerQuery>) => {
+export const NavigationBar = compose(withViewer, withLogout)(
+	(props: INavigationBar) => {
 		if (props.data.loading) {
 			return <div />;
 		}
@@ -69,12 +85,31 @@ export const NavigationBar = withViewer(
 						</LinkContainer>
 					</NavDropdown>
 				</Nav>
+				{props.data.viewer &&
+					props.data.viewer.user && (
+						<Nav pullRight={true}>
+							<NavItem
+								style={{
+									marginTop: "-7px",
+									marginBottom: "-7px"
+								}}
+							>
+								<Button
+									onClick={() => {
+										// props..logout();
+									}}
+								>
+									Kirjaudu ulos
+								</Button>
+							</NavItem>
+						</Nav>
+					)}
 				<Nav pullRight={true}>
-					{props.data.viewer.adminInitialized &&
-						!props.data.viewer.user && (
-							<LinkContainer to="/login">
-								<NavItem eventKey={1}>Kirjaudu</NavItem>
-							</LinkContainer>
+					{props.data.viewer &&
+						props.data.viewer.user && (
+							<NavItem eventKey={1}>
+								{props.data.viewer.user.userName}
+							</NavItem>
 						)}
 				</Nav>
 			</Navbar>

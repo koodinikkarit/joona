@@ -3,12 +3,12 @@ import gql from "graphql-tag";
 export const PAGE_VIEWER_QUERY = gql`
 	query getPageViewer {
 		viewer {
-			id
+			token
 			user {
 				id
 				userName
 			}
-			adminInitialized
+			hasAdminUser
 		}
 	}
 `;
