@@ -1,20 +1,16 @@
-language: node_js
-node_js:
-  "7"
+sudo: enabled
 
-stages:
-  - building
-  - docker-images
-  - deployment
+os:
+  - linux
 
-jobs:
-  - 
+before_script:
+  - chmod +x ./linux/*.sh
 
 script:
-  - docker build -t $DOCKER_ID_USER/joona .
-
-after_success:
+  - docker build -t $DOCKER_ID_USER/joona:$TRAVIS_BRANCH-$TRAVIS_COMMIT .
   - docker login -u $DOCKER_ID_USER -p $DOCKER_USER_PASSWORD
-  - export TAG=${TRAVIS_TAG:-latest}
-  - docker tag $DOCKER_ID_USER/joona $DOCKER_ID_USER/joona:$TAG
   - docker push $DOCKER_ID_USER/joona
+  - ./linux/install_dependencies.sh
+  - ./linux/setup_kubectl.sh
+  - ./linux/install_tiller.sh
+  - ./linux/helm_upgrade.sh
