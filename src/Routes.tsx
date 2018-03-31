@@ -30,8 +30,8 @@ export const Routes = withViewer(
 		if (!props.data.viewer.hasAdminUser) {
 			window.location.replace(
 				process.env.REACT_APP_MARKO_BASE_URL
-					? process.env.REACT_APP_MARKO_BASE_URL
-					: "/"
+					? process.env.REACT_APP_MARKO_BASE_URL + "/createadmin"
+					: "/createadmin"
 			);
 		}
 
