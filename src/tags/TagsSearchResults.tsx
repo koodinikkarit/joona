@@ -25,10 +25,8 @@ export const TagsSearchResults = (inputProps: InputProps) => {
 						{props.data &&
 							props.data.searchTags &&
 							props.data.searchTags.tags.map(p => (
-								<LinkContainer to={`/tag/${p.id}`}>
-									<ListGroupItem key={p.id}>
-										{p.name}
-									</ListGroupItem>
+								<LinkContainer to={`/tag/${p.id}`} key={p.id}>
+									<ListGroupItem>{p.name}</ListGroupItem>
 								</LinkContainer>
 							))}
 					</ListGroup>
