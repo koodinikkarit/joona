@@ -29,13 +29,15 @@ export const Routes = withViewer(
 
 		if (!props.data.viewer.hasAdminUser) {
 			window.location.replace(
-				process ? process.env.REACT_APP_MARKO_BASE_URL : "/"
+				process.env.REACT_APP_MARKO_BASE_URL
+					? process.env.REACT_APP_MARKO_BASE_URL
+					: "/"
 			);
 		}
 
 		if (!props.data.viewer.user) {
 			window.location.replace(
-				process
+				process.env.REACT_APP_MARKO_BASE_URL
 					? process.env.REACT_APP_MARKO_BASE_URL + "/login"
 					: "/login"
 			);
