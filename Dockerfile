@@ -13,4 +13,4 @@ RUN npm run build
 
 FROM nginx:1.13
 COPY --from=builder /usr/src/build /usr/share/nginx/html
-CMD ["nginx -g 'daemon off;'"]
+CMD nginx -g 'daemon off;'

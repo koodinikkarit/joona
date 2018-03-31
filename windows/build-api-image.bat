@@ -1,1 +1,0 @@
-docker build -t jaska/joona-api -f dockerfiles/api/Dockerfile .
