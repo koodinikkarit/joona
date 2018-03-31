@@ -10,7 +10,7 @@ export class TagSearch extends React.Component {
 	render() {
 		return (
 			<Panel>
-				<Panel.Heading>asd</Panel.Heading>
+				<Panel.Heading>Hae tunnisteita</Panel.Heading>
 				<Panel.Body>
 					<div
 						style={{
@@ -30,7 +30,7 @@ export class TagSearch extends React.Component {
 							}}
 						/>
 					</div>
-					<TagsSearchResults />
+					<TagsSearchResults searchWord={this.state.searchWord} />
 				</Panel.Body>
 			</Panel>
 		);
