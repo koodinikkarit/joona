@@ -13,7 +13,7 @@
 		"core-js": "^2.5.3",
 		"es6-string-polyfills": "^1.0.0",
 		"es6-weak-map": "^2.0.2",
-		"petri-client": "^0.0.19",
+		"petri-client": "^0.0.20",
 		"react-apollo": "^2.1.1",
 		"graphql": "^0.12.3",
 		"graphql-tag": "^2.8.0",

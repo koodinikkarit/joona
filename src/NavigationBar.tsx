@@ -25,7 +25,9 @@ interface INavigationBar extends ChildProps<InputProps, IResponseProps> {
 }
 
 const withViewer = graphql(PAGE_VIEWER_QUERY);
-const withLogout = graphql(USER_LOGOUT_MUTATION);
+const withLogout = graphql(USER_LOGOUT_MUTATION, {
+	name: "logout"
+});
 
 export const NavigationBar = compose(withViewer, withLogout)(
 	(props: INavigationBar) => {
@@ -96,7 +98,7 @@ export const NavigationBar = compose(withViewer, withLogout)(
 							>
 								<Button
 									onClick={() => {
-										// props..logout();
+										props.logout();
 									}}
 								>
 									Kirjaudu ulos
