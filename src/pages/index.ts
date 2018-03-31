@@ -4,3 +4,6 @@
 // export * from "./MatiasClientsPage";
 // export * from "./SongsPage";
 // export * from "./LoginPage";
+
+export * from "./LanguagesPage";
+export * from "./TagsPage";

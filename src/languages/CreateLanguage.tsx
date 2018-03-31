@@ -1,73 +1,74 @@
 import * as React from "react";
+import { Button, Panel, ControlLabel, FormControl } from "react-bootstrap";
 import {
 	Mutation,
-	MutationOptions,
 	FetchResult,
+	MutationOptions,
 	ExecutionResult
 } from "react-apollo";
-
-import { Button, Panel, ControlLabel, FormControl } from "react-bootstrap";
-import { CREATE_TAG_MUTATION, SEARCH_TAGS_QUERY } from "../servergql";
+import { CREATE_LANGUAGE_MUTATION, SEARCH_LANGUAGES_QUERY } from "../servergql";
 import {
-	createTagMutationVariables,
-	createTagMutation,
-	searchTagsQuery
+	createLanguageMutationVariables,
+	createLanguageMutation,
+	searchLanguagesQuery
 } from "../types";
 
-export class CreateTag extends React.Component<{
+export class CreateLanguage extends React.Component<{
 	searchWord?: string;
 }> {
 	state = {
-		creatingTag: false,
+		creatingLanguage: false,
 		name: ""
 	};
 
 	render() {
-		if (!this.state.creatingTag) {
+		if (!this.state.creatingLanguage) {
 			return (
 				<Button
 					bsStyle="info"
 					onClick={() => {
 						this.setState({
-							creatingTag: true
+							creatingLanguage: true
 						});
 					}}
 				>
-					Uusi tunniste
+					Uusi kieli
 				</Button>
 			);
 		}
 
 		return (
 			<Mutation
-				mutation={CREATE_TAG_MUTATION}
+				mutation={CREATE_LANGUAGE_MUTATION}
 				update={(
 					cache,
-					dataContainer: ExecutionResult<createTagMutation>
+					dataContainer: ExecutionResult<createLanguageMutation>
 				) => {
-					const tags: searchTagsQuery = cache.readQuery({
-						query: SEARCH_TAGS_QUERY
-					});
+					const languagesContainer: searchLanguagesQuery = cache.readQuery(
+						{
+							query: SEARCH_LANGUAGES_QUERY
+						}
+					);
 
-					if (dataContainer.data.createTag.tag) {
-						tags.searchTags.tags.unshift(
-							dataContainer.data.createTag.tag
+					if (dataContainer.data.createLanguage.language) {
+						languagesContainer.searchLanguages.languages.unshift(
+							dataContainer.data.createLanguage.language
 						);
 
 						cache.writeQuery({
-							query: SEARCH_TAGS_QUERY,
-							data: tags
+							query: SEARCH_LANGUAGES_QUERY,
+							data: languagesContainer
 						});
 					}
 				}}
 			>
 				{(
-					createTag: (
-						props: MutationOptions<createTagMutationVariables>
-					) => Promise<FetchResult<createTagMutation>>
+					createLanguage: (
+						props: MutationOptions<createLanguageMutationVariables>
+					) => Promise<FetchResult<createLanguageMutation>>
 				) => (
 					<Panel>
-						<Panel.Heading>Luo tunniste</Panel.Heading>
+						<Panel.Heading>Luo kieli</Panel.Heading>
 						<Panel.Body>
 							<div
 								style={{
@@ -77,8 +78,8 @@ export class CreateTag extends React.Component<{
 								<ControlLabel>Nimi</ControlLabel>
 								<FormControl
 									type="text"
-									value={this.state.name}
 									placeholder="Nimi"
+									value={this.state.name}
 									onChange={e => {
 										const target = e.target as HTMLInputElement;
 										this.setState({
@@ -93,7 +94,7 @@ export class CreateTag extends React.Component<{
 								}}
 								onClick={() => {
 									this.setState({
-										creatingTag: false,
+										creatingLanguage: false,
 										name: ""
 									});
 								}}
@@ -103,21 +104,21 @@ export class CreateTag extends React.Component<{
 							<Button
 								bsStyle="success"
 								onClick={() => {
-									createTag({
+									createLanguage({
 										variables: {
 											name: this.state.name
 										}
 									}).then(res => {
 										// if (res.data.createTag.success) {
 										this.setState({
-											creatingTag: false,
+											creatingLanguage: false,
 											name: ""
 										});
 										// }
 									});
 								}}
 							>
-								Luo tunniste
+								Luo kieli
 							</Button>
 						</Panel.Body>
 					</Panel>
