@@ -28,19 +28,11 @@ export const Routes = withViewer(
 		}
 
 		if (!props.data.viewer.hasAdminUser) {
-			window.location.replace(
-				process.env.REACT_APP_MARKO_BASE_URL
-					? process.env.REACT_APP_MARKO_BASE_URL + "/createadmin"
-					: "/createadmin"
-			);
+			window.location.replace("/createadmin");
 		}
 
 		if (!props.data.viewer.user) {
-			window.location.replace(
-				process.env.REACT_APP_MARKO_BASE_URL
-					? process.env.REACT_APP_MARKO_BASE_URL + "/login"
-					: "/login"
-			);
+			window.location.replace("/login");
 		}
 
 		return (
