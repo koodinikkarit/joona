@@ -14,6 +14,7 @@ import { PAGE_VIEWER_QUERY } from "./servergql";
 import { getPageViewerQuery } from "./types";
 import { TagsPage } from "./pages/TagsPage";
 import { LanguagesPage, LoginPage, AuthorsPage } from "./pages";
+import { CopyrightsPage } from "./pages/CopyrightsPage";
 
 const withViewer = graphql(PAGE_VIEWER_QUERY);
 
@@ -37,6 +38,7 @@ export const Routes = withViewer(
 				<Route path="/languages" component={LanguagesPage} />
 				<Route path="/login" component={LoginPage} />
 				<Route path="/authors" component={AuthorsPage} />
+				<Route path="/copyrights" component={CopyrightsPage} />
 				{/* <Route path="/songdatabases" component={SongDatabasesPage} />
 				<Route
 					path="/songdatabase/:songDatabaseId"
