@@ -8,3 +8,4 @@
 export * from "./LanguagesPage";
 export * from "./TagsPage";
 export * from "./LoginPage";
+export * from "./AuthorsPage";

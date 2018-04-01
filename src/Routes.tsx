@@ -13,7 +13,7 @@ import { graphql, ChildProps } from "react-apollo";
 import { PAGE_VIEWER_QUERY } from "./servergql";
 import { getPageViewerQuery } from "./types";
 import { TagsPage } from "./pages/TagsPage";
-import { LanguagesPage, LoginPage } from "./pages";
+import { LanguagesPage, LoginPage, AuthorsPage } from "./pages";
 
 const withViewer = graphql(PAGE_VIEWER_QUERY);
 
@@ -36,6 +36,7 @@ export const Routes = withViewer(
 				<Route path="/tags" component={TagsPage} />
 				<Route path="/languages" component={LanguagesPage} />
 				<Route path="/login" component={LoginPage} />
+				<Route path="/authors" component={AuthorsPage} />
 				{/* <Route path="/songdatabases" component={SongDatabasesPage} />
 				<Route
 					path="/songdatabase/:songDatabaseId"
