@@ -2,8 +2,8 @@ import * as React from "react";
 
 import { match } from "react-router";
 
-import { Grid, Row, Col, Panel, FormControl } from "react-bootstrap";
-import { EditVariation } from "../songs";
+import { Grid, Row, Col, Panel } from "react-bootstrap";
+import { EditVariation, VariationAuthor } from "../songs";
 import { VariationTags } from "../tags";
 
 type InputProps = {
@@ -29,42 +29,9 @@ export const EditSongPage = (inputProps: InputProps) => {
 						<Panel.Heading>Laulutietokannat</Panel.Heading>
 						<Panel.Body>asd asd</Panel.Body>
 					</Panel>
-					<Panel>
-						<Panel.Heading>Kirjailijat</Panel.Heading>
-						<Panel.Body>
-							<div>
-								<FormControl
-									type="text"
-									placeholder="Hakusana"
-								/>
-							</div>
-
-							<div>
-								<input type="checkbox" /> k1
-							</div>
-							<div>
-								<input type="checkbox" /> k1
-							</div>
-							<div>
-								<input type="checkbox" /> k1
-							</div>
-							<div>
-								<input type="checkbox" /> k1
-							</div>
-							<div>
-								<input type="checkbox" /> k1
-							</div>
-							<div>
-								<input type="checkbox" /> k1
-							</div>
-							<div>
-								<input type="checkbox" /> k1
-							</div>
-							<div>
-								<input type="checkbox" /> k1
-							</div>
-						</Panel.Body>
-					</Panel>
+					<VariationAuthor
+						variationId={inputProps.match.params.variationId}
+					/>
 				</Col>
 			</Row>
 		</Grid>

@@ -28,6 +28,10 @@ export const VARIATION_QUERY = gql`
 			id
 			name
 			text
+			author {
+				id
+				name
+			}
 		}
 	}
 `;
