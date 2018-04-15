@@ -1,6 +1,12 @@
 import * as React from "react";
 
-import { Query, QueryResult } from "react-apollo";
+import {
+	Query,
+	QueryResult,
+	Mutation,
+	MutationOptions,
+	FetchResult
+} from "react-apollo";
 
 import {
 	Panel,
@@ -9,11 +15,17 @@ import {
 	FormControl,
 	Button
 } from "react-bootstrap";
-import { getVariationQuery, getVariationQueryVariables } from "../types";
-import { VARIATION_QUERY } from "../servergql";
+import {
+	getVariationQuery,
+	getVariationQueryVariables,
+	updateVariationMutation,
+	updateVariationMutationVariables
+} from "../types";
+import { VARIATION_QUERY, UPDATE_VARIATION_MUTATION } from "../servergql";
 import TextareaAutosize from "react-autosize-textarea/lib";
 
 export class EditVariationContent extends React.Component<{
+	variationId: string;
 	name: string;
 	text: string;
 }> {
@@ -29,7 +41,17 @@ export class EditVariationContent extends React.Component<{
 				<Panel.Body>
 					<FormGroup>
 						<ControlLabel>Nimi</ControlLabel>
-						<FormControl type="text" value={this.state.name} />
+						<FormControl
+							type="text"
+							value={this.state.name}
+							onChange={e => {
+								const target = e.target as HTMLInputElement;
+
+								this.setState({
+									name: target.value
+								});
+							}}
+						/>
 					</FormGroup>
 					<FormGroup>
 						<ControlLabel>Sisältö</ControlLabel>
@@ -49,10 +71,37 @@ export class EditVariationContent extends React.Component<{
 							}}
 						/>
 					</FormGroup>
-					{(this.state.name !== this.props.name ||
-						this.state.text !== this.props.text) && (
-						<Button bsStyle="success">Tallenna</Button>
-					)}
+					<Mutation mutation={UPDATE_VARIATION_MUTATION}>
+						{(
+							updateVariation: (
+								props: MutationOptions<
+									updateVariationMutation,
+									updateVariationMutationVariables
+								>
+							) => Promise<FetchResult<updateVariationMutation>>
+						) =>
+							(this.state.name !== this.props.name ||
+								this.state.text !== this.props.text) && (
+								<Button
+									bsStyle="success"
+									onClick={() => {
+										updateVariation({
+											variables: {
+												params: {
+													variationId: this.props
+														.variationId,
+													name: this.state.name,
+													text: this.state.text
+												}
+											}
+										});
+									}}
+								>
+									Tallenna
+								</Button>
+							)
+						}
+					</Mutation>
 				</Panel.Body>
 			</Panel>
 		);
@@ -70,6 +119,7 @@ export const EditVariation = (inputProps: { variationId: string }) => (
 
 			return (
 				<EditVariationContent
+					variationId={inputProps.variationId}
 					name={props.data && props.data.variation.name}
 					text={props.data && props.data.variation.text}
 				/>
