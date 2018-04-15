@@ -84,6 +84,7 @@ export class CreateVariation extends React.Component<{
 								/>
 							</AppendBottom>
 							<AppendBottom>
+								<ControlLabel>Sisältö</ControlLabel>
 								<TextareaAutosize
 									style={{
 										width: "100%",
