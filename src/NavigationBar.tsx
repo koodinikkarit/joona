@@ -31,13 +31,13 @@ const withLogout = graphql(USER_LOGOUT_MUTATION, {
 
 export const NavigationBar = compose(withViewer, withLogout)(
 	(props: INavigationBar) => {
-		if (props.data.loading) {
-			return <div />;
-		}
+		// if (props.data.loading) {
+		// 	return <div>lsfsyssn..</div>;
+		// }
 
-		if (props.data.error) {
-			return <div />;
-		}
+		// if (props.data.error) {
+		// 	return <div>ddddfshhhb..</div>;
+		// }
 
 		return (
 			<Navbar>

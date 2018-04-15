@@ -13,7 +13,13 @@ import { graphql, ChildProps } from "react-apollo";
 import { PAGE_VIEWER_QUERY } from "./servergql";
 import { getPageViewerQuery } from "./types";
 import { TagsPage } from "./pages/TagsPage";
-import { LanguagesPage, LoginPage, AuthorsPage } from "./pages";
+import {
+	LanguagesPage,
+	LoginPage,
+	AuthorsPage,
+	SongsPage,
+	EditSongPage
+} from "./pages";
 import { CopyrightsPage } from "./pages/CopyrightsPage";
 
 const withViewer = graphql(PAGE_VIEWER_QUERY);
@@ -21,11 +27,11 @@ const withViewer = graphql(PAGE_VIEWER_QUERY);
 export const Routes = withViewer(
 	(props: ChildProps<{}, getPageViewerQuery>) => {
 		if (props.data.loading) {
-			return <div />;
+			return <div>Ladataan...</div>;
 		}
 
 		if (props.data.error) {
-			return <div />;
+			return <div>Virhe??</div>;
 		}
 
 		if (!props.data.viewer.user) {
@@ -39,6 +45,11 @@ export const Routes = withViewer(
 				<Route path="/login" component={LoginPage} />
 				<Route path="/authors" component={AuthorsPage} />
 				<Route path="/copyrights" component={CopyrightsPage} />
+				<Route path="/songs" component={SongsPage} />
+				<Route
+					path="/variation/:variationId"
+					component={EditSongPage}
+				/>
 				{/* <Route path="/songdatabases" component={SongDatabasesPage} />
 				<Route
 					path="/songdatabase/:songDatabaseId"

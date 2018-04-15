@@ -1,4 +1,140 @@
-// import * as React from "react";
+import * as React from "react";
+import {
+	Mutation,
+	MutationOptions,
+	ExecutionResult,
+	FetchResult
+} from "react-apollo";
+
+import { Panel, Button, ControlLabel, FormControl } from "react-bootstrap";
+import { AppendBottom } from "../layout";
+
+import TextareaAutosize from "react-autosize-textarea";
+import {
+	CREATE_VARIATION_MUTATION,
+	SEARCH_VARIATIONS_QUERY
+} from "../servergql";
+
+import {
+	createVariationMutationVariables,
+	createVariationMutation,
+	searchVariationsQuery
+} from "../types";
+
+export class CreateVariation extends React.Component<{
+	onCancel?: () => void;
+	onSuccess: () => void;
+}> {
+	state = {
+		name: "",
+		text: ""
+	};
+
+	render() {
+		return (
+			<Mutation
+				mutation={CREATE_VARIATION_MUTATION}
+				update={(
+					cache,
+					res: ExecutionResult<createVariationMutation>
+				) => {
+					if (res.data.createVariation) {
+						const variations: searchVariationsQuery = cache.readQuery(
+							{
+								query: SEARCH_VARIATIONS_QUERY
+							}
+						);
+
+						variations.searchVariations.variations.unshift(
+							res.data.createVariation
+						);
+
+						cache.writeQuery({
+							query: SEARCH_VARIATIONS_QUERY,
+							data: variations
+						});
+					}
+				}}
+			>
+				{(
+					createVariation: (
+						props: MutationOptions<
+							createVariationMutation,
+							createVariationMutationVariables
+						>
+					) => Promise<FetchResult<createVariationMutation>>
+				) => (
+					<Panel>
+						<Panel.Heading>Luo laulu</Panel.Heading>
+						<Panel.Body>
+							<AppendBottom>
+								<ControlLabel>Nimi</ControlLabel>
+								<FormControl
+									type="text"
+									style={{
+										maxWidth: "400px"
+									}}
+									value={this.state.name}
+									onChange={e => {
+										const target = e.target as HTMLInputElement;
+										this.setState({
+											name: target.value
+										});
+									}}
+								/>
+							</AppendBottom>
+							<AppendBottom>
+								<TextareaAutosize
+									style={{
+										width: "100%",
+										resize: "none",
+										maxHeight: "800px"
+									}}
+									className="form-control"
+									onChange={e => {
+										const target = e.target as HTMLInputElement;
+										this.setState({
+											text: target.value
+										});
+									}}
+								/>
+							</AppendBottom>
+
+							<Button
+								style={{
+									marginRight: "10px"
+								}}
+								onClick={() => {
+									if (this.props.onCancel) {
+										this.props.onCancel();
+									}
+								}}
+							>
+								Peruuta
+							</Button>
+							<Button
+								bsStyle="success"
+								onClick={() => {
+									createVariation({
+										variables: {
+											name: this.state.name,
+											text: this.state.text
+										}
+									}).then(() => {
+										this.props.onSuccess();
+									});
+								}}
+							>
+								Luo
+							</Button>
+						</Panel.Body>
+					</Panel>
+				)}
+			</Mutation>
+		);
+	}
+}
+
 // import gql from "graphql-tag";
 // import { graphql, compose } from "react-apollo";
 

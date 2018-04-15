@@ -9,3 +9,5 @@ export * from "./LanguagesPage";
 export * from "./TagsPage";
 export * from "./LoginPage";
 export * from "./AuthorsPage";
+export * from "./SongsPage";
+export * from "./EditSongPage";

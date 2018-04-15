@@ -1,4 +1,41 @@
-// import * as React from "react";
+import * as React from "react";
+
+import { Query, QueryResult } from "react-apollo";
+
+import { Panel, ListGroup, ListGroupItem } from "react-bootstrap";
+import { searchVariationsQuery } from "../types";
+import { SEARCH_VARIATIONS_QUERY } from "../servergql";
+import { LinkContainer } from "react-router-bootstrap";
+
+export const SongSearchResults = () => {
+	return (
+		<Panel>
+			<Panel.Heading>Lauluhakutulokset</Panel.Heading>
+			<Panel.Body>
+				<ListGroup>
+					<Query query={SEARCH_VARIATIONS_QUERY}>
+						{(props: QueryResult<searchVariationsQuery>) => {
+							if (props.loading) {
+								return <div>Ladataan...</div>;
+							}
+
+							return props.data.searchVariations.variations.map(
+								p => (
+									<LinkContainer to={"/variation/" + p.id}>
+										<ListGroupItem key={p.id}>
+											{p.name}
+										</ListGroupItem>
+									</LinkContainer>
+								)
+							);
+						}}
+					</Query>
+				</ListGroup>
+			</Panel.Body>
+		</Panel>
+	);
+};
+
 // import gql from "graphql-tag";
 // import { graphql } from "react-apollo";
 

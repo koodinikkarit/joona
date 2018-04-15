@@ -1,4 +1,64 @@
-// import * as React from "react";
+import * as React from "react";
+import { Grid, Row, Col, Button } from "react-bootstrap";
+import {
+	SongSearchSettings,
+	SongSearchResults,
+	CreateVariation
+} from "../songs";
+import { AppendBottom } from "../layout";
+
+export class SongsPage extends React.Component {
+	state = {
+		creatingSong: false
+	};
+
+	render() {
+		return (
+			<Grid fluid={true}>
+				<Row>
+					<Col lg={7}>
+						{this.state.creatingSong && (
+							<CreateVariation
+								onCancel={() => {
+									this.setState({
+										creatingSong: false
+									});
+								}}
+								onSuccess={() => {
+									this.setState({
+										creatingSong: false
+									});
+								}}
+							/>
+						)}
+					</Col>
+				</Row>
+				<Row>
+					<Col sm={4}>
+						{!this.state.creatingSong && (
+							<AppendBottom>
+								<Button
+									onClick={() => {
+										this.setState({
+											creatingSong: true
+										});
+									}}
+								>
+									Luo laulu
+								</Button>
+							</AppendBottom>
+						)}
+						<SongSearchSettings />
+					</Col>
+					<Col sm={8}>
+						<SongSearchResults />
+					</Col>
+				</Row>
+			</Grid>
+		);
+	}
+}
+
 // import gql from "graphql-tag";
 // import { graphql, compose } from "react-apollo";
 

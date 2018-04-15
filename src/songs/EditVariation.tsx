@@ -1,4 +1,83 @@
-// import * as React from "react";
+import * as React from "react";
+
+import { Query, QueryResult } from "react-apollo";
+
+import {
+	Panel,
+	FormGroup,
+	ControlLabel,
+	FormControl,
+	Button
+} from "react-bootstrap";
+import { getVariationQuery, getVariationQueryVariables } from "../types";
+import { VARIATION_QUERY } from "../servergql";
+import TextareaAutosize from "react-autosize-textarea/lib";
+
+export class EditVariationContent extends React.Component<{
+	name: string;
+	text: string;
+}> {
+	state = {
+		name: this.props.name,
+		text: this.props.text
+	};
+
+	render() {
+		return (
+			<Panel>
+				<Panel.Heading>Muokkaa laulun sisältöä</Panel.Heading>
+				<Panel.Body>
+					<FormGroup>
+						<ControlLabel>Nimi</ControlLabel>
+						<FormControl type="text" value={this.state.name} />
+					</FormGroup>
+					<FormGroup>
+						<ControlLabel>Sisältö</ControlLabel>
+						<TextareaAutosize
+							style={{
+								width: "100%",
+								resize: "none",
+								maxHeight: "800px"
+							}}
+							value={this.state.text}
+							className="form-control"
+							onChange={e => {
+								const target = e.target as HTMLInputElement;
+								this.setState({
+									text: target.value
+								});
+							}}
+						/>
+					</FormGroup>
+					{(this.state.name !== this.props.name ||
+						this.state.text !== this.props.text) && (
+						<Button bsStyle="success">Tallenna</Button>
+					)}
+				</Panel.Body>
+			</Panel>
+		);
+	}
+}
+
+export const EditVariation = (inputProps: { variationId: string }) => (
+	<Query query={VARIATION_QUERY} variables={inputProps}>
+		{(
+			props: QueryResult<getVariationQuery, getVariationQueryVariables>
+		) => {
+			if (props.loading) {
+				return <div>Ladataan...</div>;
+			}
+
+			return (
+				<EditVariationContent
+					name={props.data && props.data.variation.name}
+					text={props.data && props.data.variation.text}
+				/>
+			);
+		}}
+	</Query>
+);
+
 // import gql from "graphql-tag";
 // import { graphql, compose } from "react-apollo";
 
