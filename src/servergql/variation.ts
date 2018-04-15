@@ -31,3 +31,28 @@ export const VARIATION_QUERY = gql`
 		}
 	}
 `;
+
+export const UPDATE_VARIATION_MUTATION = gql`
+	mutation updateVariation($params: UpdateVariationInputType) {
+		updateVariation(params: $params) {
+			success
+			variation {
+				id
+				name
+				text
+			}
+		}
+	}
+`;
+
+export const ADD_TAG_TO_VARIATION = gql`
+	mutation addTagToVariation($variationId: ID!, $tagId: ID!) {
+		addTagToVariation(variationId: $variationId, tagId: $tagId)
+	}
+`;
+
+export const REMOVE_TAG_FROM_VARIATION = gql`
+	mutation removeTagFromVariation($variationId: ID!, $tagId: ID!) {
+		removeTagFromVariation(variationId: $variationId, tagId: $tagId)
+	}
+`;

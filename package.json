@@ -13,7 +13,7 @@
 		"core-js": "^2.5.3",
 		"es6-string-polyfills": "^1.0.0",
 		"es6-weak-map": "^2.0.2",
-		"petri-client": "^0.0.22",
+		"petri-client": "^0.0.24",
 		"react-apollo": "^2.1.1",
 		"graphql": "^0.12.3",
 		"graphql-tag": "^2.8.0",
@@ -27,8 +27,7 @@
 		"build": "react-scripts-ts build",
 		"test": "react-scripts-ts test --env=jsdom",
 		"eject": "react-scripts-ts eject",
-		"build-schema-types":
-			"apollo-codegen generate src/servergql/**/*.ts* --schema node_modules/petri-client/schema.json --target typescript --output src/types/operation-results-types.ts"
+		"build-schema-types": "apollo-codegen generate src/servergql/**/*.ts* --schema node_modules/petri-client/schema.json --target typescript --output src/types/operation-results-types.ts"
 	},
 	"devDependencies": {
 		"@types/jest": "^22.2.0",

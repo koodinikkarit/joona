@@ -4,6 +4,7 @@ import { match } from "react-router";
 
 import { Grid, Row, Col, Panel, FormControl } from "react-bootstrap";
 import { EditVariation } from "../songs";
+import { VariationTags } from "../tags";
 
 type InputProps = {
 	match: match<{
@@ -21,10 +22,9 @@ export const EditSongPage = (inputProps: InputProps) => {
 					/>
 				</Col>
 				<Col sm={6}>
-					<Panel>
-						<Panel.Heading>Tunnisteet</Panel.Heading>
-						<Panel.Body>asd asd</Panel.Body>
-					</Panel>
+					<VariationTags
+						variationId={inputProps.match.params.variationId}
+					/>
 					<Panel>
 						<Panel.Heading>Laulutietokannat</Panel.Heading>
 						<Panel.Body>asd asd</Panel.Body>

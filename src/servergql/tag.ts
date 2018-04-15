@@ -23,3 +23,14 @@ export const SEARCH_TAGS_QUERY = gql`
 		}
 	}
 `;
+
+export const VARIATION_TAGS = gql`
+	query variationTags($variationId: ID!) {
+		variationTags(variationId: $variationId) {
+			totalCount
+			tags {
+				id
+			}
+		}
+	}
+`;
