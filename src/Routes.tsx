@@ -18,7 +18,11 @@ import {
 	LoginPage,
 	AuthorsPage,
 	SongsPage,
-	EditSongPage
+	EditSongPage,
+	TagPage,
+	AuthorPage,
+	CopyrightPage,
+	SongDatabasesPage
 } from "./pages";
 import { CopyrightsPage } from "./pages/CopyrightsPage";
 
@@ -50,6 +54,11 @@ export const Routes = withViewer(
 					path="/variation/:variationId"
 					component={EditSongPage}
 				/>
+				<Route path="/tag/:tagId" component={TagPage} />
+				<Route path="/language/:languageId" component={LanguagesPage} />
+				<Route path="/author/:authorId" component={AuthorPage} />
+				<Route path="/copyright/:copyright" component={CopyrightPage} />
+				<Route path="/songdatabases" component={SongDatabasesPage} />
 				{/* <Route path="/songdatabases" component={SongDatabasesPage} />
 				<Route
 					path="/songdatabase/:songDatabaseId"
