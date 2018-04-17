@@ -22,7 +22,8 @@ import {
 	TagPage,
 	AuthorPage,
 	CopyrightPage,
-	SongDatabasesPage
+	SongDatabasesPage,
+	SongDatabasePage
 } from "./pages";
 import { CopyrightsPage } from "./pages/CopyrightsPage";
 
@@ -59,6 +60,10 @@ export const Routes = withViewer(
 				<Route path="/author/:authorId" component={AuthorPage} />
 				<Route path="/copyright/:copyright" component={CopyrightPage} />
 				<Route path="/songdatabases" component={SongDatabasesPage} />
+				<Route
+					path="/songdatabase/:songDatabaseId"
+					component={SongDatabasePage}
+				/>
 				{/* <Route path="/songdatabases" component={SongDatabasesPage} />
 				<Route
 					path="/songdatabase/:songDatabaseId"

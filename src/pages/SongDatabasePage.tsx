@@ -1,4 +1,35 @@
-// import * as React from "react";
+import * as React from "react";
+
+import { match } from "react-router";
+
+import { Grid, Row, Col } from "react-bootstrap";
+import { SongDatabaseInfo, SongDatabaseVariations } from "../songdatabases";
+
+type InputProps = {
+	match: match<{
+		songDatabaseId: string;
+	}>;
+};
+
+export const SongDatabasePage = (inputProps: InputProps) => {
+	return (
+		<Grid>
+			<Row>
+				<Col sm={5}>
+					<SongDatabaseInfo
+						songDatabaseId={inputProps.match.params.songDatabaseId}
+					/>
+				</Col>
+				<Col sm={5}>
+					<SongDatabaseVariations
+						songDatabaseId={inputProps.match.params.songDatabaseId}
+					/>
+				</Col>
+			</Row>
+		</Grid>
+	);
+};
+
 // // import gql from "graphql-tag";
 // // import { graphql, compose } from "react-apollo";
 

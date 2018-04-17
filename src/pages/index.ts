@@ -9,3 +9,4 @@ export * from "./LanguagePage";
 export * from "./AuthorPage";
 export * from "./CopyrightPage";
 export * from "./SongDatabasesPage";
+export * from "./SongDatabasePage";
