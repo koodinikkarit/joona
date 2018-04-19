@@ -46,8 +46,18 @@ export const REMOVE_VARIATION_FROM_SONG_DATABASE_MUTATION = gql`
 `;
 
 export const SONG_DATABASE_VARIATIONS_QUERY = gql`
-	query getSongDatabaseVariations($songDatabaseId: ID!) {
+	query getSongDatabaseVariationsData(
+		$songDatabaseId: ID!
+		$searchWord: String
+	) {
 		songDatabaseVariations(songDatabaseId: $songDatabaseId) {
+			totalCount
+			variations {
+				id
+				__typename
+			}
+		}
+		searchVariations(searchWord: $searchWord) {
 			totalCount
 			variations {
 				id

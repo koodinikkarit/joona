@@ -38,7 +38,7 @@ export class TextInput extends React.Component<TextInputProps, TextInputState> {
 					if (this.props.onChange) {
 						const target = e.target as HTMLInputElement;
 						const value = target.value;
-						if (value && value !== this.state.value) {
+						if (value != null && value !== this.state.value) {
 							this.setState({
 								value
 							});
