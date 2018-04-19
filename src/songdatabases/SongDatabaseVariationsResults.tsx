@@ -116,7 +116,9 @@ export const SongDatabaseVariationsResults = (inputProps: {
 																					query: SONG_DATABASE_VARIATIONS_QUERY,
 																					variables: {
 																						songDatabaseId:
-																							inputProps.songDatabaseId
+																							inputProps.songDatabaseId,
+																						searchWord:
+																							inputProps.searchWord
 																					}
 																				}
 																			);
@@ -136,7 +138,9 @@ export const SongDatabaseVariationsResults = (inputProps: {
 																					query: SONG_DATABASE_VARIATIONS_QUERY,
 																					variables: {
 																						songDatabaseId:
-																							inputProps.songDatabaseId
+																							inputProps.songDatabaseId,
+																						searchWord:
+																							inputProps.searchWord
 																					}
 																				}
 																			);
@@ -164,19 +168,14 @@ export const SongDatabaseVariationsResults = (inputProps: {
 																				.data
 																				.addVariationToSongDatabase
 																		) {
-																			// tslint:disable-next-line
-																			console.log(
-																				"add",
-																				res
-																					.data
-																					.addVariationToSongDatabase
-																			);
 																			const sdv: getSongDatabaseVariationsDataQuery = cache.readQuery(
 																				{
 																					query: SONG_DATABASE_VARIATIONS_QUERY,
 																					variables: {
 																						songDatabaseId:
-																							inputProps.songDatabaseId
+																							inputProps.songDatabaseId,
+																						searchWord:
+																							inputProps.searchWord
 																					}
 																				}
 																			);
@@ -193,19 +192,15 @@ export const SongDatabaseVariationsResults = (inputProps: {
 																				.songDatabaseVariations
 																				.totalCount++;
 
-																			// tslint:disable-next-line
-																			console.log(
-																				"sdv",
-																				sdv
-																			);
-
 																			cache.writeQuery(
 																				{
 																					data: sdv,
 																					query: SONG_DATABASE_VARIATIONS_QUERY,
 																					variables: {
 																						songDatabaseId:
-																							inputProps.songDatabaseId
+																							inputProps.songDatabaseId,
+																						searchWord:
+																							inputProps.searchWord
 																					}
 																				}
 																			);
