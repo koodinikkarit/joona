@@ -60,3 +60,13 @@ export const REMOVE_TAG_FROM_VARIATION = gql`
 		removeTagFromVariation(variationId: $variationId, tagId: $tagId)
 	}
 `;
+
+export const VARIATION_SONG_DATABASES_QUERY = gql`
+	query getVariationSongDatabases($variationId: ID!) {
+		variationSongDatabases(variationId: $variationId) {
+			songDatabases {
+				id
+			}
+		}
+	}
+`;
