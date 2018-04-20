@@ -34,12 +34,6 @@ const graphqlSubscriptionsPort = developmentEnvironment
 	? parseInt(process.env.REACT_APP_GRAPHQL_PORT as string, 10)
 	: parseInt(window.location.port, 10);
 
-// tslint:disable-next-line
-console.log("resolvers", resolvers);
-
-// tslint:disable-next-line
-console.log("defaults", defaults);
-
 const client = createPetriClient({
 	graphqlHost,
 	graphqlPort,
