@@ -13,6 +13,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./layout/HorizontalListPanel.css";
 
 import { createPetriClient } from "petri-client";
+import { resolvers, defaults } from "./resolvers";
 
 const developmentEnvironment =
 	process && process.env && process.env.NODE_ENV === "development";
@@ -33,11 +34,19 @@ const graphqlSubscriptionsPort = developmentEnvironment
 	? parseInt(process.env.REACT_APP_GRAPHQL_PORT as string, 10)
 	: parseInt(window.location.port, 10);
 
+// tslint:disable-next-line
+console.log("resolvers", resolvers);
+
+// tslint:disable-next-line
+console.log("defaults", defaults);
+
 const client = createPetriClient({
 	graphqlHost,
 	graphqlPort,
 	graphqlSubscriptionsHost,
-	graphqlSubscriptionsPort
+	graphqlSubscriptionsPort,
+	resolvers: resolvers,
+	defaults: defaults
 });
 
 ReactDOM.render(

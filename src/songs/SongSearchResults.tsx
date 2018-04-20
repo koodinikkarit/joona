@@ -3,9 +3,13 @@ import * as React from "react";
 import { Query, QueryResult } from "react-apollo";
 
 import { Panel, ListGroup, ListGroupItem } from "react-bootstrap";
-import { searchVariationsQuery } from "../types";
+import {
+	searchVariationsQuery,
+	searchVariationsQueryVariables
+} from "../types";
 import { SEARCH_VARIATIONS_QUERY } from "../servergql";
 import { LinkContainer } from "react-router-bootstrap";
+import { SONGS_SEARCH_WORD_QUERY } from "../stategql";
 
 export const SongSearchResults = () => {
 	return (
@@ -13,20 +17,45 @@ export const SongSearchResults = () => {
 			<Panel.Heading>Lauluhakutulokset</Panel.Heading>
 			<Panel.Body>
 				<ListGroup>
-					<Query query={SEARCH_VARIATIONS_QUERY}>
-						{(props: QueryResult<searchVariationsQuery>) => {
-							if (props.loading) {
-								return <div>Ladataan...</div>;
+					<Query query={SONGS_SEARCH_WORD_QUERY}>
+						{(
+							props2: QueryResult<{
+								songsSearchWord: string;
+							}>
+						) => {
+							if (props2.loading) {
+								return <div />;
 							}
+							return (
+								<Query
+									query={SEARCH_VARIATIONS_QUERY}
+									variables={{
+										searchWord: props2.data.songsSearchWord
+									}}
+								>
+									{(
+										props: QueryResult<
+											searchVariationsQuery,
+											searchVariationsQueryVariables
+										>
+									) => {
+										if (props.loading) {
+											return <div>Ladataan...</div>;
+										}
 
-							return props.data.searchVariations.variations.map(
-								p => (
-									<LinkContainer to={"/variation/" + p.id}>
-										<ListGroupItem key={p.id}>
-											{p.name}
-										</ListGroupItem>
-									</LinkContainer>
-								)
+										return props.data.searchVariations.variations.map(
+											p => (
+												<LinkContainer
+													to={"/variation/" + p.id}
+												>
+													<ListGroupItem key={p.id}>
+														{p.name}
+													</ListGroupItem>
+												</LinkContainer>
+											)
+										);
+									}}
+								</Query>
 							);
 						}}
 					</Query>

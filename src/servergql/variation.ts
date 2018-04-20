@@ -11,8 +11,8 @@ export const CREATE_VARIATION_MUTATION = gql`
 `;
 
 export const SEARCH_VARIATIONS_QUERY = gql`
-	query searchVariations {
-		searchVariations {
+	query searchVariations($searchWord: String) {
+		searchVariations(searchWord: $searchWord) {
 			variations {
 				id
 				name
