@@ -13,4 +13,5 @@ RUN npm run build
 
 FROM nginx:1.13
 COPY --from=builder /usr/src/build /usr/share/nginx/html
+ADD ./default.conf /etc/nginx/conf.d/default.conf
 CMD nginx -g 'daemon off;'
