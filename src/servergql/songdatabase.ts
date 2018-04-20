@@ -66,3 +66,12 @@ export const SONG_DATABASE_VARIATIONS_QUERY = gql`
 		}
 	}
 `;
+
+export const CREATE_SONG_DATABASE = gql`
+	mutation createSongDatabase($name: String) {
+		createSongDatabase(name: $name) {
+			id
+			name
+		}
+	}
+`;
