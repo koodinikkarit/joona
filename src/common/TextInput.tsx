@@ -16,17 +16,17 @@ type TextInputState = {
 
 export class TextInput extends React.Component<TextInputProps, TextInputState> {
 	state = {
-		value: "",
+		value: this.props.value,
 		onChangeTimer: undefined
 	};
 
-	componentWillReceiveProps(nextProps: TextInputProps) {
-		if (nextProps.value != null) {
-			this.setState({
-				value: nextProps.value
-			});
-		}
-	}
+	// componentWillReceiveProps(nextProps: TextInputProps) {
+	// 	if (nextProps.value != null) {
+	// 		this.setState({
+	// 			value: nextProps.value
+	// 		});
+	// 	}
+	// }
 
 	render() {
 		return (
