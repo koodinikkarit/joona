@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Query, QueryResult } from "react-apollo";
 
-import { Panel, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Panel, ListGroup } from "react-bootstrap";
 import { TAG_VARIATIONS_QUERY, SEARCH_VARIATIONS_QUERY } from "../servergql";
 
 import {
@@ -11,6 +11,7 @@ import {
 	searchVariationsQuery,
 	searchVariationsQueryVariables
 } from "../types";
+import { TagVariationItem } from ".";
 
 export const TagVariations = (inputProps: { tagId: string }) => {
 	return (
@@ -55,16 +56,15 @@ export const TagVariations = (inputProps: { tagId: string }) => {
 													);
 
 													return (
-														<ListGroupItem
+														<TagVariationItem
 															key={p.id}
-															bsStyle={
-																selected
-																	? "success"
-																	: ""
+															name={p.name}
+															selected={selected}
+															tagId={
+																inputProps.tagId
 															}
-														>
-															{p.name}
-														</ListGroupItem>
+															variationId={p.id}
+														/>
 													);
 												}
 											)}

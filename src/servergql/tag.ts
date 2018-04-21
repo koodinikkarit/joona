@@ -50,7 +50,7 @@ export const TAG_VARIATIONS_QUERY = gql`
 			totalCount
 			variations {
 				id
-				name
+				__typename
 			}
 		}
 	}
