@@ -22,3 +22,22 @@ export const CREATE_AUTHOR_MUTATION = gql`
 		}
 	}
 `;
+
+export const AUTHOR_QUERY = gql`
+	query getAuthor($authorId: ID!) {
+		author(authorId: $authorId) {
+			id
+			name
+		}
+	}
+`;
+
+export const AUTHOR_VARIATIONS_QUERY = gql`
+	query getAuthorVariations($authorId: ID!) {
+		authorVariations(authorId: $authorId) {
+			variations {
+				id
+			}
+		}
+	}
+`;
