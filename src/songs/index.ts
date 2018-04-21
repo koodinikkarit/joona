@@ -4,3 +4,4 @@ export * from "./CreateVariation";
 export * from "./EditVariation";
 export * from "./VariationAuthor";
 export * from "./VariationSongDatabases";
+export * from "./VariationLanguage";

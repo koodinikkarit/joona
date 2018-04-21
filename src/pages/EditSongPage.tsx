@@ -6,7 +6,8 @@ import { Grid, Row, Col } from "react-bootstrap";
 import {
 	EditVariation,
 	VariationAuthor,
-	VariationSongDatabases
+	VariationSongDatabases,
+	VariationLanguage
 } from "../songs";
 import { VariationTags } from "../tags";
 
@@ -21,6 +22,9 @@ export const EditSongPage = (inputProps: InputProps) => {
 		<Grid>
 			<Row>
 				<Col sm={6}>
+					<VariationLanguage
+						variationId={inputProps.match.params.variationId}
+					/>
 					<EditVariation
 						variationId={inputProps.match.params.variationId}
 					/>

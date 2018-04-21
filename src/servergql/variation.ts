@@ -28,6 +28,8 @@ export const VARIATION_QUERY = gql`
 			id
 			name
 			text
+			languageId
+			authorId
 			author {
 				id
 				name
@@ -44,6 +46,8 @@ export const UPDATE_VARIATION_MUTATION = gql`
 				id
 				name
 				text
+				languageId
+				authorId
 			}
 		}
 	}
