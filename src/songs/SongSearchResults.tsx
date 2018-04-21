@@ -16,50 +16,70 @@ export const SongSearchResults = () => {
 		<Panel>
 			<Panel.Heading>Lauluhakutulokset</Panel.Heading>
 			<Panel.Body>
-				<ListGroup>
-					<Query query={SONGS_SEARCH_WORD_QUERY}>
-						{(
-							props2: QueryResult<{
-								songsSearchWord: string;
-							}>
-						) => {
-							if (props2.loading) {
-								return <div />;
-							}
-							return (
-								<Query
-									query={SEARCH_VARIATIONS_QUERY}
-									variables={{
-										searchWord: props2.data.songsSearchWord
-									}}
-								>
-									{(
-										props: QueryResult<
-											searchVariationsQuery,
-											searchVariationsQueryVariables
-										>
-									) => {
-										if (props.loading) {
-											return <div>Ladataan...</div>;
-										}
+				<Query query={SONGS_SEARCH_WORD_QUERY}>
+					{(
+						props2: QueryResult<{
+							songsSearchWord: string;
+						}>
+					) => {
+						if (props2.loading) {
+							return <div />;
+						}
+						return (
+							<Query
+								query={SEARCH_VARIATIONS_QUERY}
+								variables={{
+									searchWord: props2.data.songsSearchWord
+								}}
+							>
+								{(
+									props: QueryResult<
+										searchVariationsQuery,
+										searchVariationsQueryVariables
+									>
+								) => {
+									if (props.loading) {
+										return <div>Ladataan...</div>;
+									}
 
-										return props.data.searchVariations.variations.map(
-											p => (
-												<LinkContainer
-													to={"/variation/" + p.id}
-												>
-													<ListGroupItem key={p.id}>
-														{p.name}
-													</ListGroupItem>
-												</LinkContainer>
-											)
-										);
-									}}
-								</Query>
-							);
-						}}
-					</Query>
-				</ListGroup>
+									return (
+										<div>
+											<ListGroup>
+												{props.data.searchVariations.variations.map(
+													p => (
+														<LinkContainer
+															to={
+																"/variation/" +
+																p.id
+															}
+														>
+															<ListGroupItem
+																key={p.id}
+															>
+																{p.name}
+															</ListGroupItem>
+														</LinkContainer>
+													)
+												)}
+											</ListGroup>
+											Näytetään{" "}
+											{
+												props.data.searchVariations
+													.variations.length
+											}{" "}
+											laulua{" "}
+											{
+												props.data.searchVariations
+													.totalCount
+											}{" "}
+											laulusta
+										</div>
+									);
+								}}
+							</Query>
+						);
+					}}
+				</Query>
 			</Panel.Body>
 		</Panel>
 	);
