@@ -23,3 +23,23 @@ export const CREATE_LANGUAGE_MUTATION = gql`
 		}
 	}
 `;
+
+export const LANGUAGE_QUERY = gql`
+	query getLanguage($languageId: ID!) {
+		language(languageId: $languageId) {
+			id
+			name
+		}
+	}
+`;
+
+export const LANGUAGE_VARIATIONS_QUERY = gql`
+	query getLanguageVariations($languageId: ID!) {
+		languageVariations(languageId: $languageId) {
+			variations {
+				id
+				__typename
+			}
+		}
+	}
+`;
