@@ -72,7 +72,7 @@ export const NavigationBar = () => {
 									</MenuItem>
 								</LinkContainer>
 							</NavDropdown>
-							<NavDropdown
+							{/* <NavDropdown
 								id="hallinta-menu"
 								eventKey={5}
 								title="Hallinta"
@@ -82,7 +82,7 @@ export const NavigationBar = () => {
 										Matiakset
 									</MenuItem>
 								</LinkContainer>
-							</NavDropdown>
+							</NavDropdown> */}
 						</Nav>
 						{props.data.viewer &&
 							props.data.viewer.user && (

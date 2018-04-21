@@ -18,6 +18,7 @@ export const SEARCH_VARIATIONS_QUERY = gql`
 				name
 				text
 			}
+			totalCount
 		}
 	}
 `;

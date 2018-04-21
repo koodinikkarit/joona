@@ -24,12 +24,33 @@ export const SEARCH_TAGS_QUERY = gql`
 	}
 `;
 
+export const TAG_QUERY = gql`
+	query getTag($tagId: ID!) {
+		tag(tagId: $tagId) {
+			id
+			name
+		}
+	}
+`;
+
 export const VARIATION_TAGS = gql`
 	query variationTags($variationId: ID!) {
 		variationTags(variationId: $variationId) {
 			totalCount
 			tags {
 				id
+			}
+		}
+	}
+`;
+
+export const TAG_VARIATIONS_QUERY = gql`
+	query getTagVariations($tagId: ID!) {
+		tagVariations(tagId: $tagId) {
+			totalCount
+			variations {
+				id
+				name
 			}
 		}
 	}
