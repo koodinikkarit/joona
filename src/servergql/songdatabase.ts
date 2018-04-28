@@ -75,3 +75,30 @@ export const CREATE_SONG_DATABASE = gql`
 		}
 	}
 `;
+
+export const SONG_DATABASE_TAGS = gql`
+	query getSongDatabaseTags($songDatabaseId: ID!) {
+		songDatabaseTags(songDatabaseId: $songDatabaseId) {
+			totalCount
+			tags {
+				id
+				__typename
+			}
+		}
+	}
+`;
+
+export const ADD_TAG_TO_SONG_DATABASE = gql`
+	mutation addTagToSongDatabase($songDatabaseId: ID!, $tagId: ID!) {
+		addTagToSongDatabase(songDatabaseId: $songDatabaseId, tagId: $tagId)
+	}
+`;
+
+export const REMOVE_TAG_FROM_SONG_DATABASE = gql`
+	mutation removeTagFromSongDatabase($songDatabaseId: ID!, $tagId: ID!) {
+		removeTagFromSongDatabase(
+			songDatabaseId: $songDatabaseId
+			tagId: $tagId
+		)
+	}
+`;

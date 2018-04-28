@@ -3,7 +3,11 @@ import * as React from "react";
 import { match } from "react-router";
 
 import { Grid, Row, Col } from "react-bootstrap";
-import { SongDatabaseInfo, SongDatabaseVariations } from "../songdatabases";
+import {
+	SongDatabaseInfo,
+	SongDatabaseVariations,
+	SongDatabaseTags
+} from "../songdatabases";
 
 type InputProps = {
 	match: match<{
@@ -17,6 +21,9 @@ export const SongDatabasePage = (inputProps: InputProps) => {
 			<Row>
 				<Col sm={5}>
 					<SongDatabaseInfo
+						songDatabaseId={inputProps.match.params.songDatabaseId}
+					/>
+					<SongDatabaseTags
 						songDatabaseId={inputProps.match.params.songDatabaseId}
 					/>
 				</Col>
