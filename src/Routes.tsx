@@ -24,7 +24,9 @@ import {
 	CopyrightPage,
 	SongDatabasesPage,
 	SongDatabasePage,
-	LanguagePage
+	LanguagePage,
+	EwDatabasePage,
+	EwDatabasesPage
 } from "./pages";
 import { CopyrightsPage } from "./pages/CopyrightsPage";
 
@@ -64,6 +66,11 @@ export const Routes = withViewer(
 				<Route
 					path="/songdatabase/:songDatabaseId"
 					component={SongDatabasePage}
+				/>
+				<Route path="/ewdatabases" component={EwDatabasesPage} />
+				<Route
+					path="/ewdatabase/:ewDatabaseId"
+					component={EwDatabasePage}
 				/>
 				{/* <Route path="/songdatabases" component={SongDatabasesPage} />
 				<Route

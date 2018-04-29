@@ -44,6 +44,11 @@ export const NavigationBar = () => {
 										Laulutietokannat
 									</MenuItem>
 								</LinkContainer>
+								<LinkContainer to="/ewdatabases">
+									<MenuItem eventKey={1.2}>
+										Ewtietokannat
+									</MenuItem>
+								</LinkContainer>
 							</NavDropdown>
 							<LinkContainer to="/songs">
 								<NavItem eventKey={2}>Laulut</NavItem>

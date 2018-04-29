@@ -10,3 +10,5 @@ export * from "./AuthorPage";
 export * from "./CopyrightPage";
 export * from "./SongDatabasesPage";
 export * from "./SongDatabasePage";
+export * from "./EwDatabasesPage";
+export * from "./EwDatabasePage";
