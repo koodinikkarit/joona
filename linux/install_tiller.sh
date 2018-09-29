@@ -1,2 +1,2 @@
 echo "Checking Tiller..."
-helm init --upgrade
+helm init --upgrade --service-account travis
