@@ -6,8 +6,8 @@ spec:
   selector:
     app: joona
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 80
-    nodePort: 31303
-  type: NodePort
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 31303
+  type: LoadBalancer
